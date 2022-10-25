@@ -17,6 +17,10 @@ class SignInFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
 
+    private val viewModelFactory by lazy {
+
+    }
+
     private var _binding: FragmentSignInBinding? = null
     private val binding: FragmentSignInBinding
         get() = _binding ?: throw RuntimeException("FragmentSignInBinding = null!")
@@ -53,24 +57,9 @@ class SignInFragment : Fragment() {
     }
 
     private fun signIn(){
-        Log.d("muri", "createUserWithEmail:success")
-        val email = binding.etEmail.text.toString().trim()
-        val password = binding.etPassword.toString().trim()
-        if (email.isNotEmpty() && password.isNotEmpty()) {
-            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {task->
-                if (task.isSuccessful) {
-                    Log.d("muri", "createUserWithEmail:success")
-                    val user = auth.currentUser
-                } else {
-                    Log.w("muri", "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(this.requireActivity().baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                }
-            }
-        } else{
-            binding.tilEmail.error = "eroor"
-            binding.tilPassword.error = "re"
-        }
+        val email = binding.etEmail.text.toString()
+        val password = binding.etPassword.toString()
+
     }
 
     companion object {

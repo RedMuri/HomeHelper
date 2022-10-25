@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_main"
+        android:title="main"
+        android:icon="@android:drawable/ic_dialog_info" />
+    <item android:id="@+id/action_services"
+        android:title="services"
+        android:icon="@android:drawable/ic_dialog_dialer" />
+    <item android:id="@+id/action_chats"
+        android:title="chat"
+        android:icon="@android:drawable/stat_notify_chat" />
+    <item android:id="@+id/action_profile"
+        android:title="profile"
+        android:icon="@android:drawable/ic_menu_myplaces" />
+</menu>

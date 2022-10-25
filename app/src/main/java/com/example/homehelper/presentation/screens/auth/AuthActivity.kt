@@ -1,10 +1,9 @@
-package com.example.homehelper.presentation.screens
+package com.example.homehelper.presentation.screens.auth
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.homehelper.R
 
 class AuthActivity : AppCompatActivity() {
@@ -16,6 +15,6 @@ class AuthActivity : AppCompatActivity() {
 
     companion object{
 
-        fun newIntent(context: Context) = Intent(context,AuthActivity::class.java)
+        fun newIntent(context: Context) = Intent(context, AuthActivity::class.java)
     }
 }

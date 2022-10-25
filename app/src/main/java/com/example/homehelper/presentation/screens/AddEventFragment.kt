@@ -7,15 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.R
+import com.example.homehelper.databinding.FragmentAddEventBinding
 import com.example.homehelper.databinding.FragmentEventsBinding
-import com.example.homehelper.databinding.FragmentSignInBinding
 import com.example.homehelper.presentation.HomeHelperApp
-import com.example.homehelper.presentation.viewmodels.AuthViewModel
 import com.example.homehelper.presentation.viewmodels.EventsViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
 import javax.inject.Inject
 
-class EventsFragment : Fragment() {
+class AddEventFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -28,9 +27,10 @@ class EventsFragment : Fragment() {
         (requireActivity().application as HomeHelperApp).component
     }
 
-    private var _binding: FragmentEventsBinding? = null
-    private val binding: FragmentEventsBinding
-        get() = _binding ?: throw RuntimeException("FragmentEventsBinding = null!")
+    private var _binding: FragmentAddEventBinding? = null
+    private val binding: FragmentAddEventBinding
+        get() = _binding ?: throw RuntimeException("FragmentAddEventBinding = null!")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)
@@ -41,13 +41,13 @@ class EventsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentEventsBinding.inflate(inflater, container, false)
+        _binding = FragmentAddEventBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     companion object {
 
-        fun newInstance(param1: String, param2: String) =
-            EventsFragment()
+        fun newInstance() =
+            AddEventFragment()
     }
 }

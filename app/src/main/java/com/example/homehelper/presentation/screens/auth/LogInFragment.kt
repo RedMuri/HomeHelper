@@ -1,4 +1,4 @@
-package com.example.homehelper.presentation.screens
+package com.example.homehelper.presentation.screens.auth
 
 import android.os.Bundle
 import android.text.Editable
@@ -9,16 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.R
-import com.example.homehelper.databinding.FragmentSignInBinding
+import com.example.homehelper.databinding.FragmentLogInBinding
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.viewmodels.AuthViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import javax.inject.Inject
 
-class SignInFragment : Fragment() {
+
+class LogInFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -31,9 +29,9 @@ class SignInFragment : Fragment() {
         (requireActivity().application as HomeHelperApp).component
     }
 
-    private var _binding: FragmentSignInBinding? = null
-    private val binding: FragmentSignInBinding
-        get() = _binding ?: throw RuntimeException("FragmentSignInBinding = null!")
+    private var _binding: FragmentLogInBinding? = null
+    private val binding: FragmentLogInBinding
+        get() = _binding ?: throw RuntimeException("FragmentLogInBinding = null!")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)
@@ -44,7 +42,7 @@ class SignInFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentSignInBinding.inflate(inflater, container, false)
+        _binding = FragmentLogInBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -58,10 +56,10 @@ class SignInFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.errorEmail.observe(viewLifecycleOwner) {
             binding.tilEmail.error = when (it){
-                AuthViewModel.ERROR_SUCH_USER_EXIST -> "User with such email already exist"
                 AuthViewModel.ERROR_EMPTY -> "Input email"
                 AuthViewModel.ERROR -> "Error"
                 AuthViewModel.ERROR_WRONG_EMAIL -> "Wrong email format"
+                AuthViewModel.ERROR_NOT_EXISTING_EMAIL -> "There is no user with such email"
                 AuthViewModel.NO_ERRORS -> null
                 else -> "Error"
             }
@@ -70,6 +68,7 @@ class SignInFragment : Fragment() {
             binding.tilPassword.error = when (it){
                 AuthViewModel.ERROR_EMPTY -> "Input password"
                 AuthViewModel.ERROR -> "Error"
+                AuthViewModel.ERROR_WRONG_PASSWORD -> "Wrong password"
                 AuthViewModel.ERROR_SHORT_PASSWORD -> "Password is too short (minimum is 6 characters)"
                 AuthViewModel.NO_ERRORS -> null
                 else -> "Error"
@@ -103,28 +102,28 @@ class SignInFragment : Fragment() {
     }
 
     private fun setOnClickListeners() {
-        binding.btSignIn.setOnClickListener {
-            signIn()
+        binding.btLogIn.setOnClickListener {
+            logIn()
         }
-        binding.tvHaveAccount.setOnClickListener {
-            launchLogInFragment()
+        binding.tvNoAccount.setOnClickListener {
+            launchSignInFragment()
         }
     }
 
-    private fun launchLogInFragment() {
+    private fun launchSignInFragment() {
         requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.auth_container, LogInFragment.newInstance())
+            .replace(R.id.auth_container, SignInFragment.newInstance())
             .commit()
     }
 
-    private fun signIn() {
+    private fun logIn() {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
-        viewModel.signIn(email, password)
+        viewModel.logIn(email, password)
     }
 
     companion object {
 
-        fun newInstance() = SignInFragment()
+        fun newInstance() = LogInFragment()
     }
 }

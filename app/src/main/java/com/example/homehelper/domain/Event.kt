@@ -1,6 +1,7 @@
-package com.example.homehelper.data
+package com.example.homehelper.domain
 
-data class EventDto(
+data class Event(
+    val id: Int,
     val title: String,
     val description: String,
     val date: Long

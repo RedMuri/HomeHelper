@@ -6,7 +6,7 @@ import com.example.homehelper.domain.Event
 class EventItemDiffCallback : DiffUtil.ItemCallback<Event>() {
 
     override fun areItemsTheSame(oldItem: Event, newItem: Event): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.title == newItem.title
     }
 
     override fun areContentsTheSame(oldItem: Event, newItem: Event): Boolean {

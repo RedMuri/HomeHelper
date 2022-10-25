@@ -1,6 +1,7 @@
 package com.example.homehelper.presentation.screens.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import com.example.homehelper.presentation.adapters.AdapterEvents
 import com.example.homehelper.presentation.screens.AddEventActivity
 import com.example.homehelper.presentation.viewmodels.EventsViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import javax.inject.Inject
 
 class EventsFragment : Fragment() {
@@ -55,17 +58,27 @@ class EventsFragment : Fragment() {
         }
     }
 
+
     private fun setupRecyclerView() {
         val adapterEvents = AdapterEvents()
-        val events = listOf(Event(1,
-            "Open close doors",
-            "What you need to do is pass the generated binding class object to the holder class constructor. In below example, I have row_payment XML file for RecyclerView item and the generated class is RowPaymentBinding so like this",
-            292929),Event(1,
-            "Walking dogs",
-            "Can I use ViewBindings to replace findViewById in this typical RecyclerView.Adapter initialization code?",
-            383294))
         binding.rvEvents.adapter = adapterEvents
-        adapterEvents.submitList(events)
+
+        val db = FirebaseFirestore.getInstance()
+        db.collection("events")
+            .orderBy("date")
+            .addSnapshotListener { value, e ->
+                if (e != null) {
+                    Log.w("muri", "Listen failed.", e)
+                    return@addSnapshotListener
+                }
+                Log.d("muri", "Current value is: ${value?.documentChanges}")
+                try {
+                    val events = value?.map { it.toObject<Event>() }
+                    adapterEvents.submitList(events)
+                } catch (e: Exception) {
+                    Log.i("muri", "Exception: $e")
+                }
+            }
     }
 
     companion object {

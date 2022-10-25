@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
                 else -> true
             }
         }
+        binding.bottomNav.selectedItemId = R.id.action_main
     }
 
     private fun launchFragment(fragment: Fragment) = supportFragmentManager.beginTransaction()

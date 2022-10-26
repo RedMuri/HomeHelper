@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.databinding.FragmentEventsBinding
 import com.example.homehelper.domain.Event
@@ -31,6 +32,10 @@ class EventsFragment : Fragment() {
         (requireActivity().application as HomeHelperApp).component
     }
 
+    private val adapterEvents by lazy {
+        AdapterEvents()
+    }
+
     private var _binding: FragmentEventsBinding? = null
     private val binding: FragmentEventsBinding
         get() = _binding ?: throw RuntimeException("FragmentEventsBinding = null!")
@@ -53,32 +58,25 @@ class EventsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        observeViewModel()
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
         binding.fabAddEvent.setOnClickListener {
             startActivity(AddEventActivity.newInstance(requireActivity().application))
         }
     }
 
+    private fun observeViewModel() {
+        viewModel.getEventsList().observe(viewLifecycleOwner) {
+            adapterEvents.submitList(it)
+        }
+    }
+
 
     private fun setupRecyclerView() {
-        val adapterEvents = AdapterEvents()
         binding.rvEvents.adapter = adapterEvents
-
-        val db = FirebaseFirestore.getInstance()
-        db.collection("events")
-            .orderBy("date")
-            .addSnapshotListener { value, e ->
-                if (e != null) {
-                    Log.w("muri", "Listen failed.", e)
-                    return@addSnapshotListener
-                }
-                Log.d("muri", "Current value is: ${value?.documentChanges}")
-                try {
-                    val events = value?.map { it.toObject<Event>() }
-                    adapterEvents.submitList(events)
-                } catch (e: Exception) {
-                    Log.i("muri", "Exception: $e")
-                }
-            }
     }
 
     companion object {

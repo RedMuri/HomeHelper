@@ -6,8 +6,9 @@ import javax.inject.Inject
 
 
 class AddEventUseCase @Inject constructor(
-    private val repository: FirebaseRepository
+    private val repository: FirebaseRepository,
 ) {
 
-    operator fun invoke(event: Event) = repository.addEvent(event)
+    operator fun invoke(title: String, desc: String, date: Long) =
+        repository.addEvent(title, desc, date)
 }

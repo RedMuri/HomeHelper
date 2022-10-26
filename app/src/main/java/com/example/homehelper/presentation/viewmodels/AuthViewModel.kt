@@ -79,6 +79,11 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    fun signOut(){
+        val auth = getFirebaseAuthUseCase()
+        auth.signOut()
+    }
+
     private fun checkLogInException(it: Task<AuthResult>) {
         when (it.exception) {
             is FirebaseAuthInvalidCredentialsException -> {

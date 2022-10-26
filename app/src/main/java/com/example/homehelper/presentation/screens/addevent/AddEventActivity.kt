@@ -1,4 +1,4 @@
-package com.example.homehelper.presentation.screens
+package com.example.homehelper.presentation.screens.addevent
 
 import android.content.Context
 import android.content.Intent
@@ -15,7 +15,7 @@ class AddEventActivity : AppCompatActivity() {
     companion object{
 
         fun newInstance(context: Context): Intent {
-            return Intent(context,AddEventActivity::class.java)
+            return Intent(context, AddEventActivity::class.java)
         }
     }
 }

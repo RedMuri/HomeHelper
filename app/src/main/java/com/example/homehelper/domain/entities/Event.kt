@@ -1,4 +1,4 @@
-package com.example.homehelper.domain
+package com.example.homehelper.domain.entities
 
 data class Event(
     val title: String? = null,

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentLogInBinding
@@ -15,6 +16,7 @@ import com.example.homehelper.presentation.screens.main.MainActivity
 import com.example.homehelper.presentation.viewmodels.AuthViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
 import javax.inject.Inject
+import kotlin.math.log
 
 
 class LogInFragment : Fragment() {

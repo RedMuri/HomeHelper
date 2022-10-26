@@ -3,13 +3,10 @@ package com.example.homehelper.presentation.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.homehelper.domain.Event
+import com.example.homehelper.domain.entities.Event
 import com.example.homehelper.domain.usecases.AddEventUseCase
 import com.example.homehelper.domain.usecases.DeleteEventUseCase
 import com.example.homehelper.domain.usecases.GetEventsListUseCase
-import java.sql.Timestamp
-import java.text.SimpleDateFormat
-import java.util.*
 import javax.inject.Inject
 
 class EventsViewModel @Inject constructor(

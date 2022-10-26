@@ -2,6 +2,7 @@ package com.example.homehelper.di
 
 import androidx.lifecycle.ViewModel
 import com.example.homehelper.presentation.viewmodels.AuthViewModel
+import com.example.homehelper.presentation.viewmodels.ChatViewModel
 import com.example.homehelper.presentation.viewmodels.EventsViewModel
 import dagger.Binds
 import dagger.Module
@@ -19,4 +20,9 @@ interface ViewModelModule {
     @ViewModelKey(EventsViewModel::class)
     @Binds
     fun bindEventsViewModel(viewModel: EventsViewModel): ViewModel
+
+    @IntoMap
+    @ViewModelKey(ChatViewModel::class)
+    @Binds
+    fun bindChatViewModel(viewModel: ChatViewModel): ViewModel
 }

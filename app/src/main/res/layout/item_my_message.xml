@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end">
+
+    <TextView
+        android:id="@+id/tv_my_message_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="14:48"
+        app:layout_constraintBottom_toBottomOf="@+id/cv_other_message"
+        app:layout_constraintEnd_toStartOf="@+id/cv_other_message" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_other_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#A6C5FB"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_my_message"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/chat_image_content_desc"
+                android:src="@drawable/ic_launcher_background"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_other_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="8dp"
+                android:text="This is message"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,24 +1,19 @@
 package com.example.homehelper.presentation.screens.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.homehelper.databinding.FragmentEventsBinding
-import com.example.homehelper.domain.Event
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.AdapterEvents
-import com.example.homehelper.presentation.screens.AddEventActivity
+import com.example.homehelper.presentation.screens.addevent.AddEventActivity
 import com.example.homehelper.presentation.viewmodels.EventsViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
 import javax.inject.Inject
 
 class EventsFragment : Fragment() {

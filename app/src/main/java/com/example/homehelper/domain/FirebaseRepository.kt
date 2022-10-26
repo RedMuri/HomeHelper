@@ -1,6 +1,7 @@
 package com.example.homehelper.domain
 
 import androidx.lifecycle.LiveData
+import com.example.homehelper.domain.entities.Event
 import com.google.firebase.auth.FirebaseAuth
 
 interface FirebaseRepository {

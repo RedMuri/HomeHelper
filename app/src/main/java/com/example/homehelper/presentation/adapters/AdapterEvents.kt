@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.homehelper.databinding.ItemEventBinding
-import com.example.homehelper.domain.Event
+import com.example.homehelper.domain.entities.Event
 
 class AdapterEvents : ListAdapter<Event, EventViewHolder>(EventItemDiffCallback()) {
 

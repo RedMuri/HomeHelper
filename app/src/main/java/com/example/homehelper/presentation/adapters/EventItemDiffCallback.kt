@@ -1,7 +1,7 @@
 package com.example.homehelper.presentation.adapters
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.homehelper.domain.Event
+import com.example.homehelper.domain.entities.Event
 
 class EventItemDiffCallback : DiffUtil.ItemCallback<Event>() {
 

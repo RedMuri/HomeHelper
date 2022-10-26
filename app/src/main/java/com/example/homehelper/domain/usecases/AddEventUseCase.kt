@@ -1,6 +1,5 @@
 package com.example.homehelper.domain.usecases
 
-import com.example.homehelper.domain.Event
 import com.example.homehelper.domain.FirebaseRepository
 import javax.inject.Inject
 

@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.action_chats -> {
-                    launchFragment(ChatsFragment.newInstance())
+                    launchFragment(ChatsListFragment.newInstance())
                     true
                 }
                 R.id.action_profile -> {

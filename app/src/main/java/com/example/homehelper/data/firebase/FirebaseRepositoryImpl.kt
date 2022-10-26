@@ -3,15 +3,12 @@ package com.example.homehelper.data.firebase
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.homehelper.domain.Event
+import com.example.homehelper.domain.entities.Event
 import com.example.homehelper.domain.FirebaseRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*

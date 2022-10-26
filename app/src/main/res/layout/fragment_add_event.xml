@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="20dp"
-    tools:context=".presentation.screens.AddEventFragment">
+    tools:context=".presentation.screens.addevent.AddEventFragment">
 
     <TextView
         android:id="@+id/tv_enter_title"

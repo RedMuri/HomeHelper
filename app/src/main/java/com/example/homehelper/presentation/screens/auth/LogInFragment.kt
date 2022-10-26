@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentLogInBinding
 import com.example.homehelper.presentation.HomeHelperApp
+import com.example.homehelper.presentation.screens.main.MainActivity
 import com.example.homehelper.presentation.viewmodels.AuthViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
 import javax.inject.Inject
@@ -73,6 +74,11 @@ class LogInFragment : Fragment() {
                 AuthViewModel.NO_ERRORS -> null
                 else -> "Error"
             }
+        }
+        viewModel.userName.observe(viewLifecycleOwner) {
+            (requireActivity() as AuthActivity).settings.edit()
+                .putString(HomeHelperApp.USER_NAME, it).apply()
+            startActivity(MainActivity.newInstance(requireActivity().application))
         }
     }
 

@@ -22,6 +22,9 @@ class AuthViewModel @Inject constructor(
     private var _errorPassword = MutableLiveData<String>()
     val errorPassword: LiveData<String>
         get() = _errorPassword
+    private var _userName = MutableLiveData<String>()
+    val userName : LiveData<String>
+    get() = _userName
 
     fun signIn(inputEmail: String, inputPassword: String) {
         val auth = getFirebaseAuthUseCase()
@@ -32,6 +35,7 @@ class AuthViewModel @Inject constructor(
         if (fieldsValid) {
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
+                    _userName.value = email
                     Log.i("muri", "successful: $it")
                 } else {
                     Log.i("muri", "fail: $it")
@@ -65,6 +69,7 @@ class AuthViewModel @Inject constructor(
         if (fieldsValid) {
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
+                    _userName.value = email
                     Log.i("muri", it.toString())
                 } else {
                     Log.i("muri", it.toString())
@@ -98,7 +103,7 @@ class AuthViewModel @Inject constructor(
             _errorEmail.value = ERROR_EMPTY
             result = false
         }
-        if (password.length < 7) {
+        if (password.length < 6) {
             _errorPassword.value = ERROR_SHORT_PASSWORD
             result = false
         }

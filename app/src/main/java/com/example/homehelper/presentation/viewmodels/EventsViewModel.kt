@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.homehelper.domain.Event
 import com.example.homehelper.domain.usecases.AddEventUseCase
+import com.example.homehelper.domain.usecases.DeleteEventUseCase
 import com.example.homehelper.domain.usecases.GetEventsListUseCase
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
@@ -14,6 +15,7 @@ import javax.inject.Inject
 class EventsViewModel @Inject constructor(
     private val addEventUseCase: AddEventUseCase,
     private val getEventsListUseCase: GetEventsListUseCase,
+    private val deleteEventUseCase: DeleteEventUseCase
 ) : ViewModel() {
 
     private var _errorEmptyField = MutableLiveData<Unit>()
@@ -31,6 +33,10 @@ class EventsViewModel @Inject constructor(
         } else {
             _errorEmptyField.value = Unit
         }
+    }
+
+    fun deleteEvent(eventId: String){
+        deleteEventUseCase.invoke(eventId)
     }
 
     fun getEventsList(): LiveData<List<Event>> {

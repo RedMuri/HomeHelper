@@ -7,6 +7,7 @@ import com.example.homehelper.domain.Event
 import com.example.homehelper.domain.FirebaseRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
@@ -27,7 +28,7 @@ class FirebaseRepositoryImpl @Inject constructor(
 
     override fun getEventsList(): LiveData<List<Event>> {
         db.collection("events")
-            .orderBy("date")
+            .orderBy("date",Query.Direction.DESCENDING)
             .addSnapshotListener { value, e ->
                 if (e != null) {
                     Log.i("muri", "getEventsList: listen failed: $e")
@@ -43,13 +44,28 @@ class FirebaseRepositoryImpl @Inject constructor(
     }
 
     override fun addEvent(title: String, desc: String, date: Long) {
-        val event = Event(title, desc, convertMls(date))
+        val id = db.collection(EVENTS_COLLECTION).document().id
+        val event = Event(title, desc, convertMls(date),id)
         db.collection(EVENTS_COLLECTION)
-            .add(event)
-            .addOnSuccessListener { documentReference ->
-                Log.i("muri", "addEvent: ${documentReference.id}")
+            .document(id)
+            .set(event)
+            .addOnCompleteListener {
+                if (it.isSuccessful)
+                    Log.i("muri", "addEvent success: $it")
+                else
+                    Log.i("muri", "addEvent failure: $it")
             }.addOnFailureListener { e ->
                 Log.i("muri", "addEvent error: $e")
+            }
+    }
+
+    override fun deleteEvent(eventId: String) {
+        db.collection(EVENTS_COLLECTION).document(eventId).delete()
+            .addOnSuccessListener {
+                Log.i("muri", "deleteEvent")
+            }
+            .addOnFailureListener {
+                Log.i("muri", "error deleteEvent")
             }
     }
 

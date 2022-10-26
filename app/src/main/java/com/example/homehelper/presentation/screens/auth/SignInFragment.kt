@@ -1,8 +1,10 @@
 package com.example.homehelper.presentation.screens.auth
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Display.Mode
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentSignInBinding
 import com.example.homehelper.presentation.HomeHelperApp
+import com.example.homehelper.presentation.screens.main.MainActivity
 import com.example.homehelper.presentation.viewmodels.AuthViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
 import javax.inject.Inject
@@ -54,7 +57,7 @@ class SignInFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.errorEmail.observe(viewLifecycleOwner) {
-            binding.tilEmail.error = when (it){
+            binding.tilEmail.error = when (it) {
                 AuthViewModel.ERROR_SUCH_USER_EXIST -> "User with such email already exist"
                 AuthViewModel.ERROR_EMPTY -> "Input email"
                 AuthViewModel.ERROR -> "Error"
@@ -64,13 +67,18 @@ class SignInFragment : Fragment() {
             }
         }
         viewModel.errorPassword.observe(viewLifecycleOwner) {
-            binding.tilPassword.error = when (it){
+            binding.tilPassword.error = when (it) {
                 AuthViewModel.ERROR_EMPTY -> "Input password"
                 AuthViewModel.ERROR -> "Error"
                 AuthViewModel.ERROR_SHORT_PASSWORD -> "Password is too short (minimum is 6 characters)"
                 AuthViewModel.NO_ERRORS -> null
                 else -> "Error"
             }
+        }
+        viewModel.userName.observe(viewLifecycleOwner) {
+            (requireActivity() as AuthActivity).settings.edit()
+                .putString(HomeHelperApp.USER_NAME, it).apply()
+            startActivity(MainActivity.newInstance(requireActivity().application))
         }
     }
 

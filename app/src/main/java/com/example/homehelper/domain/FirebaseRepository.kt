@@ -8,4 +8,5 @@ interface FirebaseRepository {
     fun getFirebaseAuth(): FirebaseAuth
     fun getEventsList(): LiveData<List<Event>>
     fun addEvent(title: String,desc: String, date: Long)
+    fun deleteEvent(eventId: String)
 }

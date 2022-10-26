@@ -1,6 +1,8 @@
 package com.example.homehelper.presentation
 
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import com.example.homehelper.di.DaggerApplicationComponent
 
 class HomeHelperApp: Application() {
@@ -9,5 +11,16 @@ class HomeHelperApp: Application() {
         DaggerApplicationComponent
             .factory()
             .create(this)
+    }
+
+    val sharedPreferences: SharedPreferences by lazy {
+        getSharedPreferences(SETTINGS, Context.MODE_PRIVATE)
+    }
+
+    companion object{
+
+        private const val SETTINGS = "settings"
+        const val USER_NAME = "user_name"
+        const val ADMIN_USER_NAME = "admin@mail.ru"
     }
 }

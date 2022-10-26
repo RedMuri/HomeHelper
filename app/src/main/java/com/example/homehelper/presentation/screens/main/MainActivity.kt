@@ -1,5 +1,7 @@
 package com.example.homehelper.presentation.screens.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,10 @@ import com.google.firebase.auth.FirebaseAuth
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+
+    val settings by lazy {
+        (application as HomeHelperApp).sharedPreferences
+    }
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
@@ -66,8 +72,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkUserSigned() {
         val currentUser = auth.currentUser
-        Log.i("muri", currentUser.toString())
+        Log.i("muri", settings.getString(HomeHelperApp.USER_NAME,"none").toString())
         if (currentUser == null)
             startActivity(AuthActivity.newIntent(application))
+    }
+
+    companion object {
+
+        fun newInstance(context: Context): Intent{
+            return Intent(context,MainActivity::class.java)
+        }
     }
 }

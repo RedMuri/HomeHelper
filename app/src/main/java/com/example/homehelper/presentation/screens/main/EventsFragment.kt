@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.homehelper.databinding.FragmentEventsBinding
 import com.example.homehelper.domain.Event
 import com.example.homehelper.presentation.HomeHelperApp
@@ -59,12 +61,17 @@ class EventsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         observeViewModel()
-        setOnClickListeners()
+        checkIfAdmin()
     }
 
-    private fun setOnClickListeners() {
-        binding.fabAddEvent.setOnClickListener {
-            startActivity(AddEventActivity.newInstance(requireActivity().application))
+    private fun checkIfAdmin() {
+        val userName = (requireActivity() as MainActivity).settings.getString(HomeHelperApp.USER_NAME,"none")
+        if (userName == HomeHelperApp.ADMIN_USER_NAME){
+            binding.fabAddEvent.visibility = View.VISIBLE
+            setupSwipeListener(binding.rvEvents)
+            binding.fabAddEvent.setOnClickListener {
+                startActivity(AddEventActivity.newInstance(requireActivity().application))
+            }
         }
     }
 
@@ -74,9 +81,27 @@ class EventsFragment : Fragment() {
         }
     }
 
-
     private fun setupRecyclerView() {
         binding.rvEvents.adapter = adapterEvents
+    }
+
+    private fun setupSwipeListener(recyclerView: RecyclerView) {
+        val itemTouchHelper = ItemTouchHelper(object :
+            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder,
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val item = adapterEvents.currentList[viewHolder.adapterPosition]
+                item.id?.let { viewModel.deleteEvent(it) }
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
     companion object {

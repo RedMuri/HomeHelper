@@ -1,4 +1,4 @@
-package com.example.homehelper.presentation.adapters
+package com.example.homehelper.presentation.adapters.events
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.homehelper.domain.entities.Event

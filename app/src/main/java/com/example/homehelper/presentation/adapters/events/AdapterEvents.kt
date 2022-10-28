@@ -1,4 +1,4 @@
-package com.example.homehelper.presentation.adapters
+package com.example.homehelper.presentation.adapters.events
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -15,8 +15,8 @@ class AdapterEvents : ListAdapter<Event, EventViewHolder>(EventItemDiffCallback(
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val item = getItem(position)
-        holder.binding.tvEventTitle.text = item.title
-        holder.binding.tvEventDesc.text = item.description
-        holder.binding.tvEventDate.text = item.date.toString()
+        holder.title.text = item.title
+        holder.desc.text = item.description
+        holder.date.text = item.date.toString()
     }
 }

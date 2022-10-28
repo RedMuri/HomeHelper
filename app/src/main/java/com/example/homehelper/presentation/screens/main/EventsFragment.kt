@@ -1,6 +1,7 @@
 package com.example.homehelper.presentation.screens.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.homehelper.databinding.FragmentEventsBinding
 import com.example.homehelper.presentation.HomeHelperApp
-import com.example.homehelper.presentation.adapters.AdapterEvents
+import com.example.homehelper.presentation.adapters.events.AdapterEvents
 import com.example.homehelper.presentation.screens.addevent.AddEventActivity
 import com.example.homehelper.presentation.viewmodels.EventsViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory

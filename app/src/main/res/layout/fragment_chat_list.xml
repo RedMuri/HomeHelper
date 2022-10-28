@@ -7,10 +7,12 @@
     >
 
 
-    <ListView
-        android:id="@+id/lv_chats"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_chats"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
         tools:listitem="@layout/item_chat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -3,8 +3,9 @@ package com.example.homehelper.data.firebase
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.homehelper.domain.entities.Event
 import com.example.homehelper.domain.FirebaseRepository
+import com.example.homehelper.domain.entities.Event
+import com.example.homehelper.domain.entities.Message
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -20,12 +21,13 @@ class FirebaseRepositoryImpl @Inject constructor(
 ) : FirebaseRepository {
 
     private val events = MutableLiveData<List<Event>>()
+    private val messages = MutableLiveData<List<Message>>()
 
     override fun getFirebaseAuth(): FirebaseAuth = auth
 
     override fun getEventsList(): LiveData<List<Event>> {
-        db.collection("events")
-            .orderBy("date",Query.Direction.DESCENDING)
+        db.collection(EVENTS_COLLECTION)
+            .orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { value, e ->
                 if (e != null) {
                     Log.i("muri", "getEventsList: listen failed: $e")
@@ -40,9 +42,43 @@ class FirebaseRepositoryImpl @Inject constructor(
         return events
     }
 
+    override fun getMessages(): LiveData<List<Message>> {
+        db.collection(MAIN_MESSAGES_COLLECTION)
+            .orderBy("time")
+            .addSnapshotListener { value, e ->
+                if (e != null) {
+                    Log.i("muri", "getMessages: listen failed: $e")
+                    return@addSnapshotListener
+                }
+                try {
+                    messages.value = value?.map { it.toObject() }
+                } catch (e: Exception) {
+                    Log.i("muri", "getMessages: exception: $e")
+                }
+            }
+        return messages
+    }
+
+    override fun sendMessage(text: String, author: String) {
+        val id = db.collection(MAIN_MESSAGES_COLLECTION).document().id
+        val time = System.currentTimeMillis()
+        val message = Message(author.trim(), text.trim(), time,id)
+        db.collection(MAIN_MESSAGES_COLLECTION)
+            .document(id)
+            .set(message)
+            .addOnCompleteListener {
+                if (it.isSuccessful)
+                    Log.i("muri", "sendMessage success: $it")
+                else
+                    Log.i("muri", "sendMessage failure: $it")
+            }.addOnFailureListener { e ->
+                Log.i("muri", "sendMessage error: $e")
+            }
+    }
+
     override fun addEvent(title: String, desc: String, date: Long) {
         val id = db.collection(EVENTS_COLLECTION).document().id
-        val event = Event(title, desc, convertMls(date),id)
+        val event = Event(title, desc, convertMls(date), id)
         db.collection(EVENTS_COLLECTION)
             .document(id)
             .set(event)
@@ -79,5 +115,6 @@ class FirebaseRepositoryImpl @Inject constructor(
     companion object {
 
         const val EVENTS_COLLECTION = "events"
+        const val MAIN_MESSAGES_COLLECTION = "messages"
     }
 }

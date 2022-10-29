@@ -11,5 +11,5 @@
         android:icon="@drawable/bottom_nav_chats" />
     <item android:id="@+id/action_profile"
         android:title="Профиль"
-        android:icon="@drawable/bottom_nav_profile" />
+        android:icon="@drawable/bottom_nav_user" />
 </menu>

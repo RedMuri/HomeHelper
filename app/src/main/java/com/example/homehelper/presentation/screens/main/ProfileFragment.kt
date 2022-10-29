@@ -15,6 +15,7 @@ import javax.inject.Inject
 
 class ProfileFragment : Fragment() {
 
+
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
@@ -39,7 +40,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentProfileBinding.inflate(inflater,container,false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -48,6 +49,8 @@ class ProfileFragment : Fragment() {
         binding.btSignOut.setOnClickListener {
             authViewModel.signOut()
             startActivity(AuthActivity.newIntent(requireActivity().application))
+            (requireActivity().application as HomeHelperApp).sharedPreferences.edit()
+                .putString(HomeHelperApp.USER_NAME, "none").apply()
         }
     }
 

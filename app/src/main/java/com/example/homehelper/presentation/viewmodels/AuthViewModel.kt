@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.homehelper.domain.usecases.GetFirebaseAuthUseCase
 import com.google.android.gms.tasks.Task
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
@@ -22,6 +23,9 @@ class AuthViewModel @Inject constructor(
     private var _errorPassword = MutableLiveData<String>()
     val errorPassword: LiveData<String>
         get() = _errorPassword
+    private var _errorNetwork = MutableLiveData<Unit>()
+    val errorNetwork: LiveData<Unit>
+        get() = _errorNetwork
     private var _userName = MutableLiveData<String>()
     val userName : LiveData<String>
     get() = _userName
@@ -38,7 +42,7 @@ class AuthViewModel @Inject constructor(
                     _userName.value = email
                     Log.i("muri", "successful: $it")
                 } else {
-                    Log.i("muri", "fail: $it")
+                    Log.i("muri", "fail: ${it.exception}")
                     checkSignInException(it)
                 }
             }
@@ -52,6 +56,9 @@ class AuthViewModel @Inject constructor(
             }
             is FirebaseAuthUserCollisionException -> {
                 _errorEmail.value = ERROR_SUCH_USER_EXIST
+            }
+            is FirebaseNetworkException -> {
+                _errorNetwork.value = Unit
             }
             else -> {
                 _errorEmail.value = ERROR
@@ -94,6 +101,9 @@ class AuthViewModel @Inject constructor(
             }
             is FirebaseAuthUserCollisionException -> {
                 _errorEmail.value = ERROR_SUCH_USER_EXIST
+            }
+            is FirebaseNetworkException -> {
+                _errorNetwork.value = Unit
             }
             else -> {
                 _errorEmail.value = ERROR

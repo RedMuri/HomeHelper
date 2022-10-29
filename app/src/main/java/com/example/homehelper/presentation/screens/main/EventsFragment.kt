@@ -1,7 +1,6 @@
 package com.example.homehelper.presentation.screens.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -61,7 +60,7 @@ class EventsFragment : Fragment() {
     }
 
     private fun checkIfAdmin() {
-        val userName = (requireActivity() as MainActivity).settings.getString(HomeHelperApp.USER_NAME,"none")
+        val userName = (requireActivity() as MainActivity).sharedPreferences.getString(HomeHelperApp.USER_NAME,"none")
         if (userName == HomeHelperApp.ADMIN_USER_NAME){
             binding.fabAddEvent.visibility = View.VISIBLE
             setupSwipeListener(binding.rvEvents)

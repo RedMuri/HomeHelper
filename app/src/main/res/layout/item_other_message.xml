@@ -3,13 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="6dp"
     android:layout_gravity="start">
 
     <TextView
         android:id="@+id/tv_other_message_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="start"
         android:text="14:48"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@+id/cv_other_message"
         app:layout_constraintStart_toEndOf="@+id/cv_other_message" />
 
@@ -18,7 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="16dp"
-        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_other_message_time"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -30,32 +34,34 @@
 
             <TextView
                 android:id="@+id/tv_message_author"
-                android:paddingHorizontal="2dp"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_margin="8dp"
+                android:paddingHorizontal="2dp"
                 android:text="Author"
                 android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/iv_other_message"
-                android:layout_width="200dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/chat_image_content_desc"
                 android:src="@drawable/ic_launcher_background"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_other_message"
                 android:layout_width="wrap_content"
-                android:paddingHorizontal="2dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_margin="8dp"
-                android:text="This is message"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:maxWidth="250dp"
+                android:paddingHorizontal="2dp"
+                android:text="This is messageadnsafdklsfklsdjlaksdfjslkdfj"
                 android:textSize="16sp" />
 
         </LinearLayout>

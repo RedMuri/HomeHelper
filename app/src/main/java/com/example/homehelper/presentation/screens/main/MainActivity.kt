@@ -15,10 +15,9 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    val settings by lazy {
+    val sharedPreferences by lazy {
         (application as HomeHelperApp).sharedPreferences
     }
-
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -72,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkUserSigned() {
         val currentUser = auth.currentUser
-        Log.i("muri", settings.getString(HomeHelperApp.USER_NAME,"none").toString())
+        Log.i("muri", sharedPreferences.getString(HomeHelperApp.USER_NAME,"default_value").toString())
         if (currentUser == null)
             startActivity(AuthActivity.newIntent(application))
     }

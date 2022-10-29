@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentLogInBinding
@@ -58,7 +59,7 @@ class LogInFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.errorEmail.observe(viewLifecycleOwner) {
-            binding.tilEmail.error = when (it){
+            binding.tilEmail.error = when (it) {
                 AuthViewModel.ERROR_EMPTY -> "Input email"
                 AuthViewModel.ERROR -> "Error"
                 AuthViewModel.ERROR_WRONG_EMAIL -> "Wrong email format"
@@ -68,7 +69,7 @@ class LogInFragment : Fragment() {
             }
         }
         viewModel.errorPassword.observe(viewLifecycleOwner) {
-            binding.tilPassword.error = when (it){
+            binding.tilPassword.error = when (it) {
                 AuthViewModel.ERROR_EMPTY -> "Input password"
                 AuthViewModel.ERROR -> "Error"
                 AuthViewModel.ERROR_WRONG_PASSWORD -> "Wrong password"
@@ -76,6 +77,11 @@ class LogInFragment : Fragment() {
                 AuthViewModel.NO_ERRORS -> null
                 else -> "Error"
             }
+        }
+        viewModel.errorNetwork.observe(viewLifecycleOwner) {
+            Toast.makeText(requireActivity().application,
+                "Please check your internet connection",
+                Toast.LENGTH_SHORT).show()
         }
         viewModel.userName.observe(viewLifecycleOwner) {
             (requireActivity() as AuthActivity).settings.edit()

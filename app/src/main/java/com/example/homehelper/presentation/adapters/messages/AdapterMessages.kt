@@ -31,12 +31,12 @@ class AdapterMessages @Inject constructor(
         when (holder.binding) {
             is ItemMyMessageBinding -> {
                 holder.binding.tvMyMessage.text = item.message
-                holder.binding.tvMyMessageTime.text = item.time.toString()
+                holder.binding.tvMyMessageTime.text = item.time
             }
             is ItemOtherMessageBinding -> {
                 holder.binding.tvMessageAuthor.text = item.author
                 holder.binding.tvOtherMessage.text = item.message
-                holder.binding.tvOtherMessageTime.text = item.time.toString()
+                holder.binding.tvOtherMessageTime.text = item.time
             }
         }
     }

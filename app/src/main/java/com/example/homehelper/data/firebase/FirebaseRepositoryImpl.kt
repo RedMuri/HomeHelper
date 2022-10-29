@@ -3,6 +3,9 @@ package com.example.homehelper.data.firebase
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.homehelper.data.firebase.model.MessageDto
+import com.example.homehelper.data.mappers.EventMapper
+import com.example.homehelper.data.mappers.MessageMapper
 import com.example.homehelper.domain.FirebaseRepository
 import com.example.homehelper.domain.entities.Event
 import com.example.homehelper.domain.entities.Message
@@ -10,14 +13,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
-import java.sql.Timestamp
-import java.text.SimpleDateFormat
-import java.util.*
 import javax.inject.Inject
 
 class FirebaseRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth,
     private val db: FirebaseFirestore,
+    private val eventMapper: EventMapper,
+    private val messageMapper: MessageMapper,
 ) : FirebaseRepository {
 
     private val events = MutableLiveData<List<Event>>()
@@ -51,7 +53,8 @@ class FirebaseRepositoryImpl @Inject constructor(
                     return@addSnapshotListener
                 }
                 try {
-                    messages.value = value?.map { it.toObject() }
+                    val messagesDto = value?.map { it.toObject<MessageDto>() }
+                    messages.value = messagesDto?.map { messageMapper.messageDtoToEntity(it) }
                 } catch (e: Exception) {
                     Log.i("muri", "getMessages: exception: $e")
                 }
@@ -62,7 +65,7 @@ class FirebaseRepositoryImpl @Inject constructor(
     override fun sendMessage(text: String, author: String) {
         val id = db.collection(MAIN_MESSAGES_COLLECTION).document().id
         val time = System.currentTimeMillis()
-        val message = Message(author.trim(), text.trim(), time,id)
+        val message = MessageDto(author.trim(), text.trim(), time, id)
         db.collection(MAIN_MESSAGES_COLLECTION)
             .document(id)
             .set(message)
@@ -78,7 +81,7 @@ class FirebaseRepositoryImpl @Inject constructor(
 
     override fun addEvent(title: String, desc: String, date: Long) {
         val id = db.collection(EVENTS_COLLECTION).document().id
-        val event = Event(title, desc, convertMls(date), id)
+        val event = Event(title, desc, eventMapper.convertMlsToDate(date), id)
         db.collection(EVENTS_COLLECTION)
             .document(id)
             .set(event)
@@ -102,15 +105,6 @@ class FirebaseRepositoryImpl @Inject constructor(
             }
     }
 
-    private fun convertMls(mls: Long?): String {
-        if (mls == null) return ""
-        val timestamp = Timestamp(mls)
-        val date = Date(timestamp.time)
-        val pattern = "dd.MM.yy  HH:mm"
-        val sdf = SimpleDateFormat(pattern, Locale.getDefault())
-        sdf.timeZone = TimeZone.getDefault()
-        return sdf.format(date)
-    }
 
     companion object {
 

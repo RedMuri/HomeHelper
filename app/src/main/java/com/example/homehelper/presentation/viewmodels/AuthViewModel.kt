@@ -1,10 +1,14 @@
 package com.example.homehelper.presentation.viewmodels
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.homehelper.domain.usecases.GetFirebaseAuthUseCase
+import com.example.homehelper.domain.usecases.LogInUseCase
+import com.example.homehelper.domain.usecases.SignInUseCase
+import com.example.homehelper.presentation.HomeHelperApp
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.AuthResult
@@ -12,9 +16,13 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import javax.inject.Inject
+import kotlin.math.log
 
 class AuthViewModel @Inject constructor(
     private val getFirebaseAuthUseCase: GetFirebaseAuthUseCase,
+    private val signInUseCase: SignInUseCase,
+    private val logInUseCase: LogInUseCase,
+    private val application: Application
 ) : ViewModel() {
 
     private var _errorEmail = MutableLiveData<String>()
@@ -23,21 +31,22 @@ class AuthViewModel @Inject constructor(
     private var _errorPassword = MutableLiveData<String>()
     val errorPassword: LiveData<String>
         get() = _errorPassword
+    private var _errorFlatNum = MutableLiveData<String>()
+    val errorFlatNum: LiveData<String>
+        get() = _errorFlatNum
     private var _errorNetwork = MutableLiveData<Unit>()
     val errorNetwork: LiveData<Unit>
         get() = _errorNetwork
     private var _userName = MutableLiveData<String>()
-    val userName : LiveData<String>
-    get() = _userName
+    val userName: LiveData<String>
+        get() = _userName
 
-    fun signIn(inputEmail: String, inputPassword: String) {
-        val auth = getFirebaseAuthUseCase()
-
+    fun signIn(inputEmail: String, inputPassword: String, flatNum: String) {
         val email = inputEmail.trim()
         val password = inputPassword.trim()
-        val fieldsValid = validateInput(email, password)
+        val fieldsValid = validateInputSignIn(email, password, flatNum)
         if (fieldsValid) {
-            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+            signInUseCase(email, password, flatNum.toInt()).addOnCompleteListener {
                 if (it.isSuccessful) {
                     _userName.value = email
                     Log.i("muri", "successful: $it")
@@ -68,13 +77,11 @@ class AuthViewModel @Inject constructor(
     }
 
     fun logIn(inputEmail: String, inputPassword: String) {
-        val auth = getFirebaseAuthUseCase()
-
         val email = inputEmail.trim()
         val password = inputPassword.trim()
-        val fieldsValid = validateInput(email, password)
+        val fieldsValid = validateInputLogIn(email, password)
         if (fieldsValid) {
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+            logInUseCase(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
                     _userName.value = email
                     Log.i("muri", it.toString())
@@ -86,7 +93,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    fun signOut(){
+    fun signOut() {
         val auth = getFirebaseAuthUseCase()
         auth.signOut()
     }
@@ -112,7 +119,31 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun validateInput(email: String, password: String): Boolean {
+    private fun validateInputSignIn(email: String, password: String, flatNum: String): Boolean {
+        var result = true
+        if (email.isEmpty()) {
+            _errorEmail.value = ERROR_EMPTY
+            result = false
+        }
+        if (password.length < 6) {
+            _errorPassword.value = ERROR_SHORT_PASSWORD
+            result = false
+        }
+        if (password.isEmpty()) {
+            _errorPassword.value = ERROR_EMPTY
+            result = false
+        }
+        if (flatNum.isEmpty()) {
+            _errorFlatNum.value = ERROR_EMPTY
+            result = false
+        } else if (flatNum.toInt() == 0) {
+            _errorFlatNum.value = ERROR_ZERO_FLAT
+            result = false
+        }
+        return result
+    }
+
+    private fun validateInputLogIn(email: String, password: String): Boolean {
         var result = true
         if (email.isEmpty()) {
             _errorEmail.value = ERROR_EMPTY
@@ -137,6 +168,10 @@ class AuthViewModel @Inject constructor(
         _errorPassword.value = NO_ERRORS
     }
 
+    fun resetErrorInputFlatNum() {
+        _errorFlatNum.value = NO_ERRORS
+    }
+
 
     companion object {
         const val ERROR_EMPTY = "empty"
@@ -147,5 +182,6 @@ class AuthViewModel @Inject constructor(
         const val ERROR_WRONG_EMAIL = "wrong_email"
         const val ERROR_NOT_EXISTING_EMAIL = "not_existing_email"
         const val ERROR_WRONG_PASSWORD = "wrong_password"
+        const val ERROR_ZERO_FLAT = "zero_flat"
     }
 }

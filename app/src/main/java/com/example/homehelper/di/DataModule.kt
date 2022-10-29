@@ -15,7 +15,7 @@ interface DataModule {
         @Provides
         fun provideUserName(application: Application): String {
             return (application as HomeHelperApp).sharedPreferences
-                .getString(HomeHelperApp.USER_NAME, "none")
+                .getString(HomeHelperApp.USER_EMAIL, "none")
                 ?: "null"
         }
     }

@@ -1,10 +1,8 @@
 package com.example.homehelper.presentation.screens.auth
 
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Display.Mode
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -76,6 +74,15 @@ class SignInFragment : Fragment() {
                 else -> "Error"
             }
         }
+        viewModel.errorFlatNum.observe(viewLifecycleOwner) {
+            binding.tilFlatNum.error = when (it) {
+                AuthViewModel.ERROR_EMPTY -> "Input flat number"
+                AuthViewModel.ERROR -> "Error"
+                AuthViewModel.ERROR_ZERO_FLAT -> "Flat number shouldn't be zero"
+                AuthViewModel.NO_ERRORS -> null
+                else -> "Error"
+            }
+        }
         viewModel.errorNetwork.observe(viewLifecycleOwner) {
             Toast.makeText(requireActivity().application,
                 "Please check your internet connection",
@@ -83,7 +90,7 @@ class SignInFragment : Fragment() {
         }
         viewModel.userName.observe(viewLifecycleOwner) {
             (requireActivity() as AuthActivity).settings.edit()
-                .putString(HomeHelperApp.USER_NAME, it).apply()
+                .putString(HomeHelperApp.USER_EMAIL, it).apply()
             startActivity(MainActivity.newInstance(requireActivity().application))
         }
     }
@@ -111,6 +118,17 @@ class SignInFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {
             }
         })
+        binding.etFlatNum.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                viewModel.resetErrorInputFlatNum()
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
     }
 
     private fun setOnClickListeners() {
@@ -131,7 +149,8 @@ class SignInFragment : Fragment() {
     private fun signIn() {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
-        viewModel.signIn(email, password)
+        val flatNum = binding.etFlatNum.text.toString()
+        viewModel.signIn(email, password, flatNum)
     }
 
     companion object {

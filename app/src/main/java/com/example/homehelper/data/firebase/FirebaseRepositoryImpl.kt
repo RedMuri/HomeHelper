@@ -1,5 +1,6 @@
 package com.example.homehelper.data.firebase
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,10 +10,15 @@ import com.example.homehelper.data.mappers.MessageMapper
 import com.example.homehelper.domain.FirebaseRepository
 import com.example.homehelper.domain.entities.Event
 import com.example.homehelper.domain.entities.Message
+import com.example.homehelper.domain.entities.User
+import com.example.homehelper.presentation.HomeHelperApp
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
+import kotlinx.coroutines.Deferred
 import javax.inject.Inject
 
 class FirebaseRepositoryImpl @Inject constructor(
@@ -20,12 +26,62 @@ class FirebaseRepositoryImpl @Inject constructor(
     private val db: FirebaseFirestore,
     private val eventMapper: EventMapper,
     private val messageMapper: MessageMapper,
+    private val application: Application,
 ) : FirebaseRepository {
 
     private val events = MutableLiveData<List<Event>>()
     private val messages = MutableLiveData<List<Message>>()
 
     override fun getFirebaseAuth(): FirebaseAuth = auth
+
+    override fun signIn(
+        email: String,
+        password: String,
+        flatNum: Int,
+    ): Task<AuthResult> {
+        createUserInDb(email, flatNum)
+        return auth.createUserWithEmailAndPassword(email, password)
+    }
+
+    override fun logIn(email: String, password: String): Task<AuthResult> {
+        getUserFromDb(email)
+        return auth.signInWithEmailAndPassword(email, password)
+    }
+
+    private fun getUserFromDb(email: String) {
+        db.collection(USERS)
+            .document(email).get().addOnSuccessListener {
+                val user = it.toObject<User>()
+                if (user?.flatNum!=null && user.email!=null) {
+                    (application as HomeHelperApp).sharedPreferences.edit()
+                        .putInt(HomeHelperApp.USER_FLAT_NUM, user.flatNum)
+                        .putString(HomeHelperApp.USER_EMAIL, user.email)
+                        .apply()
+                }
+                Log.i("muri", "getUserFromDb success: $it")
+            }.addOnFailureListener {
+                Log.i("muri", "getUserFromDb error: $it")
+            }
+    }
+
+    private fun createUserInDb(email: String, flatNum: Int) {
+        val user = User(email, flatNum)
+        db.collection(USERS)
+            .document(email)
+            .set(user)
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    (application as HomeHelperApp).sharedPreferences.edit()
+                        .putInt(HomeHelperApp.USER_FLAT_NUM, flatNum)
+                        .putString(HomeHelperApp.USER_EMAIL, email)
+                        .apply()
+                    Log.i("muri", "createUserInDb success: $it")
+                } else
+                    Log.i("muri", "createUserInDb failure: $it")
+            }.addOnFailureListener { e ->
+                Log.i("muri", "createUserInDb error: $e")
+            }
+    }
 
     override fun getEventsList(): LiveData<List<Event>> {
         db.collection(EVENTS_COLLECTION)
@@ -108,6 +164,7 @@ class FirebaseRepositoryImpl @Inject constructor(
 
     companion object {
 
+        const val USERS = "users"
         const val EVENTS_COLLECTION = "events"
         const val MAIN_MESSAGES_COLLECTION = "messages"
     }

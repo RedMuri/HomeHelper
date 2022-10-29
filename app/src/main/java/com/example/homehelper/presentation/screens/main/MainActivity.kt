@@ -71,15 +71,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkUserSigned() {
         val currentUser = auth.currentUser
-        Log.i("muri", sharedPreferences.getString(HomeHelperApp.USER_NAME,"default_value").toString())
+        Log.i("muri", sharedPreferences
+            .getString(HomeHelperApp.USER_EMAIL, "default_value").toString())
+        Log.i("muri", sharedPreferences
+            .getInt(HomeHelperApp.USER_FLAT_NUM, 0).toString())
         if (currentUser == null)
             startActivity(AuthActivity.newIntent(application))
     }
 
     companion object {
 
-        fun newInstance(context: Context): Intent{
-            return Intent(context,MainActivity::class.java)
+        fun newInstance(context: Context): Intent {
+            return Intent(context, MainActivity::class.java)
         }
     }
 }

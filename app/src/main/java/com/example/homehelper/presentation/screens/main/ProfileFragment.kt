@@ -50,7 +50,9 @@ class ProfileFragment : Fragment() {
             authViewModel.signOut()
             startActivity(AuthActivity.newIntent(requireActivity().application))
             (requireActivity().application as HomeHelperApp).sharedPreferences.edit()
-                .putString(HomeHelperApp.USER_NAME, "none").apply()
+                .putString(HomeHelperApp.USER_EMAIL, "none")
+                .putInt(HomeHelperApp.USER_FLAT_NUM, 0)
+                .apply()
         }
     }
 

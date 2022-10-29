@@ -2,7 +2,9 @@
     <string name="app_name">Home Helper</string>
 
     <string name="et_name_hint">Введите ваш e-mail…</string>
-    <string name="et_password_hint">Введите ваш пароль…</string>
+    <string name="et_password_hint">Придумайте пароль…</string>
+    <string name="et_login_password_hint">Введите ваш пароль…</string>
+    <string name="et_flat_num_hint">Введите номер квартиры…</string>
     <string name="bt_sing_in">Создать аккаунт</string>
     <string name="tv_have_account">У меня уже есть аккаунт</string>
     <string name="bt_log_in">Войти в аккаунт</string>

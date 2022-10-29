@@ -20,7 +20,8 @@ class HomeHelperApp: Application() {
     companion object{
 
         private const val SETTINGS = "settings"
-        const val USER_NAME = "user_name"
+        const val USER_EMAIL = "user_name"
+        const val USER_FLAT_NUM = "user_flat_num"
         const val ADMIN_USER_NAME = "admin@mail.ru"
     }
 }

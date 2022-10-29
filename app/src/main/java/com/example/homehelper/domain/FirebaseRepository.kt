@@ -9,7 +9,6 @@ import com.example.homehelper.domain.entities.User
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
 
 interface FirebaseRepository {
 
@@ -21,6 +20,7 @@ interface FirebaseRepository {
     fun getMessages(chatName: String): LiveData<List<Message>>
     fun signIn(email: String, password: String, flatNum: Int): Task<AuthResult>
     fun logIn(email: String, password: String): Task<AuthResult>
-    fun getChats(userChats: List<String>): MutableLiveData<MutableList<Chat>>
+    fun getChats(userEmail: String): MutableLiveData<MutableList<Chat>>
     fun getCurrentUser(email: String): LiveData<User>
+    fun startChatWithSomeone(userEmail: String, someoneEmail: String)
 }

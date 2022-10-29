@@ -1,6 +1,7 @@
 package com.example.homehelper.presentation.screens.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,21 +54,28 @@ class ChatsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         observeViewModel()
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
+        binding.fabNewChat.setOnClickListener {
+            val email =
+                (requireActivity().application as HomeHelperApp).sharedPreferences.getString(
+                    HomeHelperApp.USER_EMAIL, "none") ?: "none"
+            chatsListViewModel.startChatWithSomeone(email, HomeHelperApp.ADMIN_USER_NAME)
+        }
     }
 
     private fun observeViewModel() {
         val email = (requireActivity().application as HomeHelperApp).sharedPreferences.getString(
-            HomeHelperApp.USER_EMAIL,"none")
+            HomeHelperApp.USER_EMAIL, "none")
         if (email != null) {
-            chatsListViewModel.getCurrentUser(email).observe(viewLifecycleOwner){
-    //            Log.i("muri","chats : $it")
-                it.chats?.let { it1 -> chatsListViewModel.getChats(it1).observe(viewLifecycleOwner){
-                    adapter.submitList(it)
-                } }
+            chatsListViewModel.getChats(email).observe(viewLifecycleOwner) {
+                adapter.submitList(it)
             }
         }
-
     }
+
 
     private fun setupRecyclerView() {
         val flatNum = (requireActivity().application as HomeHelperApp).sharedPreferences.getInt(
@@ -75,7 +83,9 @@ class ChatsListFragment : Fragment() {
             0)
         binding.rvChats.adapter = adapter
         adapter.onChatClickListener = {
-            startActivity(ChatActivity.newInstance(requireActivity().application,it.name.toString()))
+            Log.i("muri", "chat : $it")
+            startActivity(ChatActivity.newInstance(requireActivity().application,
+                it.name.toString()))
         }
     }
 

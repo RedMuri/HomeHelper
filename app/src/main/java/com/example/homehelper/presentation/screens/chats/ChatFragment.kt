@@ -1,4 +1,4 @@
-package com.example.homehelper.presentation.screens
+package com.example.homehelper.presentation.screens.chats
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -56,7 +56,8 @@ class ChatFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        chatViewModel.getMessages().observe(viewLifecycleOwner) {
+        val chatName = arguments?.getString(ChatActivity.CHAT_NAME).toString()
+        chatViewModel.getMessages(chatName).observe(viewLifecycleOwner) {
             adapterMessages.submitList(it) {
                 binding.rvMessages.scrollToPosition(adapterMessages.itemCount - 1)
             }
@@ -77,18 +78,23 @@ class ChatFragment : Fragment() {
     }
 
     private fun sendMessage() {
+        val chatName = arguments?.getString(ChatActivity.CHAT_NAME).toString()
         val text = binding.etMessage.text.toString()
         val author = (requireActivity().application as HomeHelperApp).sharedPreferences
             .getString(HomeHelperApp.USER_EMAIL, "none") ?: "null"
         if (text.isNotBlank()) {
-            chatViewModel.sendMessage(text, author)
+            chatViewModel.sendMessage(text, author,chatName)
             binding.etMessage.setText("")
         }
     }
 
     companion object {
 
-        fun newInstance() =
-            ChatFragment()
+        fun newInstance(chatName: String) =
+            ChatFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ChatActivity.CHAT_NAME, chatName)
+                }
+            }
     }
 }

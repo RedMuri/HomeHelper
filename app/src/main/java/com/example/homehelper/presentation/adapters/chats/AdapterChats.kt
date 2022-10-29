@@ -18,8 +18,6 @@ class AdapterChats : ListAdapter<Chat, ChatViewHolder>(ChatItemDiffCallback()) {
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
         val item = getItem(position)
         holder.name.text = item.name
-        holder.lastMessage.text = item.lastMessage
-        holder.lastMessageAuthor.text = item.lastMessageAuthor
         holder.binding.root.setOnClickListener {
             onChatClickListener?.invoke(item)
         }

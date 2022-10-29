@@ -78,7 +78,7 @@ class SignInFragment : Fragment() {
             binding.tilFlatNum.error = when (it) {
                 AuthViewModel.ERROR_EMPTY -> "Input flat number"
                 AuthViewModel.ERROR -> "Error"
-                AuthViewModel.ERROR_ZERO_FLAT -> "Flat number shouldn't be zero"
+                AuthViewModel.ERROR_NUM_FLAT -> "Flat number should be in range 1..60"
                 AuthViewModel.NO_ERRORS -> null
                 else -> "Error"
             }

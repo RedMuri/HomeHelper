@@ -8,6 +8,7 @@ import com.example.homehelper.data.firebase.model.MessageDto
 import com.example.homehelper.data.mappers.EventMapper
 import com.example.homehelper.data.mappers.MessageMapper
 import com.example.homehelper.domain.FirebaseRepository
+import com.example.homehelper.domain.entities.Chat
 import com.example.homehelper.domain.entities.Event
 import com.example.homehelper.domain.entities.Message
 import com.example.homehelper.domain.entities.User
@@ -18,7 +19,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
-import kotlinx.coroutines.Deferred
 import javax.inject.Inject
 
 class FirebaseRepositoryImpl @Inject constructor(
@@ -31,8 +31,44 @@ class FirebaseRepositoryImpl @Inject constructor(
 
     private val events = MutableLiveData<List<Event>>()
     private val messages = MutableLiveData<List<Message>>()
+    private val chats = MutableLiveData<MutableList<Chat>>()
+    private val chatsList = mutableListOf<Chat>()
 
     override fun getFirebaseAuth(): FirebaseAuth = auth
+
+    override fun getChats(flatNum: Int): LiveData<MutableList<Chat>> {
+        db.collection(CHATS)
+            .document("main_chat").get().addOnSuccessListener {
+                val chat = it.toObject<Chat>()
+                if (chat != null) {
+                    chatsList.add(chat)
+                    chats.value = chatsList
+                }
+//                Log.i("muri", "getChats success: $it")
+            }.addOnFailureListener {
+                Log.i("muri", "getChats error: $it")
+            }
+        when (flatNum) {
+            in 1..20 -> getHallwayChat("hallway1")
+            in 21..40 -> getHallwayChat("hallway2")
+            in 41..60 -> getHallwayChat("hallway3")
+        }
+        return chats
+    }
+
+    private fun getHallwayChat(hallway: String) {
+        db.collection(CHATS)
+            .document(hallway).get().addOnSuccessListener {
+                val chat = it.toObject<Chat>()
+                if (chat != null) {
+                    chatsList.add(chat)
+                    chats.value = chatsList
+                }
+//                Log.i("muri", "getHallwayChat success: $it")
+            }.addOnFailureListener {
+                Log.i("muri", "getHallwayChat error: $it")
+            }
+    }
 
     override fun signIn(
         email: String,
@@ -52,13 +88,14 @@ class FirebaseRepositoryImpl @Inject constructor(
         db.collection(USERS)
             .document(email).get().addOnSuccessListener {
                 val user = it.toObject<User>()
-                if (user?.flatNum!=null && user.email!=null) {
+//                Log.i("muri","getUserFromDb: $user")
+                if (user?.flatNum != null && user.email != null) {
                     (application as HomeHelperApp).sharedPreferences.edit()
                         .putInt(HomeHelperApp.USER_FLAT_NUM, user.flatNum)
                         .putString(HomeHelperApp.USER_EMAIL, user.email)
                         .apply()
                 }
-                Log.i("muri", "getUserFromDb success: $it")
+//                Log.i("muri", "getUserFromDb success: $it")
             }.addOnFailureListener {
                 Log.i("muri", "getUserFromDb error: $it")
             }
@@ -71,11 +108,8 @@ class FirebaseRepositoryImpl @Inject constructor(
             .set(user)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    (application as HomeHelperApp).sharedPreferences.edit()
-                        .putInt(HomeHelperApp.USER_FLAT_NUM, flatNum)
-                        .putString(HomeHelperApp.USER_EMAIL, email)
-                        .apply()
-                    Log.i("muri", "createUserInDb success: $it")
+                    getUserFromDb(email)
+//                    Log.i("muri", "createUserInDb success: $it")
                 } else
                     Log.i("muri", "createUserInDb failure: $it")
             }.addOnFailureListener { e ->
@@ -100,8 +134,15 @@ class FirebaseRepositoryImpl @Inject constructor(
         return events
     }
 
-    override fun getMessages(): LiveData<List<Message>> {
-        db.collection(MAIN_MESSAGES_COLLECTION)
+    override fun getMessages(chatName: String): LiveData<List<Message>> {
+        val collection = when(chatName){
+            "Main chat" -> "main_chat"
+            "Hallway 1" -> "hallway1"
+            "Hallway 2" -> "hallway2"
+            "Hallway 3" -> "hallway3"
+            else -> "none"
+        }
+        db.collection(CHATS).document(collection).collection("messages")
             .orderBy("time")
             .addSnapshotListener { value, e ->
                 if (e != null) {
@@ -118,11 +159,18 @@ class FirebaseRepositoryImpl @Inject constructor(
         return messages
     }
 
-    override fun sendMessage(text: String, author: String) {
-        val id = db.collection(MAIN_MESSAGES_COLLECTION).document().id
+    override fun sendMessage(text: String, author: String,chatName: String) {
+        val collection = when(chatName){
+            "Main chat" -> "main_chat"
+            "Hallway 1" -> "hallway1"
+            "Hallway 2" -> "hallway2"
+            "Hallway 3" -> "hallway3"
+            else -> "none"
+        }
+        val id = db.collection(CHATS).document(collection).collection("messages").document().id
         val time = System.currentTimeMillis()
         val message = MessageDto(author.trim(), text.trim(), time, id)
-        db.collection(MAIN_MESSAGES_COLLECTION)
+        db.collection(CHATS).document(collection).collection("messages")
             .document(id)
             .set(message)
             .addOnCompleteListener {
@@ -165,6 +213,7 @@ class FirebaseRepositoryImpl @Inject constructor(
     companion object {
 
         const val USERS = "users"
+        const val CHATS = "chats"
         const val EVENTS_COLLECTION = "events"
         const val MAIN_MESSAGES_COLLECTION = "messages"
     }

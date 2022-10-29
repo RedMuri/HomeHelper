@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.databinding.FragmentChatListBinding
-import com.example.homehelper.domain.entities.Chat
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.chats.AdapterChats
-import com.example.homehelper.presentation.screens.ChatActivity
-import com.example.homehelper.presentation.viewmodels.EventsViewModel
+import com.example.homehelper.presentation.screens.chats.ChatActivity
+import com.example.homehelper.presentation.viewmodels.ChatsListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
 import javax.inject.Inject
 
@@ -21,8 +20,8 @@ class ChatsListFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val chatViewModel: EventsViewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[EventsViewModel::class.java]
+    private val chatsListViewModel: ChatsListViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory)[ChatsListViewModel::class.java]
     }
 
     private val component by lazy {
@@ -53,14 +52,26 @@ class ChatsListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        val flatNum = (requireActivity().application as HomeHelperApp).sharedPreferences.getInt(
+            HomeHelperApp.USER_FLAT_NUM,
+            0)
+        chatsListViewModel.getChats(flatNum).observe(viewLifecycleOwner){
+//            Log.i("muri","chats : $it")
+            adapter.submitList(it)
+        }
     }
 
     private fun setupRecyclerView() {
+        val flatNum = (requireActivity().application as HomeHelperApp).sharedPreferences.getInt(
+            HomeHelperApp.USER_FLAT_NUM,
+            0)
         binding.rvChats.adapter = adapter
-        val chat = Chat("Main","Last message...","Author:")
-        adapter.submitList(listOf(chat))
         adapter.onChatClickListener = {
-            startActivity(ChatActivity.newInstance(requireActivity().application))
+            startActivity(ChatActivity.newInstance(requireActivity().application,it.name.toString()))
         }
     }
 

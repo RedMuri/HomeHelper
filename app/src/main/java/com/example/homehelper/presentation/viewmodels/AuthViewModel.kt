@@ -1,6 +1,5 @@
 package com.example.homehelper.presentation.viewmodels
 
-import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.example.homehelper.domain.usecases.GetFirebaseAuthUseCase
 import com.example.homehelper.domain.usecases.LogInUseCase
 import com.example.homehelper.domain.usecases.SignInUseCase
-import com.example.homehelper.presentation.HomeHelperApp
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.AuthResult
@@ -16,13 +14,11 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import javax.inject.Inject
-import kotlin.math.log
 
 class AuthViewModel @Inject constructor(
     private val getFirebaseAuthUseCase: GetFirebaseAuthUseCase,
     private val signInUseCase: SignInUseCase,
     private val logInUseCase: LogInUseCase,
-    private val application: Application
 ) : ViewModel() {
 
     private var _errorEmail = MutableLiveData<String>()
@@ -136,8 +132,8 @@ class AuthViewModel @Inject constructor(
         if (flatNum.isEmpty()) {
             _errorFlatNum.value = ERROR_EMPTY
             result = false
-        } else if (flatNum.toInt() == 0) {
-            _errorFlatNum.value = ERROR_ZERO_FLAT
+        } else if (flatNum.toInt() !in 1..60) {
+            _errorFlatNum.value = ERROR_NUM_FLAT
             result = false
         }
         return result
@@ -182,6 +178,6 @@ class AuthViewModel @Inject constructor(
         const val ERROR_WRONG_EMAIL = "wrong_email"
         const val ERROR_NOT_EXISTING_EMAIL = "not_existing_email"
         const val ERROR_WRONG_PASSWORD = "wrong_password"
-        const val ERROR_ZERO_FLAT = "zero_flat"
+        const val ERROR_NUM_FLAT = "num_flat"
     }
 }

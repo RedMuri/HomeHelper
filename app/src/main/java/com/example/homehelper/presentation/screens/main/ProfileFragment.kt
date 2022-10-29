@@ -46,6 +46,22 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setOnClickListeners()
+        setUserInformation()
+    }
+
+    private fun setUserInformation() {
+        val email = (requireActivity().application as HomeHelperApp).sharedPreferences.getString(
+            HomeHelperApp.USER_EMAIL,
+            "none")
+        val flatNum = (requireActivity().application as HomeHelperApp).sharedPreferences.getInt(
+            HomeHelperApp.USER_FLAT_NUM,
+            0)
+        binding.tvEmail.text = email
+        binding.tvFlatNum.text = flatNum.toString()
+    }
+
+    private fun setOnClickListeners() {
         binding.btSignOut.setOnClickListener {
             authViewModel.signOut()
             startActivity(AuthActivity.newIntent(requireActivity().application))

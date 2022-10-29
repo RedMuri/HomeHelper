@@ -14,7 +14,7 @@
         android:theme="@style/Theme.HomeHelper"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.screens.ChatActivity"
+            android:name=".presentation.screens.chats.ChatActivity"
             android:windowSoftInputMode="stateHidden"
             android:exported="false">
             <meta-data

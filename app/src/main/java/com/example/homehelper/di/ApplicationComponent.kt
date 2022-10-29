@@ -1,8 +1,7 @@
 package com.example.homehelper.di
 
 import android.app.Application
-import com.example.homehelper.presentation.HomeHelperApp
-import com.example.homehelper.presentation.screens.ChatFragment
+import com.example.homehelper.presentation.screens.chats.ChatFragment
 import com.example.homehelper.presentation.screens.addevent.AddEventFragment
 import com.example.homehelper.presentation.screens.main.EventsFragment
 import com.example.homehelper.presentation.screens.auth.LogInFragment
@@ -12,7 +11,6 @@ import com.example.homehelper.presentation.screens.main.ChatsListFragment
 import com.example.homehelper.presentation.screens.main.ProfileFragment
 import dagger.BindsInstance
 import dagger.Component
-import dagger.Provides
 
 @Component(modules = [ViewModelModule::class, FirebaseModule::class, DataModule::class])
 interface ApplicationComponent {

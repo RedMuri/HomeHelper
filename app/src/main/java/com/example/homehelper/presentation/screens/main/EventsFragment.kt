@@ -99,6 +99,8 @@ class EventsFragment : Fragment() {
         itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
+    //TODO add onDestroy() everywhere
+
     companion object {
 
         fun newInstance() = EventsFragment()

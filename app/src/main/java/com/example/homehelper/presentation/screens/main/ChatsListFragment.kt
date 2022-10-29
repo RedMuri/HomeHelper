@@ -56,13 +56,17 @@ class ChatsListFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        val flatNum = (requireActivity().application as HomeHelperApp).sharedPreferences.getInt(
-            HomeHelperApp.USER_FLAT_NUM,
-            0)
-        chatsListViewModel.getChats(flatNum).observe(viewLifecycleOwner){
-//            Log.i("muri","chats : $it")
-            adapter.submitList(it)
+        val email = (requireActivity().application as HomeHelperApp).sharedPreferences.getString(
+            HomeHelperApp.USER_EMAIL,"none")
+        if (email != null) {
+            chatsListViewModel.getCurrentUser(email).observe(viewLifecycleOwner){
+    //            Log.i("muri","chats : $it")
+                it.chats?.let { it1 -> chatsListViewModel.getChats(it1).observe(viewLifecycleOwner){
+                    adapter.submitList(it)
+                } }
+            }
         }
+
     }
 
     private fun setupRecyclerView() {

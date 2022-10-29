@@ -16,6 +16,7 @@ import com.example.homehelper.presentation.HomeHelperApp
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
@@ -32,28 +33,52 @@ class FirebaseRepositoryImpl @Inject constructor(
     private val events = MutableLiveData<List<Event>>()
     private val messages = MutableLiveData<List<Message>>()
     private val chats = MutableLiveData<MutableList<Chat>>()
+    private val currentUser = MutableLiveData<User>()
     private val chatsList = mutableListOf<Chat>()
 
     override fun getFirebaseAuth(): FirebaseAuth = auth
 
-    override fun getChats(flatNum: Int): LiveData<MutableList<Chat>> {
-        db.collection(CHATS)
-            .document("main_chat").get().addOnSuccessListener {
-                val chat = it.toObject<Chat>()
-                if (chat != null) {
-                    chatsList.add(chat)
-                    chats.value = chatsList
-                }
+
+
+    override fun getChats(userChats: List<String>): MutableLiveData<MutableList<Chat>> {
+        for (userChat in userChats) {
+            db.collection(CHATS)
+                .document(userChat).get().addOnSuccessListener {
+                    val chat = it.toObject<Chat>()
+                    if (chat != null) {
+                        chatsList.add(chat)
+                        chats.value = chatsList
+                    }
 //                Log.i("muri", "getChats success: $it")
-            }.addOnFailureListener {
-                Log.i("muri", "getChats error: $it")
-            }
-        when (flatNum) {
-            in 1..20 -> getHallwayChat("hallway1")
-            in 21..40 -> getHallwayChat("hallway2")
-            in 41..60 -> getHallwayChat("hallway3")
+                }.addOnFailureListener {
+                    Log.i("muri", "getChats error: $it")
+                }
         }
         return chats
+    }
+
+    override fun getCurrentUser(email: String): LiveData<User> {
+        db.collection(USERS)
+            .document(email).get().addOnSuccessListener {
+                val user = it.toObject<User>()
+                currentUser.value = user
+//                Log.i("muri","getUserFromDb: $user")
+//                if (user?.flatNum != null && user.email != null) {
+//                    (application as HomeHelperApp).sharedPreferences.edit()
+//                        .putInt(HomeHelperApp.USER_FLAT_NUM, user.flatNum)
+//                        .putString(HomeHelperApp.USER_EMAIL, user.email)
+//                        .apply()
+//                }
+//                Log.i("muri", "getUserFromDb success: $it")
+            }.addOnFailureListener {
+                Log.i("muri", "getUserFromDb error: $it")
+            }
+        return currentUser
+    }
+
+
+    private fun getUserFromDb(email: String) {
+
     }
 
     private fun getHallwayChat(hallway: String) {
@@ -70,46 +95,30 @@ class FirebaseRepositoryImpl @Inject constructor(
             }
     }
 
-    override fun signIn(
-        email: String,
-        password: String,
-        flatNum: Int,
-    ): Task<AuthResult> {
+    override fun signIn(email: String, password: String, flatNum: Int): Task<AuthResult> {
         createUserInDb(email, flatNum)
         return auth.createUserWithEmailAndPassword(email, password)
     }
 
     override fun logIn(email: String, password: String): Task<AuthResult> {
-        getUserFromDb(email)
         return auth.signInWithEmailAndPassword(email, password)
     }
 
-    private fun getUserFromDb(email: String) {
-        db.collection(USERS)
-            .document(email).get().addOnSuccessListener {
-                val user = it.toObject<User>()
-//                Log.i("muri","getUserFromDb: $user")
-                if (user?.flatNum != null && user.email != null) {
-                    (application as HomeHelperApp).sharedPreferences.edit()
-                        .putInt(HomeHelperApp.USER_FLAT_NUM, user.flatNum)
-                        .putString(HomeHelperApp.USER_EMAIL, user.email)
-                        .apply()
-                }
-//                Log.i("muri", "getUserFromDb success: $it")
-            }.addOnFailureListener {
-                Log.i("muri", "getUserFromDb error: $it")
-            }
-    }
-
     private fun createUserInDb(email: String, flatNum: Int) {
-        val user = User(email, flatNum)
+        val hallwayChat = when (flatNum) {
+            in 1..20 -> "hallway1"
+            in 21..40 -> "hallway2"
+            in 41..60 -> "hallway3"
+            else -> "none"
+        }
+        val userChats = listOf("main_chat", hallwayChat)
+        val user = User(email, flatNum, userChats)
         db.collection(USERS)
             .document(email)
             .set(user)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    getUserFromDb(email)
-//                    Log.i("muri", "createUserInDb success: $it")
+                    Log.i("muri", "createUserInDb success: $it")
                 } else
                     Log.i("muri", "createUserInDb failure: $it")
             }.addOnFailureListener { e ->
@@ -135,7 +144,7 @@ class FirebaseRepositoryImpl @Inject constructor(
     }
 
     override fun getMessages(chatName: String): LiveData<List<Message>> {
-        val collection = when(chatName){
+        val collection = when (chatName) {
             "Main chat" -> "main_chat"
             "Hallway 1" -> "hallway1"
             "Hallway 2" -> "hallway2"
@@ -159,8 +168,8 @@ class FirebaseRepositoryImpl @Inject constructor(
         return messages
     }
 
-    override fun sendMessage(text: String, author: String,chatName: String) {
-        val collection = when(chatName){
+    override fun sendMessage(text: String, author: String, chatName: String) {
+        val collection = when (chatName) {
             "Main chat" -> "main_chat"
             "Hallway 1" -> "hallway1"
             "Hallway 2" -> "hallway2"

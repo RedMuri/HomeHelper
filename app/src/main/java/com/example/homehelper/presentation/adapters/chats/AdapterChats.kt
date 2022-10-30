@@ -3,6 +3,7 @@ package com.example.homehelper.presentation.adapters.chats
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import com.example.homehelper.R
 import com.example.homehelper.databinding.ItemChatBinding
 import com.example.homehelper.domain.entities.Chat
 
@@ -21,5 +22,6 @@ class AdapterChats : ListAdapter<Chat, ChatViewHolder>(ChatItemDiffCallback()) {
         holder.binding.root.setOnClickListener {
             onChatClickListener?.invoke(item)
         }
+        holder.binding.ivChatIcon.setImageResource(R.drawable.bottom_nav_chats)
     }
 }

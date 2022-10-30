@@ -16,7 +16,6 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.toObject
 import javax.inject.Inject
 
@@ -37,14 +36,13 @@ class FirebaseRepositoryImpl @Inject constructor(
 
     override fun startChatWithSomeone(userEmail: String, someoneEmail: String) {
         val chatAcceptors = listOf(userEmail, someoneEmail)
-        val chatName = "${userEmail}_$someoneEmail"
-        createChat(chatName)
+        createChat(someoneEmail)
         for (chatAcceptor in chatAcceptors) {
             db.collection(USERS)
                 .document(chatAcceptor)
                 .collection("chats")
-                .document(chatName)
-                .set(Chat(chatName))
+                .document(someoneEmail)
+                .set(Chat(someoneEmail))
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         Log.i("muri", "startChatWithSomeone success: $it")
@@ -80,7 +78,7 @@ class FirebaseRepositoryImpl @Inject constructor(
         return chats
     }
 
-    private fun getChatsFromDb(userChats: List<Chat>){
+    private fun getChatsFromDb(userChats: List<Chat>) {
         for (userChat in userChats) {
             userChat.name?.let {
                 db.collection(CHATS)
@@ -90,7 +88,7 @@ class FirebaseRepositoryImpl @Inject constructor(
                             chatsList.add(chat)
                             chats.value = chatsList
                         }
-        //                Log.i("muri", "getChats success: $it")
+                        //                Log.i("muri", "getChats success: $it")
                     }.addOnFailureListener {
                         Log.i("muri", "getChats error: $it")
                     }

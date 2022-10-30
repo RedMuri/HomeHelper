@@ -12,8 +12,6 @@ class ServiceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_service)
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.service_container, SendMeterDataFragment.newInstance()).commit()
     }
 
     companion object {

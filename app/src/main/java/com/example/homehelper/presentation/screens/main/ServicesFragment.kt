@@ -31,9 +31,9 @@ class ServicesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.button.setOnClickListener {
-            startActivity(ServiceActivity.newInstance(requireActivity().application))
-        }
+//        binding.button.setOnClickListener {
+//            startActivity(ServiceActivity.newInstance(requireActivity().application))
+//        }
     }
 
     companion object {

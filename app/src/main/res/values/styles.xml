@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Button.MailAdditional" parent="ThemeOverlay.AppCompat">
+        <item name="colorPrimary">@color/main_additional</item>
+    </style>
+
+    <style name="Button.Main" parent="ThemeOverlay.AppCompat">
+        <item name="colorPrimary">#D2FFFFFF</item>
+    </style>
+</resources>

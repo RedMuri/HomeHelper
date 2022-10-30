@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "310190757162",
+    "project_id": "home-helper-f35d9",
+    "storage_bucket": "home-helper-f35d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310190757162:android:f3e2248d750b9963a7ba53",
+        "android_client_info": {
+          "package_name": "com.example.homehelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "310190757162-srsd8knddslbb03ptaps77tb6pvb7cv8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.homehelper",
+            "certificate_hash": "efb1c316bd8fc6ceb7720101c7f303931a873570"
+          }
+        },
+        {
+          "client_id": "310190757162-vej2gve90gu9hl91ceqok7fk15o18oig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSN_6lN1Rne-HblSasoZiDd21XcnwZNxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "310190757162-vej2gve90gu9hl91ceqok7fk15o18oig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

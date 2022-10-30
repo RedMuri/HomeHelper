@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.homehelper.databinding.FragmentEventsBinding
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.events.AdapterEvents
+import com.example.homehelper.presentation.screens.ServiceActivity
 import com.example.homehelper.presentation.screens.addevent.AddEventActivity
 import com.example.homehelper.presentation.viewmodels.EventsViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
@@ -57,6 +58,18 @@ class EventsFragment : Fragment() {
         setupRecyclerView()
         observeViewModel()
         checkIfAdmin()
+        binding.mainLl1.setOnClickListener {
+            startActivity(ServiceActivity.newInstance(requireActivity().application,
+                ServiceActivity.SERVICE_PAYMENTS))
+        }
+        binding.mainLl2.setOnClickListener {
+            startActivity(ServiceActivity.newInstance(requireActivity().application,
+                ServiceActivity.SERVICE_BILLS))
+        }
+        binding.mainLl3.setOnClickListener {
+            startActivity(ServiceActivity.newInstance(requireActivity().application,
+                ServiceActivity.SERVICE_METERS))
+        }
     }
 
     private fun checkIfAdmin() {

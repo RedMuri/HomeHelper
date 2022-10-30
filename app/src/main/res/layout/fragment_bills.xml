@@ -70,7 +70,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="14dp"
             android:layout_marginEnd="16dp"
-            android:text="8 935, 48 P"
+            android:text="8 935, 48 ₽"
             android:textColor="@color/main_dark"
             android:textSize="30sp" />
 

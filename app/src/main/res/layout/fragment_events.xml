@@ -17,6 +17,7 @@
             android:id="@+id/searchView"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:focusable="false"
             android:layout_marginStart="12sp"
             android:layout_marginTop="12sp"
             android:layout_marginEnd="6dp"
@@ -87,7 +88,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginEnd="16dp"
-                android:text="8 935, 48 P"
+                android:text="8 935, 48 ₽"
                 android:textColor="@color/main_dark"
                 android:textSize="30sp" />
 

@@ -31,9 +31,15 @@ class ServicesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.button.setOnClickListener {
-//            startActivity(ServiceActivity.newInstance(requireActivity().application))
-//        }
+        binding.cvService1.setOnClickListener {
+            startActivity(ServiceActivity.newInstance(requireActivity().application,ServiceActivity.SERVICE_PAYMENTS))
+        }
+        binding.cvService2.setOnClickListener {
+            startActivity(ServiceActivity.newInstance(requireActivity().application,ServiceActivity.SERVICE_BILLS))
+        }
+        binding.cvService3.setOnClickListener {
+            startActivity(ServiceActivity.newInstance(requireActivity().application,ServiceActivity.SERVICE_METERS))
+        }
     }
 
     companion object {

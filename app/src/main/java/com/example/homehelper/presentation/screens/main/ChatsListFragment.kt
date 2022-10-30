@@ -81,7 +81,7 @@ class ChatsListFragment : Fragment() {
         val flatNum = (requireActivity().application as HomeHelperApp).sharedPreferences.getInt(
             HomeHelperApp.USER_FLAT_NUM,
             0)
-   //     binding.rvChats.adapter = adapter
+        binding.rvChats.adapter = adapter
         adapter.onChatClickListener = {
             Log.i("muri", "chat : $it")
             startActivity(ChatActivity.newInstance(requireActivity().application,

@@ -204,7 +204,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:behavior_peekHeight="156dp"
+        app:behavior_peekHeight="256dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <!--This is the backdrop's header with a title and icon-->
@@ -219,7 +219,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Объявления"
+                android:text="Список чатов"
                 android:textColor="@color/main_dark"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -230,54 +230,15 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/main_bottom_sheet_settings"
+                android:background="@drawable/round_shape_main_color"
+                android:src="@drawable/add_chat"
                 app:layout_constraintBottom_toBottomOf="@+id/textView6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView6" />
 
-            <LinearLayout
-                android:id="@+id/layout_filters"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="18dp"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView6">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/main_bottom_filter_black"
-                    android:paddingHorizontal="30dp"
-                    android:paddingVertical="4dp"
-                    android:text="Все"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:background="@drawable/main_bottom_filter"
-                    android:paddingHorizontal="30dp"
-                    android:paddingVertical="4dp"
-                    android:text="@string/some"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/main_bottom_filter"
-                    android:paddingHorizontal="30dp"
-                    android:paddingVertical="4dp"
-                    android:text="Жильцы"
-                    android:textSize="12sp" />
-            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_events"
+                android:id="@+id/rv_chats"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
@@ -286,8 +247,8 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout_filters"
-                tools:listitem="@layout/item_event" />
+                app:layout_constraintTop_toBottomOf="@id/textView6"
+                tools:listitem="@layout/item_chat" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

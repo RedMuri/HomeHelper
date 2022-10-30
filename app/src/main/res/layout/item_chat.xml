@@ -7,8 +7,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_chat_image"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_centerHorizontal="true"
         android:layout_margin="4dp"
         android:elevation="12dp"
@@ -23,7 +23,7 @@
         <ImageView
             android:id="@+id/iv_chat_icon"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             tools:srcCompat="@tools:sample/avatars" />
@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@id/tv_last_message_author"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cv_chat_image"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cv_chat_image"
         tools:text="Main chat" />
 
     <TextView

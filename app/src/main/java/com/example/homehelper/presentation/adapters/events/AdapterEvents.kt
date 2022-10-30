@@ -16,7 +16,6 @@ class AdapterEvents : ListAdapter<Event, EventViewHolder>(EventItemDiffCallback(
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val item = getItem(position)
         holder.title.text = item.title
-        holder.desc.text = item.description
         holder.date.text = item.date.toString()
     }
 }

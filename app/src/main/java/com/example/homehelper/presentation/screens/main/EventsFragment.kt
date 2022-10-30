@@ -61,13 +61,13 @@ class EventsFragment : Fragment() {
 
     private fun checkIfAdmin() {
         val userName = (requireActivity() as MainActivity).sharedPreferences.getString(HomeHelperApp.USER_EMAIL,"none")
-        if (userName == HomeHelperApp.ADMIN_USER_NAME){
-            binding.fabAddEvent.visibility = View.VISIBLE
-            setupSwipeListener(binding.rvEvents)
-            binding.fabAddEvent.setOnClickListener {
-                startActivity(AddEventActivity.newInstance(requireActivity().application))
-            }
-        }
+//        if (userName == HomeHelperApp.ADMIN_USER_NAME){
+//            binding.fabAddEvent.visibility = View.VISIBLE
+//            setupSwipeListener(binding.rvEvents)
+//            binding.fabAddEvent.setOnClickListener {
+//                startActivity(AddEventActivity.newInstance(requireActivity().application))
+//            }
+//        }
     }
 
     private fun observeViewModel() {

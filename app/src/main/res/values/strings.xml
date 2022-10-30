@@ -12,6 +12,6 @@
     <string name="fab_add_event_content_desc">add_event</string>
     <string name="edit_text_message">Введите сообщение…</string>
     <string name="chat_image_content_desc">image_message</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="some">УК "Огонь"</string>
 </resources>

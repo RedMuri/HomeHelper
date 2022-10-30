@@ -45,6 +45,7 @@ dependencies {
 
     implementation 'com.google.dagger:dagger:2.44'
     implementation 'com.android.car.ui:car-ui-lib:2.0.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     kapt 'com.google.dagger:dagger-compiler:2.44'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'androidx.core:core-ktx:1.9.0'

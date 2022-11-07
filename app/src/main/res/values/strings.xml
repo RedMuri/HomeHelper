@@ -13,8 +13,6 @@
     <string name="edit_text_message">Введите сообщение…</string>
     <string name="chat_image_content_desc">image_message</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_view_hint">Поиск…</string>
     <string name="events_fr_services_title">Сервисы</string>
     <string name="events_fr_more"><![CDATA[Ещё ->]]></string>
@@ -26,4 +24,7 @@
     <string name="events_fr_filter_2">УК "Огонь"</string>
     <string name="events_fr_filter_3">Жильцы</string>
     <string name="events_fr_bottom_title">Объявления</string>
+    <string name="search_icon_content_desc">Search icon</string>
+    <string name="bell_button_content_desc">Bell</string>
+    <string name="settings_button_content_desc">Settings</string>
 </resources>

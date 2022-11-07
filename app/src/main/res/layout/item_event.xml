@@ -5,29 +5,32 @@
     android:id="@+id/cv_event"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="16dp"
-    app:cardUseCompatPadding="true"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="24dp"
+    android:background="@drawable/square_background_ripple"
+    android:clickable="true"
+    android:focusable="true"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@drawable/event_background"
         android:layout_height="match_parent"
+        android:background="@drawable/image_event_background"
         android:padding="8dp">
 
         <TextView
             android:id="@+id/tv_event_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
             android:layout_marginHorizontal="6dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/event_tv_backshape"
-            android:textColor="@color/main_dark"
             android:paddingHorizontal="16dp"
             android:paddingVertical="4dp"
-            android:layout_marginTop="8dp"
+            android:textColor="@color/main_dark"
+            android:textSize="12sp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -35,33 +38,33 @@
 
         <TextView
             android:id="@+id/tv_event_author"
-            android:layout_marginHorizontal="6dp"
             android:layout_width="wrap_content"
-            android:textSize="12sp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="6dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/event_tv_backshape"
-            android:textColor="@color/main_dark"
             android:paddingHorizontal="16dp"
             android:paddingVertical="4dp"
-            android:layout_marginTop="8dp"
+            android:textColor="@color/main_dark"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/some" />
+            tools:text="@string/events_fr_filter_2" />
 
         <TextView
             android:id="@+id/tv_event_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:layout_marginTop="60dp"
             android:layout_marginHorizontal="6dp"
+            android:layout_marginTop="60dp"
             android:layout_marginBottom="6dp"
-            android:textStyle="bold"
             android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_event_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_event_date"
             tools:text="Windows cleaning" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

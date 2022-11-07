@@ -163,10 +163,6 @@
                 android:text="120/кВт*ч" />
         </LinearLayout>
 
-
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -174,7 +170,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/main_bottom_sheet"
-        android:maxHeight="500dp"
         app:behavior_peekHeight="300dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
@@ -217,7 +212,7 @@
             />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_events"
+            android:id="@+id/rv_services"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin_default"

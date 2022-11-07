@@ -25,20 +25,23 @@ class ServicesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentServicesBinding.inflate(inflater,container,false)
+        _binding = FragmentServicesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.cvService1.setOnClickListener {
-            startActivity(ServiceActivity.newInstance(requireActivity().application,ServiceActivity.SERVICE_PAYMENTS))
+            startActivity(ServiceActivity.newInstance(requireActivity().application,
+                ServiceActivity.SERVICE_PAYMENTS))
         }
         binding.cvService2.setOnClickListener {
-            startActivity(ServiceActivity.newInstance(requireActivity().application,ServiceActivity.SERVICE_BILLS))
+            startActivity(ServiceActivity.newInstance(requireActivity().application,
+                ServiceActivity.SERVICE_BILLS))
         }
         binding.cvService3.setOnClickListener {
-            startActivity(ServiceActivity.newInstance(requireActivity().application,ServiceActivity.SERVICE_METERS))
+            startActivity(ServiceActivity.newInstance(requireActivity().application,
+                ServiceActivity.SERVICE_METERS))
         }
     }
 

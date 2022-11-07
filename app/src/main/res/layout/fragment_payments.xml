@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/square_rounded"
+        android:background="@drawable/square_background"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

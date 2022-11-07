@@ -3,101 +3,152 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinatorLayout"
-    tools:context=".presentation.screens.main.EventsFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".presentation.screens.main.EventsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/front_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/main">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03" />
 
-        <androidx.appcompat.widget.SearchView
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.97" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_max_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_peek_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top" />
+
+
+        <LinearLayout
             android:id="@+id/searchView"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:focusable="false"
-            android:layout_marginStart="12sp"
-            android:layout_marginTop="12sp"
-            android:layout_marginEnd="6dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
             android:background="@drawable/search_view_rounded"
+            android:hint="Search..."
+            android:orientation="horizontal"
             app:iconifiedByDefault="false"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+            app:layout_constraintBottom_toBottomOf="@id/barrier_max_height"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="@id/gl_v1"
             app:layout_constraintTop_toTopOf="parent"
-            app:queryHint="Поиск..."
-            app:searchIcon="@drawable/search_icon" />
+            app:searchIcon="@drawable/search_icon">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="18dp"
+                android:src="@drawable/search_icon" />
+
+            <EditText
+                android:id="@+id/searchViewEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:singleLine="true"
+                android:layout_weight="1"
+                android:background="@drawable/search_view_rounded"
+                android:hint="Поиск..."
+                android:orientation="horizontal" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/imageButton"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="12sp"
-            android:layout_marginEnd="12sp"
-            android:background="@drawable/round_shape"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/circle_background_ripple"
+            android:clickable="true"
+            android:focusable="true"
             android:padding="8dp"
             android:src="@drawable/main_bell"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/searchView"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@id/gl_v2"
+            app:layout_constraintStart_toEndOf="@id/searchView"
+            app:layout_constraintTop_toTopOf="@id/searchView" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_margin="8dp"
             android:text="Сервисы"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/gl_v1"
             app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            android:focusable="true"
             android:text="Ещё ->"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl_v2"
             app:layout_constraintTop_toTopOf="@+id/textView" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/square_rounded"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/square_background"
             android:orientation="vertical"
+            android:padding="8dp"
             app:layout_constraintDimensionRatio="3:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/main_ll_3"
+            app:layout_constraintStart_toStartOf="@id/main_ll_1"
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:text="8 935, 48 ₽"
                 android:textColor="@color/main_dark"
                 android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
                 android:text="Всего к оплате"
                 android:textColor="@color/main_dark" />
         </LinearLayout>
@@ -106,43 +157,51 @@
             android:id="@+id/main_ll_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/square_rounded"
+            android:layout_margin="8dp"
+            android:background="@drawable/square_background_ripple"
+            android:clickable="true"
             android:orientation="vertical"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/barrier_peek_height"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@id/main_ll_2"
-            app:layout_constraintStart_toStartOf="@id/linearLayout"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintStart_toStartOf="@id/gl_v1"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:focusable="true">
 
             <ImageView
                 android:layout_width="27dp"
                 android:layout_height="27dp"
-                android:layout_margin="6dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
                 android:src="@drawable/main_service1" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="6dp"
-                android:layout_marginBottom="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
                 android:gravity="bottom"
                 android:text="Оплата счетов"
                 android:textColor="@color/main_dark"
                 android:textSize="12sp" />
         </LinearLayout>
 
+
         <LinearLayout
             android:id="@+id/main_ll_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/square_rounded"
+            android:background="@drawable/square_background_ripple"
+            android:clickable="true"
+            android:focusable="true"
             android:orientation="vertical"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/main_ll_1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@id/main_ll_3"
             app:layout_constraintStart_toEndOf="@id/main_ll_1"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toTopOf="@id/main_ll_1">
 
             <ImageView
                 android:layout_width="27dp"
@@ -151,7 +210,7 @@
                 android:src="@drawable/main_service2" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="6dp"
                 android:layout_marginBottom="6dp"
@@ -165,14 +224,17 @@
             android:id="@+id/main_ll_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/square_rounded"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/square_background_ripple"
+            android:clickable="true"
+            android:focusable="true"
             android:orientation="vertical"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/main_ll_1"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="@+id/gl_v2"
             app:layout_constraintStart_toEndOf="@id/main_ll_2"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintTop_toTopOf="@id/main_ll_1">
 
             <ImageView
                 android:layout_width="27dp"
@@ -181,7 +243,7 @@
                 android:src="@drawable/main_service3" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="6dp"
                 android:layout_marginBottom="6dp"
@@ -191,138 +253,162 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <!--This is the backdrop's content with a BottomSheetBehaviour applied to it-->
-    <LinearLayout
+
+    <!--This is the backdrop's header with a title and icon-->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contentLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:behavior_peekHeight="156dp"
+        android:layout_height="582dp"
+        android:background="@drawable/main_bottom_sheet"
+        android:maxHeight="600dp"
+        app:behavior_peekHeight="52dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <!--This is the backdrop's header with a title and icon-->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/main_bottom_sheet">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v1_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.03" />
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Объявления"
-                android:textColor="@color/main_dark"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v2_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.97" />
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/main_bottom_sheet_settings"
-                app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView6" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="20dp"
+            android:text="Объявления"
+            android:textColor="@color/main_dark"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:id="@+id/layout_filters"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="18dp"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView6">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/main_bottom_filter_black"
-                    android:paddingHorizontal="30dp"
-                    android:paddingVertical="4dp"
-                    android:text="Все"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:background="@drawable/main_bottom_filter"
-                    android:paddingHorizontal="30dp"
-                    android:paddingVertical="4dp"
-                    android:text="@string/some"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/main_bottom_filter"
-                    android:paddingHorizontal="30dp"
-                    android:paddingVertical="4dp"
-                    android:text="Жильцы"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_events"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:orientation="vertical"
-                app:behavior_hideable="true"
-                android:layout_marginTop="8dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout_filters"
-                tools:listitem="@layout/item_event" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/square_little_background_ripple"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/main_bottom_sheet_settings"
+            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="@id/gl_v2_bottom"
+            app:layout_constraintTop_toTopOf="@+id/textView6" />
 
 
-        <!--And finally this is the body of the backdrop's content. You can add here whatever you need inside a view group (LinearLayout, RelativeLayout, SwipeRefreshLayout, ConstraintLayout, etc.)-->
-        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-        <!--            android:id="@+id/swiperefresh"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent">-->
+        <TextView
+            android:id="@+id/tv_filter_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/main_bottom_filter_black"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="4dp"
+            android:text="Все"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_filter_2"
+            app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
+            app:layout_constraintTop_toBottomOf="@id/textView6" />
 
-        <!--            <androidx.recyclerview.widget.RecyclerView-->
-        <!--                android:id="@+id/rv_events"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="match_parent"-->
-        <!--                android:orientation="vertical"-->
-        <!--                app:behavior_hideable="true"-->
-        <!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--                app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                app:layout_constraintStart_toStartOf="parent"-->
-        <!--                app:layout_constraintTop_toTopOf="parent"-->
-        <!--                tools:listitem="@layout/item_event" />-->
+        <TextView
+            android:id="@+id/tv_filter_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_bottom_filter"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="4dp"
+            android:text="@string/some"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_filter_1"
+            app:layout_constraintEnd_toStartOf="@id/tv_filter_3"
+            app:layout_constraintStart_toEndOf="@id/tv_filter_1"
+            app:layout_constraintTop_toTopOf="@id/tv_filter_1" />
 
-        <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-        <!--                android:id="@+id/fab_add_event"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_margin="16dp"-->
-        <!--                android:clickable="true"-->
-        <!--                android:contentDescription="@string/fab_add_event_content_desc"-->
-        <!--                android:focusable="true"-->
-        <!--                android:src="@android:drawable/ic_input_add"-->
-        <!--                android:visibility="gone"-->
-        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--                app:layout_constraintEnd_toEndOf="parent" />-->
+        <TextView
+            android:id="@+id/tv_filter_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/main_bottom_filter"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="4dp"
+            android:text="Жильцы"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_filter_1"
+            app:layout_constraintStart_toEndOf="@id/tv_filter_2"
+            app:layout_constraintTop_toTopOf="@+id/tv_filter_1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_events"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:behavior_hideable="true"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@id/gl_v2_bottom"
+            app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
+            app:layout_constraintTop_toBottomOf="@id/tv_filter_1"
+            tools:listitem="@layout/item_event" />
 
 
-        <!--            &lt;!&ndash;The content's body goes here&ndash;&gt;-->
-        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--And finally this is the body of the backdrop's content. You can add here whatever you need inside a view group (LinearLayout, RelativeLayout, SwipeRefreshLayout, ConstraintLayout, etc.)-->
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:id="@+id/swiperefresh"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent">-->
+
+    <!--            <androidx.recyclerview.widget.RecyclerView-->
+    <!--                android:id="@+id/rv_events"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:orientation="vertical"-->
+    <!--                app:behavior_hideable="true"-->
+    <!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                tools:listitem="@layout/item_event" />-->
+
+    <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--                android:id="@+id/fab_add_event"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="16dp"-->
+    <!--                android:clickable="true"-->
+    <!--                android:contentDescription="@string/fab_add_event_content_desc"-->
+    <!--                android:focusable="true"-->
+    <!--                android:src="@android:drawable/ic_input_add"-->
+    <!--                android:visibility="gone"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent" />-->
+
+
+    <!--            &lt;!&ndash;The content's body goes here&ndash;&gt;-->
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

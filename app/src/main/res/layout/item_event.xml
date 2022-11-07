@@ -49,7 +49,7 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/some" />
+            tools:text="@string/events_fr_filter_2" />
 
         <TextView
             android:id="@+id/tv_event_title"

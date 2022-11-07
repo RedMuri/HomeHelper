@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.databinding.FragmentChatListBinding
@@ -13,6 +14,7 @@ import com.example.homehelper.presentation.adapters.chats.AdapterChats
 import com.example.homehelper.presentation.screens.chats.ChatActivity
 import com.example.homehelper.presentation.viewmodels.ChatsListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import javax.inject.Inject
 
 
@@ -55,6 +57,38 @@ class ChatsListFragment : Fragment() {
         setupRecyclerView()
         observeViewModel()
         setOnClickListeners()
+        setupBottomSheet()
+    }
+
+    private fun setupBottomSheet() {
+        val frontLayout = binding.frontLayout
+        frontLayout.viewTreeObserver.addOnGlobalLayoutListener(object :
+            ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                frontLayout.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                val peekHeight = countPeekHeight()
+                val maxHeight = countMaxHeight()
+                val behavior = BottomSheetBehavior.from(binding.contentLayout)
+                behavior.maxHeight = maxHeight
+                behavior.peekHeight = peekHeight
+            }
+
+            private fun countMaxHeight(): Int {
+                val barrierMaxHeightLocation = intArrayOf(0, 0)
+                binding.barrierMaxHeight.getLocationOnScreen(barrierMaxHeightLocation)
+                val statusBarSize = binding.root.rootWindowInsets.systemWindowInsetTop
+                val layoutHeight = binding.root.height
+                return layoutHeight - barrierMaxHeightLocation[1] + statusBarSize
+            }
+
+            private fun countPeekHeight(): Int {
+                val barrierPeekHeightLocation = intArrayOf(0, 0)
+                binding.barrierPeekHeight.getLocationOnScreen(barrierPeekHeightLocation)
+                val statusBarSize = binding.root.rootWindowInsets.systemWindowInsetTop
+                val layoutHeight = binding.root.height
+                return layoutHeight - barrierPeekHeightLocation[1] + statusBarSize
+            }
+        })
     }
 
     private fun setOnClickListeners() {

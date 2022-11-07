@@ -8,287 +8,526 @@
     tools:context=".presentation.screens.main.ChatsListFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/front_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/main">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/main_vertical_gl_left" />
 
-        <androidx.appcompat.widget.SearchView
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
+
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_max_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_peek_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top" />
+
+
+        <LinearLayout
             android:id="@+id/searchView"
             android:layout_width="0dp"
-            android:focusable="false"
-            android:layout_height="0dp"
-            android:layout_marginStart="12sp"
-            android:layout_marginTop="12sp"
-            android:layout_marginEnd="6dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_default"
             android:background="@drawable/search_view_rounded"
-            app:iconifiedByDefault="false"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/barrier_max_height"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:queryHint="Поиск..."
-            app:searchIcon="@drawable/search_icon" />
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="@id/gl_v1"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/search_icon_margin"
+                android:contentDescription="@string/search_icon_content_desc"
+                android:src="@drawable/search_icon" />
+
+            <EditText
+                android:id="@+id/searchViewEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:layout_weight="1"
+                android:background="@drawable/search_view_rounded"
+                android:hint="@string/search_view_hint"
+                android:orientation="horizontal"
+                android:singleLine="true" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/imageButton"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="12sp"
-            android:layout_marginEnd="12sp"
-            android:background="@drawable/round_shape"
-            android:padding="8dp"
+            style="@style/MainRoundImageButton"
+            android:layout_marginStart="@dimen/margin_default"
+            android:contentDescription="@string/bell_button_content_desc"
             android:src="@drawable/main_bell"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@id/searchView"
+            app:layout_constraintEnd_toEndOf="@id/gl_v2"
+            app:layout_constraintStart_toEndOf="@id/searchView"
+            app:layout_constraintTop_toTopOf="@id/searchView" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
-            android:text="Мои соседи"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            style="@style/MainTitle"
+            android:text="@string/chats_list_fr_neighbors"
+            app:layout_constraintStart_toStartOf="@id/gl_v1"
             app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:text="Ещё ->"
-            android:textColor="@color/white"
-            android:textSize="14sp"
+            style="@style/MainSmallText"
+            android:layout_margin="@dimen/margin_default"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/events_fr_more"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl_v2"
             app:layout_constraintTop_toTopOf="@+id/textView" />
-
 
         <LinearLayout
             android:id="@+id/main_ll_1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/square_background"
-            android:orientation="vertical"
+            style="@style/EventsFragmentServiceLayout"
+            android:layout_margin="@dimen/margin_default"
+            app:layout_constraintBottom_toBottomOf="@id/barrier_peek_height"
             app:layout_constraintEnd_toStartOf="@id/main_ll_2"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/gl_v1"
             app:layout_constraintTop_toBottomOf="@+id/textView">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_margin="6dp"
-                    android:src="@drawable/neighbor1" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="6dp"
-                    android:layout_marginBottom="6dp"
-                    android:gravity="center_vertical"
-                    android:text="Екатерина"
-                    android:textColor="@color/main_dark"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/main_dark"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="Кв.46"/>
-
-                <View
-                    android:background="@color/main_dark"
-                    android:layout_width="1dp"
-                    android:layout_height="20dp"/>
-
-                <ImageView
-                    android:layout_weight="1"
-                    android:layout_width="20dp"
-                    android:layout_gravity="center"
-                    android:layout_height="20dp"
-                    android:src="@drawable/neighbot_message"/>
+            <TextView
+                style="@style/EventsFragmentServiceDescription"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Сосед 1" />
 
 
-            </LinearLayout>
         </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/main_ll_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/square_background"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/EventsFragmentServiceLayout"
+            app:layout_constraintBottom_toBottomOf="@id/main_ll_1"
+            app:layout_constraintEnd_toStartOf="@id/main_ll_3"
             app:layout_constraintStart_toEndOf="@id/main_ll_1"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
+            app:layout_constraintTop_toTopOf="@id/main_ll_1">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            <TextView
+                style="@style/EventsFragmentServiceDescription"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Сосед 2" />
 
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_margin="6dp"
-                    android:src="@drawable/neighbor2" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="6dp"
-                    android:layout_marginBottom="6dp"
-                    android:gravity="center_vertical"
-                    android:text="Дмитрий"
-                    android:textColor="@color/main_dark"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/main_dark"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="Кв.43"/>
-
-                <View
-                    android:background="@color/main_dark"
-                    android:layout_width="1dp"
-                    android:layout_height="20dp"/>
-
-                <ImageView
-                    android:layout_weight="1"
-                    android:layout_width="20dp"
-                    android:layout_gravity="center"
-                    android:layout_height="20dp"
-                    android:src="@drawable/neighbot_message"/>
-
-
-            </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_ll_3"
+            style="@style/EventsFragmentServiceLayout"
+            android:layout_marginHorizontal="@dimen/margin_default"
+            app:layout_constraintBottom_toBottomOf="@id/main_ll_1"
+            app:layout_constraintEnd_toEndOf="@+id/gl_v2"
+            app:layout_constraintStart_toEndOf="@id/main_ll_2"
+            app:layout_constraintTop_toTopOf="@id/main_ll_1">
+
+            <TextView
+                style="@style/EventsFragmentServiceDescription"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Сосед 3"  />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_bottom_sheet"
+        app:behavior_peekHeight="300dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v1_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/main_vertical_gl_left" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v2_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/MainTitleBottom"
+            android:text="@string/chats_list_fr_bottom_title"
+            app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            style="@style/MainRoundImageButtonWhite"
+            android:contentDescription="@string/settings_button_content_desc"
+            android:src="@drawable/add_chat"
+            android:layout_margin="@dimen/margin_default"
+            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="@id/gl_v2_bottom"
+            app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_chats"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_default"
+            app:behavior_hideable="true"
+            tools:listitem="@layout/item_chat"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl_v2_bottom"
+            app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
+            app:layout_constraintTop_toBottomOf="@id/textView6"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--                android:id="@+id/fab_add_event"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="16dp"-->
+    <!--                android:clickable="true"-->
+    <!--                android:contentDescription="@string/fab_add_event_content_desc"-->
+    <!--                android:focusable="true"-->
+    <!--                android:src="@android:drawable/ic_input_add"-->
+    <!--                android:visibility="gone"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent" />-->
 
-    <!--This is the backdrop's content with a BottomSheetBehaviour applied to it-->
-    <LinearLayout
-        android:id="@+id/contentLayout"
+
+    <!--            &lt;!&ndash;The content's body goes here&ndash;&gt;-->
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:behavior_peekHeight="256dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        tools:context=".presentation.screens.main.ChatsListFragment">
 
-        <!--This is the backdrop's header with a title and icon-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/main_bottom_sheet">
+            android:background="@color/main">
+
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="0dp"
+                android:focusable="false"
+                android:layout_height="0dp"
+                android:layout_marginStart="12sp"
+                android:layout_marginTop="12sp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/search_view_rounded"
+                app:iconifiedByDefault="false"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryHint="Поиск..."
+                app:searchIcon="@drawable/search_icon" />
+
+            <ImageView
+                android:id="@+id/imageButton"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="12sp"
+                android:layout_marginEnd="12sp"
+                android:background="@drawable/round_shape"
+                android:padding="8dp"
+                android:src="@drawable/main_bell"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:text="Список чатов"
-                android:textColor="@color/main_dark"
+                android:layout_marginTop="40dp"
+                android:text="Мои соседи"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/round_shape_main_color"
-                android:src="@drawable/add_chat"
-                app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                android:text="Ещё ->"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView6" />
+                app:layout_constraintTop_toTopOf="@+id/textView" />
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_chats"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+            <LinearLayout
+                android:id="@+id/main_ll_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
                 android:layout_marginTop="8dp"
+                android:background="@drawable/square_background"
                 android:orientation="vertical"
-                app:behavior_hideable="true"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/main_ll_2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView6"
-                tools:listitem="@layout/item_chat" />
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_margin="6dp"
+                        android:src="@drawable/neighbor1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:gravity="center_vertical"
+                        android:text="Екатерина"
+                        android:textColor="@color/main_dark"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/main_dark"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="Кв.46"/>
+
+                    <View
+                        android:background="@color/main_dark"
+                        android:layout_width="1dp"
+                        android:layout_height="20dp"/>
+
+                    <ImageView
+                        android:layout_weight="1"
+                        android:layout_width="20dp"
+                        android:layout_gravity="center"
+                        android:layout_height="20dp"
+                        android:src="@drawable/neighbot_message"/>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/main_ll_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/square_background"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/main_ll_1"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_margin="6dp"
+                        android:src="@drawable/neighbor2" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:gravity="center_vertical"
+                        android:text="Дмитрий"
+                        android:textColor="@color/main_dark"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/main_dark"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:text="Кв.43"/>
+
+                    <View
+                        android:background="@color/main_dark"
+                        android:layout_width="1dp"
+                        android:layout_height="20dp"/>
+
+                    <ImageView
+                        android:layout_weight="1"
+                        android:layout_width="20dp"
+                        android:layout_gravity="center"
+                        android:layout_height="20dp"
+                        android:src="@drawable/neighbot_message"/>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <!--And finally this is the body of the backdrop's content. You can add here whatever you need inside a view group (LinearLayout, RelativeLayout, SwipeRefreshLayout, ConstraintLayout, etc.)-->
-        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-        <!--            android:id="@+id/swiperefresh"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent">-->
+        &lt;!&ndash;This is the backdrop's content with a BottomSheetBehaviour applied to it&ndash;&gt;
+        <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:behavior_peekHeight="256dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <!--            <androidx.recyclerview.widget.RecyclerView-->
-        <!--                android:id="@+id/rv_events"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="match_parent"-->
-        <!--                android:orientation="vertical"-->
-        <!--                app:behavior_hideable="true"-->
-        <!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--                app:layout_constraintEnd_toEndOf="parent"-->
-        <!--                app:layout_constraintStart_toStartOf="parent"-->
-        <!--                app:layout_constraintTop_toTopOf="parent"-->
-        <!--                tools:listitem="@layout/item_event" />-->
+            &lt;!&ndash;This is the backdrop's header with a title and icon&ndash;&gt;
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/main_bottom_sheet">
 
-        <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-        <!--                android:id="@+id/fab_add_event"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_margin="16dp"-->
-        <!--                android:clickable="true"-->
-        <!--                android:contentDescription="@string/fab_add_event_content_desc"-->
-        <!--                android:focusable="true"-->
-        <!--                android:src="@android:drawable/ic_input_add"-->
-        <!--                android:visibility="gone"-->
-        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--                app:layout_constraintEnd_toEndOf="parent" />-->
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Список чатов"
+                    android:textColor="@color/main_dark"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/round_shape_main_color"
+                    android:src="@drawable/add_chat"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView6" />
 
 
-        <!--            &lt;!&ndash;The content's body goes here&ndash;&gt;-->
-        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-    </LinearLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_chats"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    app:behavior_hideable="true"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView6"
+                    tools:listitem="@layout/item_chat" />
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            &lt;!&ndash;And finally this is the body of the backdrop's content. You can add here whatever you need inside a view group (LinearLayout, RelativeLayout, SwipeRefreshLayout, ConstraintLayout, etc.)&ndash;&gt;
+            &lt;!&ndash;        <androidx.constraintlayout.widget.ConstraintLayout&ndash;&gt;
+            &lt;!&ndash;            android:id="@+id/swiperefresh"&ndash;&gt;
+            &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;
+            &lt;!&ndash;            android:layout_height="match_parent">&ndash;&gt;
+
+            &lt;!&ndash;            <androidx.recyclerview.widget.RecyclerView&ndash;&gt;
+            &lt;!&ndash;                android:id="@+id/rv_events"&ndash;&gt;
+            &lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;
+            &lt;!&ndash;                android:layout_height="match_parent"&ndash;&gt;
+            &lt;!&ndash;                android:orientation="vertical"&ndash;&gt;
+            &lt;!&ndash;                app:behavior_hideable="true"&ndash;&gt;
+            &lt;!&ndash;                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"&ndash;&gt;
+            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;
+            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;
+            &lt;!&ndash;                app:layout_constraintStart_toStartOf="parent"&ndash;&gt;
+            &lt;!&ndash;                app:layout_constraintTop_toTopOf="parent"&ndash;&gt;
+            &lt;!&ndash;                tools:listitem="@layout/item_event" />&ndash;&gt;
+
+            &lt;!&ndash;            <com.google.android.material.floatingactionbutton.FloatingActionButton&ndash;&gt;
+            &lt;!&ndash;                android:id="@+id/fab_add_event"&ndash;&gt;
+            &lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;
+            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;
+            &lt;!&ndash;                android:layout_margin="16dp"&ndash;&gt;
+            &lt;!&ndash;                android:clickable="true"&ndash;&gt;
+            &lt;!&ndash;                android:contentDescription="@string/fab_add_event_content_desc"&ndash;&gt;
+            &lt;!&ndash;                android:focusable="true"&ndash;&gt;
+            &lt;!&ndash;                android:src="@android:drawable/ic_input_add"&ndash;&gt;
+            &lt;!&ndash;                android:visibility="gone"&ndash;&gt;
+            &lt;!&ndash;                app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;
+            &lt;!&ndash;                app:layout_constraintEnd_toEndOf="parent" />&ndash;&gt;
+
+
+            &lt;!&ndash;            &lt;!&ndash;The content's body goes here&ndash;&gt;&ndash;&gt;
+            &lt;!&ndash;        </androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    -->

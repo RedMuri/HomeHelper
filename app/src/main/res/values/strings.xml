@@ -29,4 +29,6 @@
     <string name="settings_button_content_desc">Settings</string>
 
     <string name="services_fr_services_title">Тарифы</string>
+    <string name="chats_list_fr_neighbors">Мои соседи</string>
+    <string name="chats_list_fr_bottom_title">Список чатов</string>
 </resources>

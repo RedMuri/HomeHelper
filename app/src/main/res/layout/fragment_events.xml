@@ -94,14 +94,11 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/MainSmallText"
             android:layout_margin="@dimen/margin_default"
             android:clickable="true"
             android:focusable="true"
             android:text="@string/events_fr_more"
-            android:textColor="@color/white"
-            android:textSize="@dimen/main_more_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="@id/gl_v2"
             app:layout_constraintTop_toTopOf="@+id/textView" />

@@ -12,8 +12,8 @@
     <string name="fab_add_event_content_desc">add_event</string>
     <string name="edit_text_message">Введите сообщение…</string>
     <string name="chat_image_content_desc">image_message</string>
-
     <string name="search_view_hint">Поиск…</string>
+
     <string name="events_fr_services_title">Сервисы</string>
     <string name="events_fr_more"><![CDATA[Ещё ->]]></string>
     <string name="events_fr_total_sum">Всего к оплате</string>
@@ -27,4 +27,6 @@
     <string name="search_icon_content_desc">Search icon</string>
     <string name="bell_button_content_desc">Bell</string>
     <string name="settings_button_content_desc">Settings</string>
+
+    <string name="services_fr_services_title">Тарифы</string>
 </resources>

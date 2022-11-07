@@ -44,6 +44,13 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="MainSmallText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/main_more_text_size</item>
+    </style>
+
     <style name="MainTitleBottom">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -98,6 +105,15 @@
         <item name="android:paddingBottom">@dimen/events_fr_filter_padding_v</item>
         <item name="android:textColor">@color/main_dark</item>
         <item name="android:textSize">@dimen/events_fr_service_description</item>
+    </style>
+
+    <style name="MainRoundImageButtonWhite">
+        <item name="android:layout_width">28dp</item>
+        <item name="android:layout_height">28dp</item>
+        <item name="android:background">@drawable/circle_background_main_color_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
     </style>
 
 </resources>

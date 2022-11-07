@@ -18,14 +18,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.03" />
+            app:layout_constraintGuide_percent="@dimen/main_vertical_gl_left" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.97" />
+            app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
+
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrier_max_height"
@@ -44,46 +45,43 @@
             android:id="@+id/searchView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
+            android:layout_marginVertical="@dimen/margin_default"
             android:background="@drawable/search_view_rounded"
-            android:hint="Search..."
             android:orientation="horizontal"
-            app:iconifiedByDefault="false"
             app:layout_constraintBottom_toBottomOf="@id/barrier_max_height"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="@id/gl_v1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:searchIcon="@drawable/search_icon">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="@dimen/search_icon_margin"
                 android:src="@drawable/search_icon" />
 
             <EditText
                 android:id="@+id/searchViewEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:singleLine="true"
+                android:layout_margin="@dimen/margin_default"
                 android:layout_weight="1"
                 android:background="@drawable/search_view_rounded"
-                android:hint="Поиск..."
-                android:orientation="horizontal" />
+                android:hint="@string/search_view_hint"
+                android:orientation="horizontal"
+                android:singleLine="true" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/imageButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/margin_default"
             android:background="@drawable/circle_background_ripple"
             android:clickable="true"
             android:focusable="true"
-            android:padding="8dp"
+            android:padding="@dimen/padding_default"
             android:src="@drawable/main_bell"
             app:layout_constraintBottom_toBottomOf="@id/searchView"
             app:layout_constraintDimensionRatio="1:1"
@@ -95,10 +93,10 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Сервисы"
+            android:layout_margin="@dimen/margin_default"
+            android:text="@string/events_fr_services_title"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="@dimen/main_title_text_size"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/gl_v1"
             app:layout_constraintTop_toBottomOf="@+id/searchView" />
@@ -107,12 +105,12 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/margin_default"
             android:clickable="true"
             android:focusable="true"
-            android:text="Ещё ->"
+            android:text="@string/events_fr_more"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/main_more_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="@id/gl_v2"
             app:layout_constraintTop_toTopOf="@+id/textView" />
@@ -121,10 +119,10 @@
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginVertical="8dp"
+            android:layout_marginVertical="@dimen/margin_default"
             android:background="@drawable/square_background"
             android:orientation="vertical"
-            android:padding="8dp"
+            android:padding="@dimen/padding_default"
             app:layout_constraintDimensionRatio="3:1"
             app:layout_constraintEnd_toEndOf="@id/main_ll_3"
             app:layout_constraintStart_toStartOf="@id/main_ll_1"
@@ -135,21 +133,22 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginHorizontal="@dimen/margin_default"
+                android:layout_marginTop="@dimen/margin_default"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="8 935, 48 ₽"
                 android:textColor="@color/main_dark"
-                android:textSize="30sp" />
+                android:textSize="@dimen/main_sum_text_size" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="@dimen/margin_default"
                 android:layout_weight="1"
-                android:text="Всего к оплате"
+                android:text="@string/events_fr_total_sum"
                 android:textColor="@color/main_dark" />
         </LinearLayout>
 
@@ -157,34 +156,34 @@
             android:id="@+id/main_ll_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/margin_default"
             android:background="@drawable/square_background_ripple"
             android:clickable="true"
+            android:focusable="true"
             android:orientation="vertical"
-            android:padding="8dp"
+            android:padding="@dimen/padding_default"
             app:layout_constraintBottom_toBottomOf="@id/barrier_peek_height"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@id/main_ll_2"
             app:layout_constraintStart_toStartOf="@id/gl_v1"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            android:focusable="true">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <ImageView
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:layout_margin="8dp"
+                android:layout_width="@dimen/events_fr_service_icon"
+                android:layout_height="@dimen/events_fr_service_icon"
+                android:layout_margin="@dimen/margin_default"
                 android:layout_weight="1"
                 android:src="@drawable/main_service1" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="@dimen/margin_default"
                 android:layout_weight="1"
                 android:gravity="bottom"
-                android:text="Оплата счетов"
+                android:text="@string/events_fr_service_1"
                 android:textColor="@color/main_dark"
-                android:textSize="12sp" />
+                android:textSize="@dimen/events_fr_service_description" />
         </LinearLayout>
 
 
@@ -196,7 +195,7 @@
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical"
-            android:padding="8dp"
+            android:padding="@dimen/padding_default"
             app:layout_constraintBottom_toBottomOf="@id/main_ll_1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@id/main_ll_3"
@@ -204,32 +203,31 @@
             app:layout_constraintTop_toTopOf="@id/main_ll_1">
 
             <ImageView
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:layout_margin="6dp"
+                android:layout_width="@dimen/events_fr_service_icon"
+                android:layout_height="@dimen/events_fr_service_icon"
+                android:layout_margin="@dimen/margin_default"
                 android:src="@drawable/main_service2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="6dp"
-                android:layout_marginBottom="6dp"
+                android:layout_margin="@dimen/margin_default"
                 android:gravity="bottom"
-                android:text="Получить квитанцию"
+                android:text="@string/events_fr_service_2"
                 android:textColor="@color/main_dark"
-                android:textSize="12sp" />
+                android:textSize="@dimen/events_fr_service_description" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/main_ll_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="8dp"
+            android:layout_marginHorizontal="@dimen/margin_default"
             android:background="@drawable/square_background_ripple"
             android:clickable="true"
             android:focusable="true"
             android:orientation="vertical"
-            android:padding="8dp"
+            android:padding="@dimen/padding_default"
             app:layout_constraintBottom_toBottomOf="@id/main_ll_1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="@+id/gl_v2"
@@ -237,36 +235,31 @@
             app:layout_constraintTop_toTopOf="@id/main_ll_1">
 
             <ImageView
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:layout_margin="6dp"
+                android:layout_width="@dimen/events_fr_service_icon"
+                android:layout_height="@dimen/events_fr_service_icon"
+                android:layout_margin="@dimen/margin_default"
                 android:src="@drawable/main_service3" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="6dp"
-                android:layout_marginBottom="6dp"
+                android:layout_margin="@dimen/margin_default"
                 android:gravity="bottom"
-                android:text="Показания счётчиков"
+                android:text="@string/events_fr_service_3"
                 android:textColor="@color/main_dark"
-                android:textSize="12sp" />
+                android:textSize="@dimen/events_fr_service_description" />
         </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <!--This is the backdrop's content with a BottomSheetBehaviour applied to it-->
-
-    <!--This is the backdrop's header with a title and icon-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contentLayout"
         android:layout_width="match_parent"
-        android:layout_height="582dp"
+        android:layout_height="match_parent"
         android:background="@drawable/main_bottom_sheet"
-        android:maxHeight="600dp"
-        app:behavior_peekHeight="52dp"
+        android:maxHeight="500dp"
+        app:behavior_peekHeight="300dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <androidx.constraintlayout.widget.Guideline
@@ -274,31 +267,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.03" />
+            app:layout_constraintGuide_percent="@dimen/main_vertical_gl_left" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v2_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.97" />
+            app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="@dimen/margin_default"
+            android:layout_marginTop="@dimen/events_fr_margin_ad"
             android:text="Объявления"
             android:textColor="@color/main_dark"
-            android:textSize="24sp"
+            android:textSize="@dimen/main_title_text_size"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="@dimen/square_icon_size"
+            android:layout_height="@dimen/square_icon_size"
             android:background="@drawable/square_little_background_ripple"
             android:clickable="true"
             android:focusable="true"
@@ -312,15 +305,15 @@
             android:id="@+id/tv_filter_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/margin_default"
             android:background="@drawable/main_bottom_filter_black"
             android:clickable="true"
             android:focusable="true"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="4dp"
-            android:text="Все"
+            android:paddingHorizontal="@dimen/events_fr_filter_padding_h"
+            android:paddingVertical="@dimen/events_fr_filter_padding_v"
+            android:text="@string/events_fr_filter_1"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="@dimen/events_fr_service_description"
             app:layout_constraintEnd_toStartOf="@id/tv_filter_2"
             app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
             app:layout_constraintTop_toBottomOf="@id/textView6" />
@@ -332,10 +325,10 @@
             android:background="@drawable/main_bottom_filter"
             android:clickable="true"
             android:focusable="true"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="4dp"
-            android:text="@string/some"
-            android:textSize="12sp"
+            android:paddingHorizontal="@dimen/events_fr_filter_padding_h"
+            android:paddingVertical="@dimen/events_fr_filter_padding_v"
+            android:text="@string/events_fr_filter_2"
+            android:textSize="@dimen/events_fr_service_description"
             app:layout_constraintBottom_toBottomOf="@id/tv_filter_1"
             app:layout_constraintEnd_toStartOf="@id/tv_filter_3"
             app:layout_constraintStart_toEndOf="@id/tv_filter_1"
@@ -349,10 +342,10 @@
             android:background="@drawable/main_bottom_filter"
             android:clickable="true"
             android:focusable="true"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="4dp"
-            android:text="Жильцы"
-            android:textSize="12sp"
+            android:paddingHorizontal="@dimen/events_fr_filter_padding_h"
+            android:paddingVertical="@dimen/events_fr_filter_padding_v"
+            android:text="@string/events_fr_filter_3"
+            android:textSize="@dimen/events_fr_service_description"
             app:layout_constraintBottom_toBottomOf="@+id/tv_filter_1"
             app:layout_constraintStart_toEndOf="@id/tv_filter_2"
             app:layout_constraintTop_toTopOf="@+id/tv_filter_1" />
@@ -360,38 +353,18 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_events"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_default"
             app:behavior_hideable="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="@id/gl_v2_bottom"
             app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
             app:layout_constraintTop_toBottomOf="@id/tv_filter_1"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_event" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <!--And finally this is the body of the backdrop's content. You can add here whatever you need inside a view group (LinearLayout, RelativeLayout, SwipeRefreshLayout, ConstraintLayout, etc.)-->
-    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--            android:id="@+id/swiperefresh"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent">-->
-
-    <!--            <androidx.recyclerview.widget.RecyclerView-->
-    <!--                android:id="@+id/rv_events"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="match_parent"-->
-    <!--                android:orientation="vertical"-->
-    <!--                app:behavior_hideable="true"-->
-    <!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--                app:layout_constraintEnd_toEndOf="parent"-->
-    <!--                app:layout_constraintStart_toStartOf="parent"-->
-    <!--                app:layout_constraintTop_toTopOf="parent"-->
-    <!--                tools:listitem="@layout/item_event" />-->
 
     <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
     <!--                android:id="@+id/fab_add_event"-->

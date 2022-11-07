@@ -8,9 +8,16 @@ import android.view.ViewGroup
 import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentEventsBinding
 import com.example.homehelper.databinding.FragmentServicesBinding
+import com.example.homehelper.presentation.adapters.events.AdapterEvents
+import com.example.homehelper.presentation.adapters.services.AdapterServices
+import com.example.homehelper.presentation.adapters.services.Service
 import com.example.homehelper.presentation.screens.ServiceActivity
 
 class ServicesFragment : Fragment() {
+
+    private val adapterServices by lazy {
+        AdapterServices()
+    }
 
     private var _binding: FragmentServicesBinding? = null
     private val binding: FragmentServicesBinding
@@ -31,18 +38,29 @@ class ServicesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.cvService1.setOnClickListener {
-            startActivity(ServiceActivity.newInstance(requireActivity().application,
-                ServiceActivity.SERVICE_PAYMENTS))
-        }
-        binding.cvService2.setOnClickListener {
-            startActivity(ServiceActivity.newInstance(requireActivity().application,
-                ServiceActivity.SERVICE_BILLS))
-        }
-        binding.cvService3.setOnClickListener {
-            startActivity(ServiceActivity.newInstance(requireActivity().application,
-                ServiceActivity.SERVICE_METERS))
-        }
+        setupRecyclerView()
+//        binding.cvService1.setOnClickListener {
+//            startActivity(ServiceActivity.newInstance(requireActivity().application,
+//                ServiceActivity.SERVICE_PAYMENTS))
+//        }
+//        binding.cvService2.setOnClickListener {
+//            startActivity(ServiceActivity.newInstance(requireActivity().application,
+//                ServiceActivity.SERVICE_BILLS))
+//        }
+//        binding.cvService3.setOnClickListener {
+//            startActivity(ServiceActivity.newInstance(requireActivity().application,
+//                ServiceActivity.SERVICE_METERS))
+//        }
+    }
+
+    private fun setupRecyclerView() {
+        binding.rvServices.adapter = adapterServices
+        val services = listOf(
+            Service(R.drawable.main_service1, "Оплата счетов"),
+            Service(R.drawable.main_service2, "Квитанции"),
+            Service(R.drawable.main_service3, "Показания счётчиков"),
+        )
+        adapterServices.submitList(services)
     }
 
     companion object {

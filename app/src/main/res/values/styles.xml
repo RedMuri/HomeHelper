@@ -8,4 +8,31 @@
     <style name="Button.Main" parent="ThemeOverlay.AppCompat">
         <item name="colorPrimary">#D2FFFFFF</item>
     </style>
+
+    <style name="EventsFragmentServiceIcon">
+        <item name="android:layout_width">@dimen/events_fr_service_icon</item>
+        <item name="android:layout_height">@dimen/events_fr_service_icon</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+    </style>
+
+    <style name="EventsFragmentServiceDescription">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/events_fr_service_description</item>
+    </style>
+
+    <style name="EventsFragmentServiceLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">@drawable/square_background_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/padding_default</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+    </style>
+
 </resources>

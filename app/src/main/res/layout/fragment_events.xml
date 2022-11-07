@@ -154,100 +154,56 @@
 
         <LinearLayout
             android:id="@+id/main_ll_1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            style="@style/EventsFragmentServiceLayout"
             android:layout_margin="@dimen/margin_default"
-            android:background="@drawable/square_background_ripple"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_default"
             app:layout_constraintBottom_toBottomOf="@id/barrier_peek_height"
-            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@id/main_ll_2"
             app:layout_constraintStart_toStartOf="@id/gl_v1"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <ImageView
-                android:layout_width="@dimen/events_fr_service_icon"
-                android:layout_height="@dimen/events_fr_service_icon"
-                android:layout_margin="@dimen/margin_default"
-                android:layout_weight="1"
+                style="@style/EventsFragmentServiceIcon"
                 android:src="@drawable/main_service1" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_default"
-                android:layout_weight="1"
-                android:gravity="bottom"
-                android:text="@string/events_fr_service_1"
-                android:textColor="@color/main_dark"
-                android:textSize="@dimen/events_fr_service_description" />
+                style="@style/EventsFragmentServiceDescription"
+                android:text="@string/events_fr_service_1" />
         </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/main_ll_2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/square_background_ripple"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_default"
+            style="@style/EventsFragmentServiceLayout"
             app:layout_constraintBottom_toBottomOf="@id/main_ll_1"
-            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@id/main_ll_3"
             app:layout_constraintStart_toEndOf="@id/main_ll_1"
             app:layout_constraintTop_toTopOf="@id/main_ll_1">
 
             <ImageView
-                android:layout_width="@dimen/events_fr_service_icon"
-                android:layout_height="@dimen/events_fr_service_icon"
-                android:layout_margin="@dimen/margin_default"
+                style="@style/EventsFragmentServiceIcon"
                 android:src="@drawable/main_service2" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_default"
-                android:gravity="bottom"
-                android:text="@string/events_fr_service_2"
-                android:textColor="@color/main_dark"
-                android:textSize="@dimen/events_fr_service_description" />
+                style="@style/EventsFragmentServiceDescription"
+                android:text="@string/events_fr_service_2" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/main_ll_3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            style="@style/EventsFragmentServiceLayout"
             android:layout_marginHorizontal="@dimen/margin_default"
-            android:background="@drawable/square_background_ripple"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_default"
             app:layout_constraintBottom_toBottomOf="@id/main_ll_1"
-            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="@+id/gl_v2"
             app:layout_constraintStart_toEndOf="@id/main_ll_2"
             app:layout_constraintTop_toTopOf="@id/main_ll_1">
 
             <ImageView
-                android:layout_width="@dimen/events_fr_service_icon"
-                android:layout_height="@dimen/events_fr_service_icon"
-                android:layout_margin="@dimen/margin_default"
+                style="@style/EventsFragmentServiceIcon"
                 android:src="@drawable/main_service3" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/margin_default"
-                android:gravity="bottom"
-                android:text="@string/events_fr_service_3"
-                android:textColor="@color/main_dark"
-                android:textSize="@dimen/events_fr_service_description" />
+                style="@style/EventsFragmentServiceDescription"
+                android:text="@string/events_fr_service_3" />
         </LinearLayout>
 
 
@@ -357,10 +313,10 @@
             android:layout_marginTop="@dimen/margin_default"
             app:behavior_hideable="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/gl_v2_bottom"
             app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
             app:layout_constraintTop_toBottomOf="@id/tv_filter_1"
-            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_event" />
 
 

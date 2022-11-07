@@ -18,6 +18,7 @@
     <style name="EventsFragmentServiceDescription">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:layout_margin">@dimen/margin_default</item>
         <item name="android:gravity">bottom</item>
         <item name="android:textColor">@color/main_dark</item>
@@ -108,12 +109,28 @@
     </style>
 
     <style name="MainRoundImageButtonWhite">
-        <item name="android:layout_width">28dp</item>
-        <item name="android:layout_height">28dp</item>
+        <item name="android:layout_width">@dimen/round_icon_size</item>
+        <item name="android:layout_height">@dimen/round_icon_size</item>
         <item name="android:background">@drawable/circle_background_main_color_ripple</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="layout_constraintDimensionRatio">1:1</item>
     </style>
 
+    <style name="ServicesFragmentTariffValue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/service_tariff_value</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ServicesFragmentLocationText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/main_light_dark</item>
+        <item name="android:textSize">@dimen/events_fr_service_description</item>
+    </style>
 </resources>

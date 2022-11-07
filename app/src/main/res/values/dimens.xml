@@ -7,11 +7,13 @@
     <dimen name="padding_default">8dp</dimen>
     <dimen name="search_icon_margin">18dp</dimen>
     <dimen name="main_title_text_size">24sp</dimen>
+    <dimen name="service_tariff_value">14sp</dimen>
     <dimen name="main_more_text_size">14sp</dimen>
     <dimen name="main_sum_text_size">30sp</dimen>
     <dimen name="events_fr_service_icon">27dp</dimen>
     <dimen name="events_fr_service_description">12sp</dimen>
     <dimen name="square_icon_size">35dp</dimen>
+    <dimen name="round_icon_size">28dp</dimen>
     <dimen name="events_fr_filter_padding_h">30dp</dimen>
     <dimen name="events_fr_filter_padding_v">4dp</dimen>
 </resources>

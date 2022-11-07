@@ -7,7 +7,7 @@
             <corners android:radius="80dp" />
             <stroke
                 android:width="2dp"
-                android:color="@color/grey" />
+                android:color="@color/main_light_dark" />
         </shape>
     </item>
 </ripple>

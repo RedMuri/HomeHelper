@@ -25,4 +25,5 @@
     <string name="events_fr_filter_1">Все</string>
     <string name="events_fr_filter_2">УК "Огонь"</string>
     <string name="events_fr_filter_3">Жильцы</string>
+    <string name="events_fr_bottom_title">Объявления</string>
 </resources>

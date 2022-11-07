@@ -35,4 +35,69 @@
         <item name="layout_constraintDimensionRatio">1:1</item>
     </style>
 
+    <style name="MainTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/main_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MainTitleBottom">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/main_bottom_title_margin_top</item>
+        <item name="android:layout_marginStart">@dimen/margin_default</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/main_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MainRoundImageButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">@drawable/circle_background_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:padding">@dimen/padding_default</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+    </style>
+
+    <style name="MainSquareImageButton">
+        <item name="android:layout_width">@dimen/square_icon_size</item>
+        <item name="android:layout_height">@dimen/square_icon_size</item>
+        <item name="android:background">@drawable/square_little_background_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="EventsFragmentBottomFilterOn">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/main_bottom_filter_black</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:paddingStart">@dimen/events_fr_filter_padding_h</item>
+        <item name="android:paddingEnd">@dimen/events_fr_filter_padding_h</item>
+        <item name="android:paddingTop">@dimen/events_fr_filter_padding_v</item>
+        <item name="android:paddingBottom">@dimen/events_fr_filter_padding_v</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/events_fr_service_description</item>
+    </style>
+
+    <style name="EventsFragmentBottomFilterOff">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/main_bottom_filter</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:paddingStart">@dimen/events_fr_filter_padding_h</item>
+        <item name="android:paddingEnd">@dimen/events_fr_filter_padding_h</item>
+        <item name="android:paddingTop">@dimen/events_fr_filter_padding_v</item>
+        <item name="android:paddingBottom">@dimen/events_fr_filter_padding_v</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/events_fr_service_description</item>
+    </style>
+
 </resources>

@@ -3,7 +3,7 @@
     <dimen name="main_vertical_gl_left" type="dimen">0.03</dimen>
     <dimen name="main_vertical_gl_right" type="dimen">0.97</dimen>
     <dimen name="margin_default">8dp</dimen>
-    <dimen name="events_fr_margin_ad">18dp</dimen>
+    <dimen name="main_bottom_title_margin_top">18dp</dimen>
     <dimen name="padding_default">8dp</dimen>
     <dimen name="search_icon_margin">18dp</dimen>
     <dimen name="main_title_text_size">24sp</dimen>

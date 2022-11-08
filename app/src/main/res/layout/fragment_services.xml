@@ -90,7 +90,7 @@
             style="@style/MainTitle"
             android:text="@string/services_fr_services_title"
             app:layout_constraintStart_toStartOf="@id/gl_v1"
-            app:layout_constraintTop_toBottomOf="@+id/searchView" />
+            app:layout_constraintTop_toBottomOf="@+id/barrier_max_height" />
 
         <ImageView
             android:id="@+id/refresh"

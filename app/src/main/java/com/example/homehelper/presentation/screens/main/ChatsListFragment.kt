@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.homehelper.databinding.FragmentChatListBinding
+import com.example.homehelper.databinding.FragmentChatsListBinding
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.chats.AdapterChats
 import com.example.homehelper.presentation.screens.chats.ChatActivity
@@ -35,9 +35,9 @@ class ChatsListFragment : Fragment() {
         AdapterChats()
     }
 
-    private var _binding: FragmentChatListBinding? = null
-    private val binding: FragmentChatListBinding
-        get() = _binding ?: throw RuntimeException("FragmentChatListBinding = null!")
+    private var _binding: FragmentChatsListBinding? = null
+    private val binding: FragmentChatsListBinding
+        get() = _binding ?: throw RuntimeException("FragmentChatsListBinding = null!")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)
@@ -48,7 +48,7 @@ class ChatsListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentChatListBinding.inflate(inflater, container, false)
+        _binding = FragmentChatsListBinding.inflate(inflater, container, false)
         return binding.root
     }
 

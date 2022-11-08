@@ -90,7 +90,7 @@
             style="@style/MainTitle"
             android:text="@string/events_fr_services_title"
             app:layout_constraintStart_toStartOf="@id/gl_v1"
-            app:layout_constraintTop_toBottomOf="@+id/searchView" />
+            app:layout_constraintTop_toBottomOf="@+id/barrier_max_height" />
 
         <TextView
             android:id="@+id/textView2"
@@ -133,7 +133,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:layout_marginBottom="@dimen/margin_default"
                 android:layout_weight="1"
                 android:text="@string/events_fr_total_sum"

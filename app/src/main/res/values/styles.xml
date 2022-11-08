@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Button.MailAdditional" parent="ThemeOverlay.AppCompat">
-        <item name="colorPrimary">@color/main_additional</item>
-    </style>
-
     <style name="Button.Main" parent="ThemeOverlay.AppCompat">
         <item name="colorPrimary">#D2FFFFFF</item>
     </style>
+
+    <style name="ThemeButtonPay" parent="ThemeOverlay.AppCompat">
+        <item name="colorPrimary">@color/main_additional</item>
+    </style>
+
+
 
     <style name="EventsFragmentServiceIcon">
         <item name="android:layout_width">@dimen/events_fr_service_icon</item>
@@ -62,9 +64,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="MainRoundImageButton">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item>
+    <style name="PaymentsRoundImageButtonWhite">
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
         <item name="android:background">@drawable/circle_background_ripple</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
@@ -78,6 +80,18 @@
         <item name="android:background">@drawable/square_little_background_ripple</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
+    </style>
+
+    <style name="ButtonPay">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_default</item>
+        <item name="android:layout_marginBottom">@dimen/margin_default</item>
+        <item name="android:background">@drawable/bt_pay_background</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/main_button_text</item>
+        <item name="android:theme">@style/ThemeButtonPay</item>
     </style>
 
     <style name="EventsFragmentBottomFilterOn">
@@ -108,12 +122,31 @@
         <item name="android:textSize">@dimen/events_fr_service_description</item>
     </style>
 
-    <style name="MainRoundImageButtonWhite">
+    <style name="MainRoundImageButton">
         <item name="android:layout_width">@dimen/round_icon_size</item>
         <item name="android:layout_height">@dimen/round_icon_size</item>
         <item name="android:background">@drawable/circle_background_main_color_ripple</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+    </style>
+
+    <style name="MainRoundImageButtonFixed">
+        <item name="android:layout_width">@dimen/round_icon_size</item>
+        <item name="android:layout_height">@dimen/round_icon_size</item>
+        <item name="android:background">@drawable/circle_background_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+    </style>
+
+    <style name="MainRoundImageButtonWhite">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">@drawable/circle_background_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:padding">@dimen/padding_default</item>
         <item name="layout_constraintDimensionRatio">1:1</item>
     </style>
 

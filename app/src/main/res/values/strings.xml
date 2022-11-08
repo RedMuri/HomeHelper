@@ -31,4 +31,5 @@
     <string name="services_fr_services_title">Тарифы</string>
     <string name="chats_list_fr_neighbors">Мои соседи</string>
     <string name="chats_list_fr_bottom_title">Список чатов</string>
+    <string name="payments_fr_bottom_title">История</string>
 </resources>

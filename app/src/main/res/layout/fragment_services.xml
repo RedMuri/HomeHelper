@@ -76,7 +76,7 @@
 
         <ImageView
             android:id="@+id/imageButton"
-            style="@style/MainRoundImageButton"
+            style="@style/MainRoundImageButtonWhite"
             android:layout_marginStart="@dimen/margin_default"
             android:contentDescription="@string/bell_button_content_desc"
             android:src="@drawable/main_bell"
@@ -94,7 +94,7 @@
 
         <ImageView
             android:id="@+id/refresh"
-            style="@style/MainRoundImageButtonWhite"
+            style="@style/MainRoundImageButton"
             android:layout_margin="@dimen/margin_default"
             android:src="@drawable/refresh_servicessvg"
             app:layout_constraintBottom_toBottomOf="@+id/textView5"

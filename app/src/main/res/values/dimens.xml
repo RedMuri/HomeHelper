@@ -8,9 +8,11 @@
     <dimen name="margin_default">8dp</dimen>
     <dimen name="main_bottom_title_margin_top">18dp</dimen>
     <dimen name="padding_default">8dp</dimen>
+    <dimen name="padding_bt">30dp</dimen>
     <dimen name="search_icon_margin">18dp</dimen>
     <dimen name="main_title_ts">24sp</dimen>
     <dimen name="main_button_ts">18sp</dimen>
+    <dimen name="bills_fr_bt_pay_ts">14sp</dimen>
     <dimen name="service_tariff_value_ts">14sp</dimen>
     <dimen name="main_more_ts">14sp</dimen>
     <dimen name="events_fr_sum_ts">30sp</dimen>

@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import com.example.homehelper.R
-import com.example.homehelper.databinding.FragmentEventsBinding
 import com.example.homehelper.databinding.FragmentServicesBinding
-import com.example.homehelper.presentation.adapters.events.AdapterEvents
 import com.example.homehelper.presentation.adapters.services.AdapterServices
 import com.example.homehelper.presentation.adapters.services.Service
-import com.example.homehelper.presentation.screens.ServiceActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class ServicesFragment : Fragment() {

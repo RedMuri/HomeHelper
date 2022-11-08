@@ -14,7 +14,7 @@
         android:theme="@style/Theme.HomeHelper"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.screens.ServiceActivity"
+            android:name=".presentation.screens.services.ServiceActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

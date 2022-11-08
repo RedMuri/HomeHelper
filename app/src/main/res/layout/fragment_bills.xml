@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.screens.BillsFragment">
+    tools:context=".presentation.screens.services.BillsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/front_layout"
@@ -103,9 +103,19 @@
                 android:layout_marginBottom="@dimen/margin_default"
                 android:text="@string/events_fr_total_sum"
                 android:textColor="@color/main_dark"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/bt_pay"
                 app:layout_constraintStart_toStartOf="@+id/textView3"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <Button
+                android:id="@+id/bt_pay"
+                style="@style/BillsFragmentButtonPay"
+                android:text="@string/payments_fr_button_pay"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@id/textView4" />
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -156,7 +166,7 @@
             android:id="@+id/rv_bills_history"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginVertical="@dimen/margin_default"
             app:behavior_hideable="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"

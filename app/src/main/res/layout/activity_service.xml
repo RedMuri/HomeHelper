@@ -5,6 +5,6 @@
     android:id="@+id/service_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.screens.ServiceActivity">
+    tools:context=".presentation.screens.services.ServiceActivity">
 
 </androidx.fragment.app.FragmentContainerView>

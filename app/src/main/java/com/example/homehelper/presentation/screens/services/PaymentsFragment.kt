@@ -1,31 +1,32 @@
-package com.example.homehelper.presentation.screens
+package com.example.homehelper.presentation.screens.services
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import androidx.fragment.app.Fragment
-import com.example.homehelper.databinding.FragmentBillsBinding
-import com.example.homehelper.presentation.adapters.bills_history.AdapterBillsHistory
-import com.example.homehelper.presentation.adapters.bills_history.BillHistory
+import com.example.homehelper.databinding.FragmentPaymentsBinding
+import com.example.homehelper.presentation.adapters.payments.AdapterPayments
+import com.example.homehelper.presentation.adapters.payments.Payment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class BillsFragment : Fragment() {
+class PaymentsFragment : Fragment() {
 
-    private val adapterBillHistory by lazy {
-        AdapterBillsHistory()
+    private val adapterPayments by lazy {
+        AdapterPayments()
     }
 
-    private var _binding: FragmentBillsBinding? = null
-    private val binding: FragmentBillsBinding
-        get() = _binding ?: throw RuntimeException("FragmentBillsBinding = null!")
+    private var _binding: FragmentPaymentsBinding? = null
+    private val binding: FragmentPaymentsBinding
+        get() = _binding ?: throw RuntimeException("FragmentPaymentsBinding = null!")
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentBillsBinding.inflate(inflater, container, false)
+        _binding = FragmentPaymentsBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -67,24 +68,23 @@ class BillsFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        binding.rvBillsHistory.adapter = adapterBillHistory
+        binding.rvPayments.adapter = adapterPayments
         val payments = listOf(
-            BillHistory(1, "28.10.2022"),
-            BillHistory(2, "28.10.2022"),
-            BillHistory(3, "28.10.2022"),
-            BillHistory(4, "28.10.2022"),
-            BillHistory(5, "28.10.2022"),
-            BillHistory(6, "28.10.2022"),
-            BillHistory(7, "28.10.2022"),
-            BillHistory(8, "28.10.2022")
+            Payment(1,"28.10.2022","-4113,92P"),
+            Payment(2,"28.10.2022","-4113,92P"),
+            Payment(3,"28.10.2022","-4113,92P"),
+            Payment(4,"28.10.2022","-4113,92P"),
+            Payment(5,"28.10.2022","-4113,92P"),
+            Payment(6,"28.10.2022","-4113,92P"),
+            Payment(7,"28.10.2022","-4113,92P"),
+            Payment(8,"28.10.2022","-4113,92P")
         )
-        adapterBillHistory.submitList(payments)
+        adapterPayments.submitList(payments)
     }
 
     companion object {
 
         fun newInstance() =
-            BillsFragment()
-
+            PaymentsFragment()
     }
 }

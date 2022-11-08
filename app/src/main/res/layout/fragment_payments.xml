@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.screens.PaymentsFragment">
+    tools:context=".presentation.screens.services.PaymentsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/front_layout"
@@ -128,7 +128,7 @@
 
         <Button
             android:id="@+id/bt_pay"
-            style="@style/ButtonPay"
+            style="@style/PaymentsFragmentButtonPay"
             android:text="@string/payments_fr_button_pay"
             app:layout_constraintBottom_toBottomOf="@id/barrier_peek_height"
             app:layout_constraintEnd_toEndOf="@id/linearLayout"
@@ -182,7 +182,7 @@
             android:id="@+id/rv_payments"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginVertical="@dimen/margin_default"
             app:behavior_hideable="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"

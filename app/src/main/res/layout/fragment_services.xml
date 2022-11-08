@@ -215,7 +215,7 @@
             android:id="@+id/rv_services"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginVertical="@dimen/margin_default"
             app:behavior_hideable="true"
             tools:listitem="@layout/item_service"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

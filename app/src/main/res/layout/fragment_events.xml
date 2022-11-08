@@ -268,7 +268,7 @@
             android:id="@+id/rv_events"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginVertical="@dimen/margin_default"
             app:behavior_hideable="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"

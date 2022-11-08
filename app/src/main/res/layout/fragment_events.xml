@@ -76,7 +76,7 @@
 
         <ImageView
             android:id="@+id/imageButton"
-            style="@style/MainRoundImageButton"
+            style="@style/MainRoundImageButtonWhite"
             android:layout_marginStart="@dimen/margin_default"
             android:contentDescription="@string/bell_button_content_desc"
             android:src="@drawable/main_bell"
@@ -90,7 +90,7 @@
             style="@style/MainTitle"
             android:text="@string/events_fr_services_title"
             app:layout_constraintStart_toStartOf="@id/gl_v1"
-            app:layout_constraintTop_toBottomOf="@+id/searchView" />
+            app:layout_constraintTop_toBottomOf="@+id/barrier_max_height" />
 
         <TextView
             android:id="@+id/textView2"
@@ -127,13 +127,13 @@
                 android:gravity="center_vertical"
                 android:text="8 935, 48 ₽"
                 android:textColor="@color/main_dark"
-                android:textSize="@dimen/main_sum_text_size" />
+                android:textSize="@dimen/events_fr_sum_ts" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
+                android:layout_marginHorizontal="@dimen/margin_default"
                 android:layout_marginBottom="@dimen/margin_default"
                 android:layout_weight="1"
                 android:text="@string/events_fr_total_sum"
@@ -268,7 +268,7 @@
             android:id="@+id/rv_events"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_default"
+            android:layout_marginVertical="@dimen/margin_default"
             app:behavior_hideable="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"

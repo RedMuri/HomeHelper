@@ -1,11 +1,10 @@
-package com.example.homehelper.presentation.screens
+package com.example.homehelper.presentation.screens.services
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.homehelper.R
-import com.example.homehelper.presentation.screens.main.ServicesFragment
 
 class ServiceActivity : AppCompatActivity() {
 
@@ -14,8 +13,12 @@ class ServiceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_service)
         val fragment = when (intent.getStringExtra(SERVICE_NAME)){
-            SERVICE_PAYMENTS -> {PaymentsFragment.newInstance()}
-            SERVICE_BILLS -> {BillsFragment.newInstance()}
+            SERVICE_PAYMENTS -> {
+                PaymentsFragment.newInstance()
+            }
+            SERVICE_BILLS -> {
+                BillsFragment.newInstance()
+            }
             else -> BillsFragment.newInstance()
         }
         supportFragmentManager.beginTransaction().replace(R.id.service_container, fragment).commit()

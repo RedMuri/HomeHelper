@@ -1,4 +1,4 @@
-package com.example.homehelper.domain.usecases
+package com.example.homehelper.domain.usecases.messages
 
 import com.example.homehelper.domain.FirebaseRepository
 import javax.inject.Inject

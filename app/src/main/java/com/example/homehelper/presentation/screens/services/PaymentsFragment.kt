@@ -1,4 +1,4 @@
-package com.example.homehelper.presentation.screens.main
+package com.example.homehelper.presentation.screens.services
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,28 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import com.example.homehelper.R
-import com.example.homehelper.databinding.FragmentServicesBinding
-import com.example.homehelper.presentation.adapters.services.AdapterServices
-import com.example.homehelper.presentation.adapters.services.Service
+import com.example.homehelper.databinding.FragmentPaymentsBinding
+import com.example.homehelper.presentation.adapters.payments.AdapterPayments
+import com.example.homehelper.presentation.adapters.payments.Payment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class ServicesFragment : Fragment() {
+class PaymentsFragment : Fragment() {
 
-    private val adapterServices by lazy {
-        AdapterServices()
+    private val adapterPayments by lazy {
+        AdapterPayments()
     }
 
-    private var _binding: FragmentServicesBinding? = null
-    private val binding: FragmentServicesBinding
-        get() = _binding ?: throw RuntimeException("FragmentServicesBinding = null!")
+    private var _binding: FragmentPaymentsBinding? = null
+    private val binding: FragmentPaymentsBinding
+        get() = _binding ?: throw RuntimeException("FragmentPaymentsBinding = null!")
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentServicesBinding.inflate(inflater, container, false)
+        _binding = FragmentPaymentsBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -35,18 +34,6 @@ class ServicesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupBottomSheet()
-//        binding.cvService1.setOnClickListener {
-//            startActivity(ServiceActivity.newInstance(requireActivity().application,
-//                ServiceActivity.SERVICE_PAYMENTS))
-//        }
-//        binding.cvService2.setOnClickListener {
-//            startActivity(ServiceActivity.newInstance(requireActivity().application,
-//                ServiceActivity.SERVICE_BILLS))
-//        }
-//        binding.cvService3.setOnClickListener {
-//            startActivity(ServiceActivity.newInstance(requireActivity().application,
-//                ServiceActivity.SERVICE_METERS))
-//        }
     }
 
     private fun setupBottomSheet() {
@@ -81,17 +68,23 @@ class ServicesFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        binding.rvServices.adapter = adapterServices
-        val services = listOf(
-            Service(R.drawable.main_service1, "Оплата счетов"),
-            Service(R.drawable.main_service2, "Квитанции"),
-            Service(R.drawable.main_service3, "Показания счётчиков"),
+        binding.rvPayments.adapter = adapterPayments
+        val payments = listOf(
+            Payment(1,"28.10.2022","-4113,92P"),
+            Payment(2,"28.10.2022","-4113,92P"),
+            Payment(3,"28.10.2022","-4113,92P"),
+            Payment(4,"28.10.2022","-4113,92P"),
+            Payment(5,"28.10.2022","-4113,92P"),
+            Payment(6,"28.10.2022","-4113,92P"),
+            Payment(7,"28.10.2022","-4113,92P"),
+            Payment(8,"28.10.2022","-4113,92P")
         )
-        adapterServices.submitList(services)
+        adapterPayments.submitList(payments)
     }
 
     companion object {
 
-        fun newInstance() = ServicesFragment()
+        fun newInstance() =
+            PaymentsFragment()
     }
 }

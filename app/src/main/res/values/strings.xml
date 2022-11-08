@@ -29,4 +29,12 @@
     <string name="settings_button_content_desc">Settings</string>
 
     <string name="services_fr_services_title">Тарифы</string>
+    <string name="chats_list_fr_neighbors">Мои соседи</string>
+    <string name="chats_list_fr_bottom_title">Список чатов</string>
+    <string name="payments_fr_bottom_title">История</string>
+    <string name="payments_fr_button_pay">Оплатить</string>
+    <string name="bills_fr_title">Квитанции</string>
+    <string name="payments_fr_title">Оплата счетов</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

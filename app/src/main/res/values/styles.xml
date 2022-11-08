@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Button.MailAdditional" parent="ThemeOverlay.AppCompat">
+    <style name="ThemeButtonMainColor" parent="ThemeOverlay.AppCompat">
+        <item name="colorPrimary">@color/main</item>
+    </style>
+
+    <style name="ThemeButtonAdditionalColor" parent="ThemeOverlay.AppCompat">
         <item name="colorPrimary">@color/main_additional</item>
     </style>
 
-    <style name="Button.Main" parent="ThemeOverlay.AppCompat">
-        <item name="colorPrimary">#D2FFFFFF</item>
-    </style>
+
 
     <style name="EventsFragmentServiceIcon">
         <item name="android:layout_width">@dimen/events_fr_service_icon</item>
         <item name="android:layout_height">@dimen/events_fr_service_icon</item>
         <item name="android:layout_margin">@dimen/margin_default</item>
+    </style>
+
+    <style name="BillHistoryIcon">
+        <item name="android:layout_width">@dimen/round_icon_size</item>
+        <item name="android:layout_height">@dimen/round_icon_size</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+    </style>
+
+    <style name="PaymentIcon">
+        <item name="android:layout_width">@dimen/payments_round_icon_size</item>
+        <item name="android:layout_height">@dimen/payments_round_icon_size</item>
     </style>
 
     <style name="EventsFragmentServiceDescription">
@@ -22,7 +35,17 @@
         <item name="android:layout_margin">@dimen/margin_default</item>
         <item name="android:gravity">bottom</item>
         <item name="android:textColor">@color/main_dark</item>
-        <item name="android:textSize">@dimen/events_fr_service_description</item>
+        <item name="android:textSize">@dimen/events_fr_service_description_ts</item>
+    </style>
+
+    <style name="BillsFragmentBillDate">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/bills_fr_bill_date_ts</item>
     </style>
 
     <style name="EventsFragmentServiceLayout">
@@ -41,7 +64,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/margin_default</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/main_title_text_size</item>
+        <item name="android:textSize">@dimen/main_title_ts</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -49,7 +72,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/main_more_text_size</item>
+        <item name="android:textSize">@dimen/main_more_ts</item>
     </style>
 
     <style name="MainTitleBottom">
@@ -58,13 +81,13 @@
         <item name="android:layout_marginTop">@dimen/main_bottom_title_margin_top</item>
         <item name="android:layout_marginStart">@dimen/margin_default</item>
         <item name="android:textColor">@color/main_dark</item>
-        <item name="android:textSize">@dimen/main_title_text_size</item>
+        <item name="android:textSize">@dimen/main_title_ts</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="MainRoundImageButton">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item>
+    <style name="PaymentsRoundImageButtonWhite">
+        <item name="android:layout_width">@dimen/payments_round_icon_size</item>
+        <item name="android:layout_height">@dimen/payments_round_icon_size</item>
         <item name="android:background">@drawable/circle_background_ripple</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
@@ -80,6 +103,31 @@
         <item name="android:focusable">true</item>
     </style>
 
+    <style name="PaymentsFragmentButtonPay">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_default</item>
+        <item name="android:layout_marginBottom">@dimen/margin_default</item>
+        <item name="android:background">@drawable/bt_pay_background</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/main_button_ts</item>
+        <item name="android:theme">@style/ThemeButtonAdditionalColor</item>
+    </style>
+
+    <style name="BillsFragmentButtonPay">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingEnd">@dimen/padding_bt</item>
+        <item name="android:paddingStart">@dimen/padding_bt</item>
+        <item name="android:layout_marginBottom">@dimen/margin_default</item>
+        <item name="android:background">@drawable/bt_pay_background</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/bills_fr_bt_pay_ts</item>
+        <item name="android:theme">@style/ThemeButtonMainColor</item>
+    </style>
+
     <style name="EventsFragmentBottomFilterOn">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -91,7 +139,7 @@
         <item name="android:paddingTop">@dimen/events_fr_filter_padding_v</item>
         <item name="android:paddingBottom">@dimen/events_fr_filter_padding_v</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/events_fr_service_description</item>
+        <item name="android:textSize">@dimen/events_fr_service_description_ts</item>
     </style>
 
     <style name="EventsFragmentBottomFilterOff">
@@ -105,15 +153,34 @@
         <item name="android:paddingTop">@dimen/events_fr_filter_padding_v</item>
         <item name="android:paddingBottom">@dimen/events_fr_filter_padding_v</item>
         <item name="android:textColor">@color/main_dark</item>
-        <item name="android:textSize">@dimen/events_fr_service_description</item>
+        <item name="android:textSize">@dimen/events_fr_service_description_ts</item>
     </style>
 
-    <style name="MainRoundImageButtonWhite">
+    <style name="MainRoundImageButton">
         <item name="android:layout_width">@dimen/round_icon_size</item>
         <item name="android:layout_height">@dimen/round_icon_size</item>
         <item name="android:background">@drawable/circle_background_main_color_ripple</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+    </style>
+
+    <style name="MainRoundImageButtonFixed">
+        <item name="android:layout_width">@dimen/round_icon_size</item>
+        <item name="android:layout_height">@dimen/round_icon_size</item>
+        <item name="android:background">@drawable/circle_background_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+    </style>
+
+    <style name="MainRoundImageButtonWhite">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">@drawable/circle_background_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:padding">@dimen/padding_default</item>
         <item name="layout_constraintDimensionRatio">1:1</item>
     </style>
 
@@ -123,7 +190,7 @@
         <item name="android:layout_margin">@dimen/margin_default</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textColor">@color/main_dark</item>
-        <item name="android:textSize">@dimen/service_tariff_value</item>
+        <item name="android:textSize">@dimen/service_tariff_value_ts</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -131,6 +198,33 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/main_light_dark</item>
-        <item name="android:textSize">@dimen/events_fr_service_description</item>
+        <item name="android:textSize">@dimen/events_fr_service_description_ts</item>
     </style>
+
+    <style name="PaymentsFragmentPaymentSum">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/margin_default</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/payment_sum_ts</item>
+    </style>
+
+    <style name="ServicesFragmentServiceName">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+        <item name="android:textColor">@color/main_light_dark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/services_fr_service_name_ts</item>
+    </style>
+
+    <style name="EventsFragmentSumValue">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+        <item name="android:textColor">@color/main_light_dark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/services_fr_service_name_ts</item>
+    </style>
+
 </resources>

@@ -13,14 +13,16 @@ import com.google.firebase.auth.FirebaseAuth
 interface FirebaseRepository {
 
     fun getFirebaseAuth(): FirebaseAuth
+    fun signIn(email: String, password: String, flatNum: Int): Task<AuthResult>
+    fun logIn(email: String, password: String): Task<AuthResult>
+
     fun getEventsList(): LiveData<List<Event>>
     fun addEvent(title: String,desc: String, date: Long)
     fun deleteEvent(eventId: String)
+
     fun sendMessage(text: String, author: String,chatName: String)
     fun getMessages(chatName: String): LiveData<List<Message>>
-    fun signIn(email: String, password: String, flatNum: Int): Task<AuthResult>
-    fun logIn(email: String, password: String): Task<AuthResult>
+
     fun getChats(userEmail: String): MutableLiveData<MutableList<Chat>>
-    fun getCurrentUser(email: String): LiveData<User>
     fun startChatWithSomeone(userEmail: String, someoneEmail: String)
 }

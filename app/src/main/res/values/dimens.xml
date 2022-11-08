@@ -21,5 +21,6 @@
     <dimen name="events_fr_filter_padding_h">30dp</dimen>
     <dimen name="events_fr_filter_padding_v">4dp</dimen>
     <dimen name="payment_sum_ts">18sp</dimen>
-    <dimen name="services_fr_service_name">18sp</dimen>
+    <dimen name="services_fr_service_name_ts">18sp</dimen>
+    <dimen name="bills_fr_bill_date_ts">18sp</dimen>
 </resources>

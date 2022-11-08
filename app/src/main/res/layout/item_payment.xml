@@ -21,7 +21,7 @@
 
         <ImageView
             android:id="@+id/payment_icon"
-            style="@style/MainSquareImageButton"
+            style="@style/PaymentIcon"
             android:src="@drawable/main_service2"
             app:layout_constraintBottom_toBottomOf="@+id/payment_sum"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,8 +30,11 @@
         <TextView
             android:id="@+id/payment_date"
             style="@style/ServicesFragmentLocationText"
-            android:layout_margin="@dimen/margin_default"
+            android:layout_marginHorizontal="@dimen/margin_default"
+            android:layout_marginTop="@dimen/margin_default"
+            app:layout_constraintVertical_chainStyle="packed"
             android:text="28.09.2022"
+            app:layout_constraintBottom_toTopOf="@id/payment_sum"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

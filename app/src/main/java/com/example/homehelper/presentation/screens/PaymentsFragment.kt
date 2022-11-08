@@ -6,13 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentPaymentsBinding
-import com.example.homehelper.databinding.FragmentServicesBinding
+import com.example.homehelper.presentation.adapters.bills_history.AdapterBillsHistory
 import com.example.homehelper.presentation.adapters.payments.AdapterPayments
 import com.example.homehelper.presentation.adapters.payments.Payment
-import com.example.homehelper.presentation.adapters.services.AdapterServices
-import com.example.homehelper.presentation.adapters.services.Service
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class PaymentsFragment : Fragment() {
@@ -77,7 +74,11 @@ class PaymentsFragment : Fragment() {
             Payment(1,"28.10.2022","-4113,92P"),
             Payment(2,"28.10.2022","-4113,92P"),
             Payment(3,"28.10.2022","-4113,92P"),
-            Payment(4,"28.10.2022","-4113,92P")
+            Payment(4,"28.10.2022","-4113,92P"),
+            Payment(5,"28.10.2022","-4113,92P"),
+            Payment(6,"28.10.2022","-4113,92P"),
+            Payment(7,"28.10.2022","-4113,92P"),
+            Payment(8,"28.10.2022","-4113,92P")
         )
         adapterPayments.submitList(payments)
     }

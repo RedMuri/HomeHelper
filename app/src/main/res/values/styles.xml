@@ -17,6 +17,18 @@
         <item name="android:layout_margin">@dimen/margin_default</item>
     </style>
 
+    <style name="BillHistoryIcon">
+        <item name="android:layout_width">@dimen/payments_round_icon_size</item>
+        <item name="android:layout_height">@dimen/payments_round_icon_size</item>
+        <item name="android:background">@drawable/circle_background_ripple</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+    </style>
+
+    <style name="PaymentIcon">
+        <item name="android:layout_width">@dimen/payments_round_icon_size</item>
+        <item name="android:layout_height">@dimen/payments_round_icon_size</item>
+    </style>
+
     <style name="EventsFragmentServiceDescription">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -75,8 +87,8 @@
     </style>
 
     <style name="PaymentsRoundImageButtonWhite">
-        <item name="android:layout_width">35dp</item>
-        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_width">@dimen/payments_round_icon_size</item>
+        <item name="android:layout_height">@dimen/payments_round_icon_size</item>
         <item name="android:background">@drawable/circle_background_ripple</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>

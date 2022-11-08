@@ -21,15 +21,14 @@
         android:focusable="true">
 
         <ImageView
-            android:id="@+id/payment_icon"
-            style="@style/MainSquareImageButton"
+            style="@style/BillHistoryIcon"
             android:src="@drawable/download"
-            app:layout_constraintBottom_toBottomOf="@+id/payment_date"
+            app:layout_constraintBottom_toBottomOf="@+id/bill_date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/payment_date" />
+            app:layout_constraintTop_toTopOf="@+id/bill_date" />
 
         <TextView
-            android:id="@+id/payment_date"
+            android:id="@+id/bill_date"
             style="@style/BillsFragmentBillDate"
             tools:text="28.09.2022"
             app:layout_constraintBottom_toBottomOf="parent"

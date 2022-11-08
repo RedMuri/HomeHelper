@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.homehelper.domain.entities.Event
-import com.example.homehelper.domain.usecases.AddEventUseCase
-import com.example.homehelper.domain.usecases.DeleteEventUseCase
-import com.example.homehelper.domain.usecases.GetEventsListUseCase
+import com.example.homehelper.domain.usecases.events.AddEventUseCase
+import com.example.homehelper.domain.usecases.events.DeleteEventUseCase
+import com.example.homehelper.domain.usecases.events.GetEventsListUseCase
 import javax.inject.Inject
 
 class EventsViewModel @Inject constructor(

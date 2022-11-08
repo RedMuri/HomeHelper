@@ -1,9 +1,9 @@
-package com.example.homehelper.domain.usecases
+package com.example.homehelper.domain.usecases.chats
 
 import com.example.homehelper.domain.FirebaseRepository
 import javax.inject.Inject
 
-class StartChatWIthSomeoneUseCase @Inject constructor(
+class StartChatWithSomeoneUseCase @Inject constructor(
     private val repository: FirebaseRepository
 ) {
 

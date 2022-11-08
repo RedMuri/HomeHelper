@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.homehelper.domain.usecases.GetFirebaseAuthUseCase
-import com.example.homehelper.domain.usecases.LogInUseCase
-import com.example.homehelper.domain.usecases.SignInUseCase
+import com.example.homehelper.domain.usecases.auth.GetFirebaseAuthUseCase
+import com.example.homehelper.domain.usecases.auth.LogInUseCase
+import com.example.homehelper.domain.usecases.auth.SignInUseCase
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.AuthResult

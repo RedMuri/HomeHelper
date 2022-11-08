@@ -1,6 +1,6 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv_service3"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,16 +12,15 @@
     app:layout_constraintTop_toTopOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:clickable="true"
-        android:background="@drawable/item_service_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/item_service_background"
+        android:clickable="true"
         android:focusable="true">
 
         <ImageView
             android:id="@+id/service_icon"
-            android:layout_width="@dimen/square_icon_size"
-            android:layout_height="@dimen/square_icon_size"
+            style="@style/MainRoundImageButtonFixed"
             android:layout_margin="@dimen/margin_default"
             android:src="@drawable/main_service3"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -30,15 +29,11 @@
 
         <TextView
             android:id="@+id/service_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_default"
-            android:text="Показания счётчиков"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            style="@style/ServicesFragmentServiceName"
             app:layout_constraintBottom_toBottomOf="@+id/service_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/service_icon"
-            app:layout_constraintTop_toTopOf="@+id/service_icon" />
+            app:layout_constraintTop_toTopOf="@+id/service_icon"
+            tools:text="Показания счётчиков" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

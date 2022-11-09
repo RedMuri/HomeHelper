@@ -3,13 +3,10 @@ package com.example.homehelper.data.firebase.repositories_impl
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.homehelper.data.firebase.FirebaseRepositoryImpl
 import com.example.homehelper.data.firebase.model.MessageDto
-import com.example.homehelper.data.mappers.EventMapper
 import com.example.homehelper.data.mappers.MessageMapper
 import com.example.homehelper.domain.entities.Message
-import com.example.homehelper.domain.usecases.repositories.FirebaseMessagesRepository
-import com.google.firebase.auth.FirebaseAuth
+import com.example.homehelper.domain.repositories.FirebaseMessagesRepository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import javax.inject.Inject
@@ -31,7 +28,7 @@ class FirebaseMessagesRepositoryImpl @Inject constructor(
             "Hallway 3" -> "hallway3"
             else -> chatName
         }
-        db.collection(FirebaseRepositoryImpl.CHATS).document(collection).collection("messages")
+        db.collection(FirebaseChatsRepositoryImpl.CHATS).document(collection).collection("messages")
             .orderBy("time")
             .addSnapshotListener { value, e ->
                 if (e != null) {
@@ -56,10 +53,10 @@ class FirebaseMessagesRepositoryImpl @Inject constructor(
             "Hallway 3" -> "hallway3"
             else -> chatName
         }
-        val id = db.collection(FirebaseRepositoryImpl.CHATS).document(collection).collection("messages").document().id
+        val id = db.collection(FirebaseChatsRepositoryImpl.CHATS).document(collection).collection("messages").document().id
         val time = System.currentTimeMillis()
         val message = MessageDto(author.trim(), text.trim(), time, id)
-        db.collection(FirebaseRepositoryImpl.CHATS).document(collection).collection("messages")
+        db.collection(FirebaseChatsRepositoryImpl.CHATS).document(collection).collection("messages")
             .document(id)
             .set(message)
             .addOnCompleteListener {

@@ -1,6 +1,6 @@
 package com.example.homehelper.domain.usecases.messages
 
-import com.example.homehelper.domain.usecases.repositories.FirebaseMessagesRepository
+import com.example.homehelper.domain.repositories.FirebaseMessagesRepository
 import javax.inject.Inject
 
 class GetMessagesUseCase @Inject constructor(

@@ -1,4 +1,4 @@
-package com.example.homehelper.domain.usecases.repositories
+package com.example.homehelper.domain.repositories
 
 import androidx.lifecycle.LiveData
 import com.example.homehelper.domain.entities.Event

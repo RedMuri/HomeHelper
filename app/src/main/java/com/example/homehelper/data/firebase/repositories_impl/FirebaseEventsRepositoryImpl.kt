@@ -3,10 +3,9 @@ package com.example.homehelper.data.firebase.repositories_impl
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.homehelper.data.firebase.FirebaseRepositoryImpl
 import com.example.homehelper.data.mappers.EventMapper
 import com.example.homehelper.domain.entities.Event
-import com.example.homehelper.domain.usecases.repositories.FirebaseEventsRepository
+import com.example.homehelper.domain.repositories.FirebaseEventsRepository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
@@ -20,7 +19,7 @@ class FirebaseEventsRepositoryImpl@Inject constructor(
     private val events = MutableLiveData<List<Event>>()
 
     override fun getEventsList(): LiveData<List<Event>> {
-        db.collection(FirebaseRepositoryImpl.EVENTS_COLLECTION)
+        db.collection(FirebaseChatsRepositoryImpl.EVENTS_COLLECTION)
             .orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { value, e ->
                 if (e != null) {
@@ -37,9 +36,9 @@ class FirebaseEventsRepositoryImpl@Inject constructor(
     }
 
     override fun addEvent(title: String, desc: String, date: Long) {
-        val id = db.collection(FirebaseRepositoryImpl.EVENTS_COLLECTION).document().id
+        val id = db.collection(FirebaseChatsRepositoryImpl.EVENTS_COLLECTION).document().id
         val event = Event(title, desc, eventMapper.convertMlsToDate(date), id)
-        db.collection(FirebaseRepositoryImpl.EVENTS_COLLECTION)
+        db.collection(FirebaseChatsRepositoryImpl.EVENTS_COLLECTION)
             .document(id)
             .set(event)
             .addOnCompleteListener {
@@ -53,7 +52,7 @@ class FirebaseEventsRepositoryImpl@Inject constructor(
     }
 
     override fun deleteEvent(eventId: String) {
-        db.collection(FirebaseRepositoryImpl.EVENTS_COLLECTION).document(eventId).delete()
+        db.collection(FirebaseChatsRepositoryImpl.EVENTS_COLLECTION).document(eventId).delete()
             .addOnSuccessListener {
                 Log.i("muri", "deleteEvent")
             }

@@ -1,4 +1,4 @@
-package com.example.homehelper.domain.usecases.repositories
+package com.example.homehelper.domain.repositories
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult

@@ -1,27 +1,16 @@
-package com.example.homehelper.data.firebase
+package com.example.homehelper.data.firebase.repositories_impl
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.homehelper.data.firebase.model.MessageDto
-import com.example.homehelper.data.mappers.EventMapper
-import com.example.homehelper.data.mappers.MessageMapper
-import com.example.homehelper.domain.FirebaseRepository
+import com.example.homehelper.domain.repositories.FirebaseChatsRepository
 import com.example.homehelper.domain.entities.Chat
-import com.example.homehelper.domain.entities.Event
-import com.example.homehelper.domain.entities.Message
-import com.example.homehelper.domain.entities.User
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
 import javax.inject.Inject
 
-class FirebaseRepositoryImpl @Inject constructor(
+class FirebaseChatsRepositoryImpl @Inject constructor(
     private val db: FirebaseFirestore
-) : FirebaseRepository {
+) : FirebaseChatsRepository {
 
     private val chats = MutableLiveData<MutableList<Chat>>()
     private val chatsList = mutableListOf<Chat>()

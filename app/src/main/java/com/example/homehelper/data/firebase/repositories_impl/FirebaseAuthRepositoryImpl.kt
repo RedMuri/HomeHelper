@@ -1,10 +1,9 @@
 package com.example.homehelper.data.firebase.repositories_impl
 
 import android.util.Log
-import com.example.homehelper.data.firebase.FirebaseRepositoryImpl
 import com.example.homehelper.domain.entities.Chat
 import com.example.homehelper.domain.entities.User
-import com.example.homehelper.domain.usecases.repositories.FirebaseAuthRepository
+import com.example.homehelper.domain.repositories.FirebaseAuthRepository
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -37,11 +36,11 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
         val userChats = listOf("main_chat", hallwayChat)
         val user = User(email, flatNum, userChats)
         for (chat in userChats) {
-            db.collection(FirebaseRepositoryImpl.USERS).document(email).collection("chats")
+            db.collection(FirebaseChatsRepositoryImpl.USERS).document(email).collection("chats")
                 .document(chat)
                 .set(Chat(chat))
         }
-        db.collection(FirebaseRepositoryImpl.USERS)
+        db.collection(FirebaseChatsRepositoryImpl.USERS)
             .document(email)
             .set(user)
             .addOnCompleteListener {

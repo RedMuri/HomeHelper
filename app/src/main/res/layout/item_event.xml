@@ -5,8 +5,9 @@
     android:id="@+id/cv_event"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="24dp"
+    android:layout_marginBottom="@dimen/margin_default"
+    android:layout_marginHorizontal="@dimen/margin_default"
+    app:cardCornerRadius="@dimen/event_item_corner_radius"
     android:background="@drawable/square_background_ripple"
     android:clickable="true"
     android:focusable="true"
@@ -18,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/image_event_background"
-        android:padding="8dp">
+        android:padding="@dimen/padding_default">
 
         <TextView
             android:id="@+id/tv_event_date"

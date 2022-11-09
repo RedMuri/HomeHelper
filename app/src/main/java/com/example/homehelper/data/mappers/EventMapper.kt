@@ -1,5 +1,7 @@
 package com.example.homehelper.data.mappers
 
+import com.example.homehelper.data.database.model.EventDbModel
+import com.example.homehelper.data.firebase.model.EventDto
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
@@ -16,4 +18,11 @@ class EventMapper @Inject constructor() {
         sdf.timeZone = TimeZone.getDefault()
         return sdf.format(date)
     }
+
+    fun mapEventDtoToEventDbModel(eventDto: EventDto) = EventDbModel(
+        title = eventDto.title,
+        description = eventDto.description,
+        date = eventDto.date,
+        id = eventDto.id,
+    )
 }

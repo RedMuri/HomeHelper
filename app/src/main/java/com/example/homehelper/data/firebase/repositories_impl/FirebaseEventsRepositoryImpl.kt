@@ -46,6 +46,7 @@ class FirebaseEventsRepositoryImpl @Inject constructor(
                 }
                 try {
                     val eventsDto = value?.map { it.toObject<EventDto>() }
+
                 } catch (e: Exception) {
                     Log.i("muri", "getEventsList: exception: $e")
                 }

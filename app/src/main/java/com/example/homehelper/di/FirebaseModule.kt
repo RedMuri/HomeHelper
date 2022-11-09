@@ -1,9 +1,11 @@
 package com.example.homehelper.di
 
 import com.example.homehelper.data.firebase.FirebaseRepositoryImpl
+import com.example.homehelper.data.firebase.repositories_impl.FirebaseAuthRepositoryImpl
 import com.example.homehelper.data.firebase.repositories_impl.FirebaseEventsRepositoryImpl
 import com.example.homehelper.data.firebase.repositories_impl.FirebaseMessagesRepositoryImpl
 import com.example.homehelper.domain.FirebaseRepository
+import com.example.homehelper.domain.usecases.repositories.FirebaseAuthRepository
 import com.example.homehelper.domain.usecases.repositories.FirebaseEventsRepository
 import com.example.homehelper.domain.usecases.repositories.FirebaseMessagesRepository
 import com.google.firebase.auth.FirebaseAuth
@@ -25,6 +27,9 @@ interface FirebaseModule {
 
     @Binds
     fun bindFirebaseEventsRepository(impl: FirebaseEventsRepositoryImpl): FirebaseEventsRepository
+
+    @Binds
+    fun bindFirebaseAuthRepository(impl: FirebaseAuthRepositoryImpl): FirebaseAuthRepository
 
     companion object{
 

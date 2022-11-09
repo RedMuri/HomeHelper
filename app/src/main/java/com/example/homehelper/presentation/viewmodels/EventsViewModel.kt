@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import com.example.homehelper.domain.entities.Event
 import com.example.homehelper.domain.usecases.events.AddEventUseCase
 import com.example.homehelper.domain.usecases.events.DeleteEventUseCase
-import com.example.homehelper.domain.usecases.events.GetEventsListUseCase
+import com.example.homehelper.domain.usecases.events.GetEventsUseCase
 import javax.inject.Inject
 
 class EventsViewModel @Inject constructor(
     private val addEventUseCase: AddEventUseCase,
-    private val getEventsListUseCase: GetEventsListUseCase,
+    private val getEventsUseCase: GetEventsUseCase,
     private val deleteEventUseCase: DeleteEventUseCase
 ) : ViewModel() {
 
@@ -36,7 +36,7 @@ class EventsViewModel @Inject constructor(
         deleteEventUseCase.invoke(eventId)
     }
 
-    fun getEventsList(): LiveData<List<Event>> {
-        return getEventsListUseCase.invoke()
+    fun getEvents(): LiveData<List<Event>> {
+        return getEventsUseCase.invoke()
     }
 }

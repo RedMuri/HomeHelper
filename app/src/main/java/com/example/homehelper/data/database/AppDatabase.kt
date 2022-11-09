@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.homehelper.data.database.dao.EventsDao
 import com.example.homehelper.data.database.model.EventDbModel
 
 @Database(entities = [EventDbModel::class], version = 1, exportSchema = false)
@@ -30,6 +31,5 @@ abstract class AppDatabase : RoomDatabase() {
         const val EVENTS_TABLE_NAME = "events"
     }
 
-    abstract fun eventsDao()
-
+    abstract fun eventsDao(): EventsDao
 }

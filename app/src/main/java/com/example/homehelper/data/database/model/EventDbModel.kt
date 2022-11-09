@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = AppDatabase.EVENTS_TABLE_NAME)
 data class EventDbModel(
-    @PrimaryKey
-    var id: String? = null,
     val title: String? = null,
     val description: String? = null,
-    val date: String? = null
+    val date: String? = null,
+    @PrimaryKey
+    var id: String? = null,
 )

@@ -3,6 +3,7 @@ package com.example.homehelper.data.firebase.repositories_impl
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.homehelper.data.firebase.model.EventDto
 import com.example.homehelper.data.mappers.EventMapper
 import com.example.homehelper.domain.entities.Event
 import com.example.homehelper.domain.repositories.FirebaseEventsRepository
@@ -11,15 +12,15 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
 import javax.inject.Inject
 
-class FirebaseEventsRepositoryImpl@Inject constructor(
+class FirebaseEventsRepositoryImpl @Inject constructor(
     private val db: FirebaseFirestore,
     private val eventMapper: EventMapper,
-): FirebaseEventsRepository {
+) : FirebaseEventsRepository {
 
     private val events = MutableLiveData<List<Event>>()
 
-    override fun getEventsList(): LiveData<List<Event>> {
-        db.collection(FirebaseChatsRepositoryImpl.EVENTS_COLLECTION)
+    override fun getEvents(): LiveData<List<Event>> {
+        db.collection(EVENTS_COLLECTION)
             .orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { value, e ->
                 if (e != null) {
@@ -35,12 +36,28 @@ class FirebaseEventsRepositoryImpl@Inject constructor(
         return events
     }
 
+    fun loadDataEvents(){
+        db.collection(EVENTS_COLLECTION)
+            .orderBy("date", Query.Direction.DESCENDING)
+            .addSnapshotListener { value, e ->
+                if (e != null) {
+                    Log.i("muri", "getEventsList: listen failed: $e")
+                    return@addSnapshotListener
+                }
+                try {
+                    val eventsDto = value?.map { it.toObject<EventDto>() }
+                } catch (e: Exception) {
+                    Log.i("muri", "getEventsList: exception: $e")
+                }
+            }
+    }
+
     override fun addEvent(title: String, desc: String, date: Long) {
-        val id = db.collection(FirebaseChatsRepositoryImpl.EVENTS_COLLECTION).document().id
-        val event = Event(title, desc, eventMapper.convertMlsToDate(date), id)
-        db.collection(FirebaseChatsRepositoryImpl.EVENTS_COLLECTION)
+        val id = db.collection(EVENTS_COLLECTION).document().id
+        val eventDto = EventDto(title, desc, eventMapper.convertMlsToDate(date), id)
+        db.collection(EVENTS_COLLECTION)
             .document(id)
-            .set(event)
+            .set(eventDto)
             .addOnCompleteListener {
                 if (it.isSuccessful)
                     Log.i("muri", "addEvent success: $it")
@@ -52,7 +69,7 @@ class FirebaseEventsRepositoryImpl@Inject constructor(
     }
 
     override fun deleteEvent(eventId: String) {
-        db.collection(FirebaseChatsRepositoryImpl.EVENTS_COLLECTION).document(eventId).delete()
+        db.collection(EVENTS_COLLECTION).document(eventId).delete()
             .addOnSuccessListener {
                 Log.i("muri", "deleteEvent")
             }
@@ -61,4 +78,8 @@ class FirebaseEventsRepositoryImpl@Inject constructor(
             }
     }
 
+    companion object {
+
+        const val EVENTS_COLLECTION = "events"
+    }
 }

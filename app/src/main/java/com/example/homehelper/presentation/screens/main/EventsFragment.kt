@@ -123,7 +123,7 @@ class EventsFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.getEventsList().observe(viewLifecycleOwner) {
+        viewModel.getEvents().observe(viewLifecycleOwner) {
             adapterEvents.submitList(it)
         }
     }

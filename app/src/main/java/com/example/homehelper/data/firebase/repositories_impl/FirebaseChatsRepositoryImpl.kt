@@ -84,6 +84,5 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
         const val USERS = "users"
         const val CHATS = "chats"
         const val EVENTS_COLLECTION = "events"
-        const val MAIN_MESSAGES_COLLECTION = "messages"
     }
 }

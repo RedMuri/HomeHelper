@@ -65,6 +65,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
+        binding.rvMessages.itemAnimator = null
         binding.rvMessages.adapter = adapterMessages
     }
 

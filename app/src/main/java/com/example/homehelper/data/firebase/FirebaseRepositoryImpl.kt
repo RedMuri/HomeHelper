@@ -23,11 +23,9 @@ class FirebaseRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth,
     private val db: FirebaseFirestore,
     private val eventMapper: EventMapper,
-    private val messageMapper: MessageMapper,
 ) : FirebaseRepository {
 
     private val events = MutableLiveData<List<Event>>()
-    private val messages = MutableLiveData<List<Message>>()
     private val chats = MutableLiveData<MutableList<Chat>>()
     private val chatsList = mutableListOf<Chat>()
 
@@ -175,57 +173,6 @@ class FirebaseRepositoryImpl @Inject constructor(
             }
             .addOnFailureListener {
                 Log.i("muri", "error deleteEvent")
-            }
-    }
-
-
-
-    override fun getMessages(chatName: String): LiveData<List<Message>> {
-        val collection = when (chatName) {
-            "Main chat" -> "main_chat"
-            "Hallway 1" -> "hallway1"
-            "Hallway 2" -> "hallway2"
-            "Hallway 3" -> "hallway3"
-            else -> chatName
-        }
-        db.collection(CHATS).document(collection).collection("messages")
-            .orderBy("time")
-            .addSnapshotListener { value, e ->
-                if (e != null) {
-                    Log.i("muri", "getMessages: listen failed: $e")
-                    return@addSnapshotListener
-                }
-                try {
-                    val messagesDto = value?.map { it.toObject<MessageDto>() }
-                    messages.value = messagesDto?.map { messageMapper.messageDtoToEntity(it) }
-                } catch (e: Exception) {
-                    Log.i("muri", "getMessages: exception: $e")
-                }
-            }
-        return messages
-    }
-
-    override fun sendMessage(text: String, author: String, chatName: String) {
-        val collection = when (chatName) {
-            "Main chat" -> "main_chat"
-            "Hallway 1" -> "hallway1"
-            "Hallway 2" -> "hallway2"
-            "Hallway 3" -> "hallway3"
-            else -> chatName
-        }
-        val id = db.collection(CHATS).document(collection).collection("messages").document().id
-        val time = System.currentTimeMillis()
-        val message = MessageDto(author.trim(), text.trim(), time, id)
-        db.collection(CHATS).document(collection).collection("messages")
-            .document(id)
-            .set(message)
-            .addOnCompleteListener {
-                if (it.isSuccessful)
-                    Log.i("muri", "sendMessage success: $it")
-                else
-                    Log.i("muri", "sendMessage failure: $it")
-            }.addOnFailureListener { e ->
-                Log.i("muri", "sendMessage error: $e")
             }
     }
 

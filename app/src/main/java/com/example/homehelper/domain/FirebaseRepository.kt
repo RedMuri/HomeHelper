@@ -20,9 +20,6 @@ interface FirebaseRepository {
     fun addEvent(title: String,desc: String, date: Long)
     fun deleteEvent(eventId: String)
 
-    fun sendMessage(text: String, author: String,chatName: String)
-    fun getMessages(chatName: String): LiveData<List<Message>>
-
     fun getChats(userEmail: String): MutableLiveData<MutableList<Chat>>
     fun startChatWithSomeone(userEmail: String, someoneEmail: String)
 }

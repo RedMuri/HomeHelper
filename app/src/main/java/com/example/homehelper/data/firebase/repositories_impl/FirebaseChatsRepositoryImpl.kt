@@ -32,9 +32,9 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
                     return@addSnapshotListener
                 }
                 try {
-                    val userChats = value?.map { it.toObject<String>() }
+                    val userChats = value?.map { it.toObject<ChatDto>() }
                     if (userChats != null) {
-                        loadChatsById(userChats)
+                        loadChatsById(userChats.map { it.id })
                     }
                 } catch (e: Exception) {
                     Log.i("muri", "getChats: exception: $e")

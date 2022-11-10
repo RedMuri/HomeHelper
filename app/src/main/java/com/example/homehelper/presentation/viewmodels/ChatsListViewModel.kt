@@ -11,8 +11,8 @@ import javax.inject.Inject
 class ChatsListViewModel @Inject constructor(
     private val getChatsUseCase: GetChatsUseCase,
     private val startChatWithSomeoneUseCase: StartChatWithSomeoneUseCase,
-    private val loadChatsFromFbUseCase: LoadChatsFromFbUseCase,
-    private val application: Application,
+    loadChatsFromFbUseCase: LoadChatsFromFbUseCase,
+    application: Application,
 ) : ViewModel() {
 
     init {

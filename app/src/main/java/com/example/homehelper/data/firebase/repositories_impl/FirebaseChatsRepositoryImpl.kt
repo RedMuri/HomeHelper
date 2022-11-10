@@ -32,6 +32,7 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
                     return@addSnapshotListener
                 }
                 try {
+                    //TODO add UserChatId data class in firebase model
                     val userChats = value?.map { it.toObject<ChatDto>() }
                     if (userChats != null) {
                         loadChatsById(userChats.map { it.id })

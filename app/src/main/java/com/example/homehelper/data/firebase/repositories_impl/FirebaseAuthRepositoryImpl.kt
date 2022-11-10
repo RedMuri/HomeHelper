@@ -38,7 +38,7 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
         for (chat in userChats) {
             db.collection(FirebaseChatsRepositoryImpl.USERS).document(email).collection("chats")
                 .document(chat)
-                .set(Chat(chat,chat))
+                .set(Chat(chat, chat))
         }
         db.collection(FirebaseChatsRepositoryImpl.USERS)
             .document(email)

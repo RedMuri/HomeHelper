@@ -22,20 +22,15 @@ class AuthViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var _errorEmail = MutableLiveData<String>()
-    val errorEmail: LiveData<String>
-        get() = _errorEmail
+    val errorEmail: LiveData<String> = _errorEmail
     private var _errorPassword = MutableLiveData<String>()
-    val errorPassword: LiveData<String>
-        get() = _errorPassword
+    val errorPassword: LiveData<String> = _errorPassword
     private var _errorFlatNum = MutableLiveData<String>()
-    val errorFlatNum: LiveData<String>
-        get() = _errorFlatNum
+    val errorFlatNum: LiveData<String> = _errorFlatNum
     private var _errorNetwork = MutableLiveData<Unit>()
-    val errorNetwork: LiveData<Unit>
-        get() = _errorNetwork
+    val errorNetwork: LiveData<Unit> = _errorNetwork
     private var _userName = MutableLiveData<String>()
-    val userName: LiveData<String>
-        get() = _userName
+    val userName: LiveData<String> = _userName
 
     fun signIn(inputEmail: String, inputPassword: String, flatNum: String) {
         val email = inputEmail.trim()

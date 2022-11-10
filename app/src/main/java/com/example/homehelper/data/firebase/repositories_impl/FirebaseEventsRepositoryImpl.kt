@@ -57,6 +57,8 @@ class FirebaseEventsRepositoryImpl @Inject constructor(
         }
     }
 
+
+
     override fun addEvent(title: String, desc: String, date: Long) {
         val id = db.collection(EVENTS_COLLECTION).document().id
         val eventDto = EventDto(title, desc, eventMapper.convertMlsToDate(date), id)

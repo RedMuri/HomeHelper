@@ -29,6 +29,7 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         const val EVENTS_TABLE_NAME = "events"
+        const val CHATS_TABLE_NAME = "chats"
     }
 
     abstract fun eventsDao(): EventsDao

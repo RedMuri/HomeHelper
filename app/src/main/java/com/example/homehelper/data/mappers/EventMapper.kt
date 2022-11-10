@@ -12,12 +12,14 @@ import javax.inject.Inject
 
 class EventMapper @Inject constructor() {
 
-    fun mapEventDtoToEventDbModel(eventDto: EventDto) = EventDbModel(
-        title = eventDto.title,
-        description = eventDto.description,
-        date = eventDto.date,
-        id = eventDto.id,
-    )
+    fun mapEventDtoToEventDbModel(eventDto: EventDto): EventDbModel {
+        return EventDbModel(
+            title = eventDto.title,
+            description = eventDto.description,
+            date = eventDto.date,
+            id = eventDto.id,
+        )
+    }
 
     fun mapEventDbModelToEvent(eventDbModel: EventDbModel) = Event(
         title = eventDbModel.title,

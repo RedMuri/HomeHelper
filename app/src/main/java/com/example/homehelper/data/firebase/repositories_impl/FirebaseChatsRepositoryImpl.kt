@@ -24,11 +24,7 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
 
     private val scope = CoroutineScope(Dispatchers.IO)
 
-    private val chats = MutableLiveData<MutableList<Chat>>()
-    private val chatsList = mutableListOf<Chat>()
-
-
-    suspend fun loadChatsFromFb(userEmail: String) {
+    override fun loadUserChatsFromFb(userEmail: String) {
         db.collection(USERS).document(userEmail).collection("chats")
             .addSnapshotListener { value, e ->
                 if (e != null) {
@@ -38,7 +34,7 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
                 try {
                     val userChats = value?.map { it.toObject<String>() }
                     if (userChats != null) {
-                        loadUserChatsFromFb(userChats)
+                        loadChatsById(userChats)
                     }
                 } catch (e: Exception) {
                     Log.i("muri", "getChats: exception: $e")
@@ -46,7 +42,7 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
             }
     }
 
-    private fun loadUserChatsFromFb(userChats: List<String>) {
+    private fun loadChatsById(userChats: List<String>) {
         for (userChat in userChats) {
             db.collection(CHATS).document(userChat).get().addOnSuccessListener {
                 try {

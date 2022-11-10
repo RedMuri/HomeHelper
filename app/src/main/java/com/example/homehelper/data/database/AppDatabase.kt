@@ -6,9 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.homehelper.data.database.dao.ChatsDao
 import com.example.homehelper.data.database.dao.EventsDao
+import com.example.homehelper.data.database.model.ChatDbModel
 import com.example.homehelper.data.database.model.EventDbModel
 
-@Database(entities = [EventDbModel::class], version = 1, exportSchema = false)
+@Database(entities = [EventDbModel::class,ChatDbModel::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {
@@ -23,6 +24,7 @@ abstract class AppDatabase : RoomDatabase() {
                 INSTANCE?.let { return it }
                 val db =
                     Room.databaseBuilder(application, AppDatabase::class.java, DB_NAME)
+                        .fallbackToDestructiveMigration()
                         .build()
                 INSTANCE = db
                 return db

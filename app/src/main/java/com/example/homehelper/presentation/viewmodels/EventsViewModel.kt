@@ -17,7 +17,7 @@ class EventsViewModel @Inject constructor(
     private val addEventUseCase: AddEventUseCase,
     private val getEventsUseCase: GetEventsUseCase,
     private val deleteEventUseCase: DeleteEventUseCase,
-    private val loadEventsFromFbUseCase: LoadEventsFromFbUseCase
+    private val loadEventsFromFbUseCase: LoadEventsFromFbUseCase,
 ) : ViewModel() {
 
     private var _errorEmptyField = MutableLiveData<Unit>()
@@ -28,9 +28,7 @@ class EventsViewModel @Inject constructor(
         get() = _shouldCloseScreen
 
     init {
-        viewModelScope.launch(Dispatchers.IO){
-            loadEventsFromFbUseCase.invoke()
-        }
+        loadEventsFromFbUseCase.invoke()
     }
 
     fun addEvent(eventTitle: String, eventDesc: String) {
@@ -43,7 +41,7 @@ class EventsViewModel @Inject constructor(
         }
     }
 
-    fun deleteEvent(eventId: String){
+    fun deleteEvent(eventId: String) {
         deleteEventUseCase.invoke(eventId)
     }
 

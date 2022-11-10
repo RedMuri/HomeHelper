@@ -8,6 +8,6 @@ class LoadEventsFromFbUseCase @Inject constructor(
     private val repository: FirebaseEventsRepository,
 ) {
 
-    suspend operator fun invoke() =
+    operator fun invoke() =
         repository.loadEventsFromFb()
 }

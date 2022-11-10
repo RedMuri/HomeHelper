@@ -30,7 +30,7 @@ class FirebaseEventsRepositoryImpl @Inject constructor(
         return eventMapper.mapEventsDbModelToEvents(eventsDbModel)
     }
 
-    override suspend fun loadEventsFromFb() {
+    override fun loadEventsFromFb() {
         db.collection(EVENTS_COLLECTION)
             .orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { value, e ->

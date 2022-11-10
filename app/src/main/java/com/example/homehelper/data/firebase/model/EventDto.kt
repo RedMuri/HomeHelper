@@ -1,8 +1,8 @@
 package com.example.homehelper.data.firebase.model
 
 data class EventDto(
-    val title: String? = null,
-    val description: String? = null,
-    val date: String? = null,
+    val title: String,
+    val description: String,
+    val date: String,
     var id: String,
 )

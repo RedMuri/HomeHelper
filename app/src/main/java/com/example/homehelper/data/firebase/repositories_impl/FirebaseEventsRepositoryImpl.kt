@@ -3,20 +3,27 @@ package com.example.homehelper.data.firebase.repositories_impl
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.homehelper.data.database.dao.EventsDao
 import com.example.homehelper.data.firebase.model.EventDto
 import com.example.homehelper.data.mappers.EventMapper
 import com.example.homehelper.domain.entities.Event
 import com.example.homehelper.domain.repositories.FirebaseEventsRepository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.toObject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class FirebaseEventsRepositoryImpl @Inject constructor(
     private val db: FirebaseFirestore,
     private val eventMapper: EventMapper,
+    private val eventsDao: EventsDao,
 ) : FirebaseEventsRepository {
 
+    private val scope = CoroutineScope(Dispatchers.IO)
     private val events = MutableLiveData<List<Event>>()
 
     override fun getEvents(): LiveData<List<Event>> {
@@ -36,7 +43,7 @@ class FirebaseEventsRepositoryImpl @Inject constructor(
         return events
     }
 
-    fun loadDataEvents(){
+    suspend fun loadDataEvents() {
         db.collection(EVENTS_COLLECTION)
             .orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { value, e ->
@@ -45,12 +52,22 @@ class FirebaseEventsRepositoryImpl @Inject constructor(
                     return@addSnapshotListener
                 }
                 try {
-                    val eventsDto = value?.map { it.toObject<EventDto>() }
-
+                    scope.launch {
+                        insertDataToDb(value)
+                    }
                 } catch (e: Exception) {
                     Log.i("muri", "getEventsList: exception: $e")
                 }
             }
+    }
+
+    private suspend fun insertDataToDb(value: QuerySnapshot?) {
+        val eventsDto = value?.map { it.toObject<EventDto>() }
+        val eventsDbModel =
+            eventsDto?.map { eventMapper.mapEventDtoToEventDbModel(it) }
+        eventsDbModel?.let {
+            eventsDao.addEvents(it)
+        }
     }
 
     override fun addEvent(title: String, desc: String, date: Long) {

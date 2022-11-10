@@ -21,16 +21,16 @@ class EventMapper @Inject constructor() {
         )
     }
 
-    fun mapEventDbModelToEvent(eventDbModel: EventDbModel) = Event(
+    private fun mapEventDbModelToEvent(eventDbModel: EventDbModel) = Event(
         title = eventDbModel.title,
         description = eventDbModel.description,
         date = eventDbModel.date,
         id = eventDbModel.id,
     )
 
-    fun mapEventsDbModelToEvents(eventsDbModel: LiveData<List<EventDbModel>>) =
-        Transformations.map(eventsDbModel) { eventsDbModel ->
-            eventsDbModel.map {
+    fun mapEventsDbModelToEvents(eventsDbModel: LiveData<List<EventDbModel>>): LiveData<List<Event>> =
+        Transformations.map(eventsDbModel) { events ->
+            events.map {
                 mapEventDbModelToEvent(it)
             }
         }

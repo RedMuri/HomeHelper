@@ -39,24 +39,23 @@ class FirebaseEventsRepositoryImpl @Inject constructor(
                     return@addSnapshotListener
                 }
                 try {
-                    scope.launch {
-                        insertDataToDb(value)
-                    }
+                    insertDataToDb(value)
                 } catch (e: Exception) {
                     Log.i("muri", "getEventsList: exception: $e")
                 }
             }
     }
 
-    private suspend fun insertDataToDb(value: QuerySnapshot?) {
+    private fun insertDataToDb(value: QuerySnapshot?) {
         val eventsDto = value?.map { it.toObject<EventDto>() }
         val eventsDbModel =
             eventsDto?.map { eventMapper.mapEventDtoToEventDbModel(it) }
         eventsDbModel?.let {
-            eventsDao.addEvents(it)
+            scope.launch {
+                eventsDao.addEvents(it)
+            }
         }
     }
-
 
 
     override fun addEvent(title: String, desc: String, date: Long) {

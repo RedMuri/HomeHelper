@@ -5,9 +5,6 @@ import androidx.lifecycle.Transformations
 import com.example.homehelper.data.database.model.ChatDbModel
 import com.example.homehelper.data.firebase.model.ChatDto
 import com.example.homehelper.domain.entities.Chat
-import java.sql.Timestamp
-import java.text.SimpleDateFormat
-import java.util.*
 import javax.inject.Inject
 
 class ChatMapper @Inject constructor() {

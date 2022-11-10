@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.homehelper.data.database.dao.ChatsDao
 import com.example.homehelper.data.database.dao.EventsDao
 import com.example.homehelper.data.database.model.EventDbModel
 
@@ -33,4 +34,5 @@ abstract class AppDatabase : RoomDatabase() {
     }
 
     abstract fun eventsDao(): EventsDao
+    abstract fun chatsDao(): ChatsDao
 }

@@ -2,6 +2,7 @@ package com.example.homehelper.di
 
 import android.app.Application
 import com.example.homehelper.data.database.AppDatabase
+import com.example.homehelper.data.database.dao.ChatsDao
 import com.example.homehelper.data.database.dao.EventsDao
 import com.example.homehelper.presentation.HomeHelperApp
 import dagger.Module
@@ -24,6 +25,11 @@ interface DataModule {
         @Provides
         fun provideEventsDao(application: Application): EventsDao {
             return AppDatabase.getInstance(application).eventsDao()
+        }
+
+        @Provides
+        fun provideChatsDao(application: Application): ChatsDao {
+            return AppDatabase.getInstance(application).chatsDao()
         }
     }
 

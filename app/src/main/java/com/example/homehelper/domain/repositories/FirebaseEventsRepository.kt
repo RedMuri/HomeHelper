@@ -8,4 +8,5 @@ interface FirebaseEventsRepository {
     fun getEvents(): LiveData<List<Event>>
     fun addEvent(title: String,desc: String, date: Long)
     fun deleteEvent(eventId: String)
+    suspend fun loadEventsFromFb()
 }

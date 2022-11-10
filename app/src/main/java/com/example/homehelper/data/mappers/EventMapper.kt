@@ -1,13 +1,37 @@
 package com.example.homehelper.data.mappers
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
 import com.example.homehelper.data.database.model.EventDbModel
 import com.example.homehelper.data.firebase.model.EventDto
+import com.example.homehelper.domain.entities.Event
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
 class EventMapper @Inject constructor() {
+
+    fun mapEventDtoToEventDbModel(eventDto: EventDto) = EventDbModel(
+        title = eventDto.title,
+        description = eventDto.description,
+        date = eventDto.date,
+        id = eventDto.id,
+    )
+
+    fun mapEventDbModelToEvent(eventDbModel: EventDbModel) = Event(
+        title = eventDbModel.title,
+        description = eventDbModel.description,
+        date = eventDbModel.date,
+        id = eventDbModel.id,
+    )
+
+    fun mapEventsDbModelToEvents(eventsDbModel: LiveData<List<EventDbModel>>) =
+        Transformations.map(eventsDbModel) { eventsDbModel ->
+            eventsDbModel.map {
+                mapEventDbModelToEvent(it)
+            }
+        }
 
     fun convertMlsToDate(mls: Long?): String {
         if (mls == null) return ""
@@ -18,11 +42,4 @@ class EventMapper @Inject constructor() {
         sdf.timeZone = TimeZone.getDefault()
         return sdf.format(date)
     }
-
-    fun mapEventDtoToEventDbModel(eventDto: EventDto) = EventDbModel(
-        title = eventDto.title,
-        description = eventDto.description,
-        date = eventDto.date,
-        id = eventDto.id,
-    )
 }

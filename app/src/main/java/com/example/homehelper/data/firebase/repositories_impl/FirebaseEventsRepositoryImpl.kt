@@ -24,26 +24,13 @@ class FirebaseEventsRepositoryImpl @Inject constructor(
 ) : FirebaseEventsRepository {
 
     private val scope = CoroutineScope(Dispatchers.IO)
-    private val events = MutableLiveData<List<Event>>()
 
     override fun getEvents(): LiveData<List<Event>> {
-        db.collection(EVENTS_COLLECTION)
-            .orderBy("date", Query.Direction.DESCENDING)
-            .addSnapshotListener { value, e ->
-                if (e != null) {
-                    Log.i("muri", "getEventsList: listen failed: $e")
-                    return@addSnapshotListener
-                }
-                try {
-                    events.value = value?.map { it.toObject() }
-                } catch (e: Exception) {
-                    Log.i("muri", "getEventsList: exception: $e")
-                }
-            }
-        return events
+        val eventsDbModel = eventsDao.getEvents()
+        return eventMapper.mapEventsDbModelToEvents(eventsDbModel)
     }
 
-    suspend fun loadDataEvents() {
+    override suspend fun loadEventsFromFb() {
         db.collection(EVENTS_COLLECTION)
             .orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { value, e ->

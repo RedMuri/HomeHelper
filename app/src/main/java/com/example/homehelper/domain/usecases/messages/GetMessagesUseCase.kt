@@ -7,5 +7,5 @@ class GetMessagesUseCase @Inject constructor(
     private val repository: FirebaseMessagesRepository
 ) {
 
-    operator fun invoke(chatName: String) = repository.getMessages(chatName)
+    operator fun invoke(chatId: String) = repository.getMessages(chatId)
 }

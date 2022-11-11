@@ -27,23 +27,30 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
     }
 
     private fun createUserInDb(email: String) {
-        val userChats = listOf("main_chat")
-        val user = User(email, userChats)
-        for (chat in userChats) {
-            db.collection(FirebaseChatsRepositoryImpl.USERS).document(email).collection("chats")
-                .document(chat)
-                .set(Chat(chat, chat))
-        }
+        val mainChat = "main_chat"
+        val user = User(email)
+
         db.collection(FirebaseChatsRepositoryImpl.USERS)
             .document(email)
             .set(user)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    Log.i("muri", "createUserInDb success: $it")
+                    addMainChatToUserChats(email, mainChat)
                 } else
                     Log.i("muri", "createUserInDb failure: $it")
-            }.addOnFailureListener { e ->
-                Log.i("muri", "createUserInDb error: $e")
+            }
+    }
+
+    private fun addMainChatToUserChats(email: String, mainChat: String) {
+        db.collection(FirebaseChatsRepositoryImpl.USERS).document(email).collection("chats")
+            .document(mainChat)
+            .set(Chat(mainChat, mainChat))
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    addMainChatToUserChats(email, mainChat)
+                    Log.i("muri", "addMainChatToUserChats success: $it")
+                } else
+                    Log.i("muri", "addMainChatToUserChats failure: $it")
             }
     }
 }

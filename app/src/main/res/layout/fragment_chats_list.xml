@@ -188,6 +188,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/bt_add_chat"
             style="@style/MainRoundImageButton"
             android:contentDescription="@string/settings_button_content_desc"
             android:src="@drawable/add_chat"

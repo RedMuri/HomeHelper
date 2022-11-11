@@ -7,5 +7,5 @@ class SendMessageUseCase @Inject constructor(
     private val repository: FirebaseMessagesRepository
 ) {
 
-    operator fun invoke(text: String, author: String,chatName: String) = repository.sendMessage(text, author,chatName)
+    operator fun invoke(text: String, author: String,chatId: String) = repository.sendMessage(text, author,chatId)
 }

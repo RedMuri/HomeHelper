@@ -21,15 +21,8 @@ class FirebaseMessagesRepositoryImpl @Inject constructor(
     private val messages = MutableLiveData<List<Message>>()
 
 
-    override fun getMessages(chatName: String): LiveData<List<Message>> {
-        val collection = when (chatName) {
-            "Main chat" -> "main_chat"
-            "Hallway 1" -> "hallway1"
-            "Hallway 2" -> "hallway2"
-            "Hallway 3" -> "hallway3"
-            else -> chatName
-        }
-        db.collection(FirebaseChatsRepositoryImpl.CHATS).document(collection).collection("messages")
+    override fun getMessages(chatId: String): LiveData<List<Message>> {
+        db.collection(FirebaseChatsRepositoryImpl.CHATS).document(chatId).collection("messages")
             .orderBy("time")
             .addSnapshotListener { value, e ->
                 if (e != null) {
@@ -46,18 +39,11 @@ class FirebaseMessagesRepositoryImpl @Inject constructor(
         return messages
     }
 
-    override fun sendMessage(text: String, author: String, chatName: String) {
-        val collection = when (chatName) {
-            "Main chat" -> "main_chat"
-            "Hallway 1" -> "hallway1"
-            "Hallway 2" -> "hallway2"
-            "Hallway 3" -> "hallway3"
-            else -> chatName
-        }
-        val id = db.collection(FirebaseChatsRepositoryImpl.CHATS).document(collection).collection("messages").document().id
+    override fun sendMessage(text: String, author: String, chatId: String) {
+        val id = db.collection(FirebaseChatsRepositoryImpl.CHATS).document(chatId).collection("messages").document().id
         val time = System.currentTimeMillis()
         val message = MessageDto(author.trim(), text.trim(), time, id)
-        db.collection(FirebaseChatsRepositoryImpl.CHATS).document(collection).collection("messages")
+        db.collection(FirebaseChatsRepositoryImpl.CHATS).document(chatId).collection("messages")
             .document(id)
             .set(message)
             .addOnCompleteListener {

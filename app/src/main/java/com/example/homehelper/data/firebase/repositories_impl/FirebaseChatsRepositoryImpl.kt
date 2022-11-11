@@ -69,25 +69,30 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
 
 
     override fun startChatWithSomeone(userEmail: String, someoneEmail: String) {
-//        val chatAcceptors = listOf(userEmail, someoneEmail)
-//        createChat(someoneEmail)
-//        for (chatAcceptor in chatAcceptors) {
-//            db.collection(USERS).document(chatAcceptor).collection("chats")
-//                .document(someoneEmail)
-//                .set(Chat(someoneEmail)).addOnCompleteListener {
-//                    if (it.isSuccessful) {
-//                        Log.i("muri", "startChatWithSomeone success: $it")
-//                    } else Log.i("muri", "startChatWithSomeone failure: $it")
-//                }.addOnFailureListener { e ->
-//                    Log.i("muri", "startChatWithSomeone error: $e")
-//                }
-//        }
+        val chatAcceptors = listOf(userEmail, someoneEmail)
+        val id = db.collection(CHATS).document().id
+        val chatDto = ChatDto(id, chatAcceptors.joinToString("_"))
+
+        db.collection(CHATS).document(id).set(chatDto).addOnCompleteListener {
+            if (it.isSuccessful) {
+                addChatToChatAcceptors(chatAcceptors, chatDto)
+                Log.i("muri", "startChatWithSomeone success: $it")
+            } else {
+                Log.i("muri", "startChatWithSomeone failure: $it")
+            }
+        }
     }
 
-    private fun createChat(chatName: String) {
-//        val chat = Chat(chatName)
-//        db.collection(CHATS).document(chatName).set(chat)
+    private fun addChatToChatAcceptors(
+        chatAcceptors: List<String>,
+        chatDto: ChatDto,
+    ) {
+        for (chatAcceptor in chatAcceptors) {
+            db.collection(USERS).document(chatAcceptor).collection(CHATS).document()
+                .set(chatDto)
+        }
     }
+
 
     override fun getChats(userEmail: String): LiveData<List<Chat>> {
         val chatsDbModel = chatsDao.getChats()

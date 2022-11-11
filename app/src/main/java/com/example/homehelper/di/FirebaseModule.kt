@@ -1,13 +1,7 @@
 package com.example.homehelper.di
 
-import com.example.homehelper.data.firebase.repositories_impl.FirebaseChatsRepositoryImpl
-import com.example.homehelper.data.firebase.repositories_impl.FirebaseAuthRepositoryImpl
-import com.example.homehelper.data.firebase.repositories_impl.FirebaseEventsRepositoryImpl
-import com.example.homehelper.data.firebase.repositories_impl.FirebaseMessagesRepositoryImpl
-import com.example.homehelper.domain.repositories.FirebaseChatsRepository
-import com.example.homehelper.domain.repositories.FirebaseAuthRepository
-import com.example.homehelper.domain.repositories.FirebaseEventsRepository
-import com.example.homehelper.domain.repositories.FirebaseMessagesRepository
+import com.example.homehelper.data.firebase.repositories_impl.*
+import com.example.homehelper.domain.repositories.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -31,7 +25,10 @@ interface FirebaseModule {
     @Binds
     fun bindFirebaseAuthRepository(impl: FirebaseAuthRepositoryImpl): FirebaseAuthRepository
 
-    companion object{
+    @Binds
+    fun bindFirebaseMetersDataRepository(impl: FirebaseMetersDataRepositoryImpl): FirebaseMetersDataRepository
+
+    companion object {
 
         @Provides
         fun provideFirebaseAuth(): FirebaseAuth {

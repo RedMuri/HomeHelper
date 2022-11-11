@@ -67,7 +67,10 @@ class MetersDataFragment : Fragment() {
                 Toast.LENGTH_SHORT).show()
         }
         viewModel.successSend.observe(viewLifecycleOwner){
-            requireActivity().finish()
+            Toast.makeText(requireActivity().application,
+                "Successfully sent!",
+                Toast.LENGTH_SHORT).show()
+            binding.lightEtMeterData.setText("")
         }
     }
 

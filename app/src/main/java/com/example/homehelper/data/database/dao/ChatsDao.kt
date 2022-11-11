@@ -11,7 +11,7 @@ import com.example.homehelper.data.database.model.EventDbModel
 @Dao
 interface ChatsDao {
 
-    @Query("select * from chats")
+    @Query("select * from chats order by name")
     fun getChats(): LiveData<List<ChatDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -19,4 +19,7 @@ interface ChatsDao {
 
     @Query("delete from chats where id=:chatId")
     suspend fun deleteChat(chatId: String)
+
+    @Query("delete from chats")
+    suspend fun deleteAllChats()
 }

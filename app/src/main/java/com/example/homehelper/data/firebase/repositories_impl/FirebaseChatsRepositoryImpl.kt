@@ -33,6 +33,9 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
                 }
                 try {
                     //TODO add UserChatId data class in firebase model
+                    scope.launch {
+                        chatsDao.deleteAllChats()
+                    }
                     val userChats = value?.map { it.toObject<ChatDto>() }
                     if (userChats != null) {
                         loadChatsById(userChats.map { it.id })
@@ -45,7 +48,9 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
 
     private fun loadChatsById(userChats: List<String>) {
         for (userChat in userChats) {
-            db.collection(CHATS).document(userChat).get().addOnSuccessListener {
+            db.collection(CHATS)
+                .document(userChat)
+                .get().addOnSuccessListener {
                 try {
                     insertChatToDb(it)
                 } catch (e: Exception) {

@@ -58,6 +58,12 @@ class ChatsListFragment : Fragment() {
         observeViewModel()
         setOnClickListeners()
         setupBottomSheet()
+
+        binding.btAddChat.setOnClickListener {
+            val userEmail = (requireActivity().application as HomeHelperApp).getUserEmail()
+            chatsListViewModel.startChatWithSomeone(userEmail, "admin@mail.ru")
+        }
+
     }
 
     private fun setupBottomSheet() {

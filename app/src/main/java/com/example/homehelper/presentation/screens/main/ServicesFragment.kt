@@ -10,6 +10,7 @@ import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentServicesBinding
 import com.example.homehelper.presentation.adapters.services.AdapterServices
 import com.example.homehelper.presentation.adapters.services.Service
+import com.example.homehelper.presentation.screens.services.ServiceActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class ServicesFragment : Fragment() {
@@ -87,8 +88,25 @@ class ServicesFragment : Fragment() {
             Service(R.drawable.main_service2, "Квитанции"),
             Service(R.drawable.main_service3, "Показания счётчиков"),
         )
+        adapterServices.onServiceClickListener = {
+            when (it.name) {
+                "Оплата счетов" -> {
+                    startActivity(ServiceActivity.newInstance(requireActivity().application,
+                        ServiceActivity.SERVICE_PAYMENTS))
+                }
+                "Квитанции" -> {
+                    startActivity(ServiceActivity.newInstance(requireActivity().application,
+                        ServiceActivity.SERVICE_BILLS))
+                }
+                "Показания счётчиков" -> {
+                    startActivity(ServiceActivity.newInstance(requireActivity().application,
+                        ServiceActivity.SERVICE_METERS))
+                }
+            }
+        }
         adapterServices.submitList(services)
     }
+
 
     companion object {
 

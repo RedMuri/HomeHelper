@@ -2,7 +2,6 @@ package com.example.homehelper.data.firebase.repositories_impl
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.homehelper.data.database.dao.ChatsDao
 import com.example.homehelper.data.firebase.model.ChatDto
 import com.example.homehelper.data.mappers.ChatMapper
@@ -51,14 +50,14 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
             db.collection(CHATS)
                 .document(userChat)
                 .get().addOnSuccessListener {
-                try {
-                    insertChatToDb(it)
-                } catch (e: Exception) {
-                    Log.i("muri", "loadUserChatsFromFb: exception: $e")
+                    try {
+                        insertChatToDb(it)
+                    } catch (e: Exception) {
+                        Log.i("muri", "loadUserChatsFromFb: exception: $e")
+                    }
+                }.addOnFailureListener {
+                    Log.i("muri", "getChats error: $it")
                 }
-            }.addOnFailureListener {
-                Log.i("muri", "getChats error: $it")
-            }
         }
     }
 
@@ -75,10 +74,12 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
 
     override fun startChatWithSomeone(userEmail: String, someoneEmail: String) {
         val chatAcceptors = listOf(userEmail, someoneEmail)
-        val id = db.collection(CHATS).document().id
-        val chatDto = ChatDto(id, chatAcceptors.joinToString("_"))
+        //val id = db.collection(CHATS).document().id
+        val chatDto =
+            ChatDto(chatAcceptors.sorted().joinToString("_"),
+                someoneEmail.substringBefore("@"))
 
-        db.collection(CHATS).document(id).set(chatDto).addOnCompleteListener {
+        db.collection(CHATS).document(chatDto.id).set(chatDto).addOnCompleteListener {
             if (it.isSuccessful) {
                 addChatToChatAcceptors(chatAcceptors, chatDto)
                 Log.i("muri", "startChatWithSomeone success: $it")

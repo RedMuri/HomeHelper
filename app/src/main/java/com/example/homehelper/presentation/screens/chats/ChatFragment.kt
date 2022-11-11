@@ -56,7 +56,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        val chatName = arguments?.getString(ChatActivity.CHAT_NAME).toString()
+        val chatName = arguments?.getString(ChatActivity.CHAT_ID).toString()
         chatViewModel.getMessages(chatName).observe(viewLifecycleOwner) {
             adapterMessages.submitList(it) {
                 binding.rvMessages.scrollToPosition(adapterMessages.itemCount - 1)
@@ -79,22 +79,22 @@ class ChatFragment : Fragment() {
     }
 
     private fun sendMessage() {
-        val chatName = arguments?.getString(ChatActivity.CHAT_NAME).toString()
+        val chatId = arguments?.getString(ChatActivity.CHAT_ID).toString()
         val text = binding.etMessage.text.toString()
         val author = (requireActivity().application as HomeHelperApp).sharedPreferences
             .getString(HomeHelperApp.USER_EMAIL, "none") ?: "null"
         if (text.isNotBlank()) {
-            chatViewModel.sendMessage(text, author,chatName)
+            chatViewModel.sendMessage(text, author,chatId)
             binding.etMessage.setText("")
         }
     }
 
     companion object {
 
-        fun newInstance(chatName: String) =
+        fun newInstance(chatId: String) =
             ChatFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ChatActivity.CHAT_NAME, chatName)
+                    putString(ChatActivity.CHAT_ID, chatId)
                 }
             }
     }

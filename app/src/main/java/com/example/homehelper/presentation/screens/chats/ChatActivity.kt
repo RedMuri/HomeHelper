@@ -13,20 +13,20 @@ class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
-        val chatName = intent.getStringExtra(CHAT_NAME).toString()
-        Log.i("muri", "chatActivity: ${intent.getStringExtra(CHAT_NAME)}")
+        val chatId = intent.getStringExtra(CHAT_ID).toString()
+        Log.i("muri", "chatActivity: ${intent.getStringExtra(CHAT_ID)}")
         supportFragmentManager.beginTransaction()
-            .replace(R.id.chat_fragment_container, ChatFragment.newInstance(chatName))
+            .replace(R.id.chat_fragment_container, ChatFragment.newInstance(chatId))
             .commit()
     }
 
     companion object {
 
-        const val CHAT_NAME = "chat_name"
+        const val CHAT_ID = "chat_id"
 
-        fun newInstance(context: Context, chatName: String): Intent {
+        fun newInstance(context: Context, chatId: String): Intent {
             return Intent(context, ChatActivity::class.java).apply {
-                putExtra(CHAT_NAME, chatName)
+                putExtra(CHAT_ID, chatId)
             }
         }
     }

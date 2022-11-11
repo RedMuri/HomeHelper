@@ -67,6 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_default"
+                android:cursorVisible="false"
                 android:layout_weight="1"
                 android:background="@drawable/search_view_rounded"
                 android:hint="@string/search_view_hint"

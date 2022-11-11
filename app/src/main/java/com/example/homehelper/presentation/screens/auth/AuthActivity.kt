@@ -10,15 +10,11 @@ import com.example.homehelper.presentation.HomeHelperApp
 
 class AuthActivity : AppCompatActivity() {
 
-    val settings by lazy {
-        (application as HomeHelperApp).sharedPreferences
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
-        Log.i("muri","AuthActivity" + settings.getString(HomeHelperApp.USER_EMAIL,"none in auth").toString())
-        Log.i("muri","AuthActivity" + settings.getInt(HomeHelperApp.USER_FLAT_NUM,0).toString())
+        Log.i("muri","AuthActivity" + (application as HomeHelperApp).getUserEmail())
     }
 
     companion object{

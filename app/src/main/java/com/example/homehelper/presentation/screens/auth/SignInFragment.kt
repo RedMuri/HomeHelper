@@ -89,8 +89,7 @@ class SignInFragment : Fragment() {
                 Toast.LENGTH_SHORT).show()
         }
         viewModel.userName.observe(viewLifecycleOwner) {
-            (requireActivity() as AuthActivity).settings.edit()
-                .putString(HomeHelperApp.USER_EMAIL, it).apply()
+            (requireActivity().application as HomeHelperApp).putUserEmail(it)
             startActivity(MainActivity.newInstance(requireActivity().application))
         }
     }

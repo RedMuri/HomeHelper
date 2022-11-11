@@ -33,14 +33,11 @@ class AuthViewModel @Inject constructor(
     val userName: LiveData<String> = _userName
 
     fun signIn(inputEmail: String, inputPassword: String, flatNum: String) {
-        val email = inputEmail.trim()
-        val password = inputPassword.trim()
-        val fieldsValid = validateInputSignIn(email, password, flatNum)
+        val fieldsValid = validateInputSignIn(inputEmail, inputPassword, flatNum)
         if (fieldsValid) {
-            signInUseCase(email, password, flatNum.toInt()).addOnCompleteListener {
+            signInUseCase(inputEmail, inputPassword, flatNum.toInt()).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    _userName.value = email
-                    Log.i("muri", "successful: $it")
+                    _userName.value = inputEmail
                 } else {
                     Log.i("muri", "fail: ${it.exception}")
                     checkSignInException(it)
@@ -68,14 +65,11 @@ class AuthViewModel @Inject constructor(
     }
 
     fun logIn(inputEmail: String, inputPassword: String) {
-        val email = inputEmail.trim()
-        val password = inputPassword.trim()
-        val fieldsValid = validateInputLogIn(email, password)
+        val fieldsValid = validateInputLogIn(inputEmail, inputPassword)
         if (fieldsValid) {
-            logInUseCase(email, password).addOnCompleteListener {
+            logInUseCase(inputEmail, inputPassword).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    _userName.value = email
-                    Log.i("muri", it.toString())
+                    _userName.value = inputEmail
                 } else {
                     Log.i("muri", it.toString())
                     checkLogInException(it)
@@ -112,7 +106,7 @@ class AuthViewModel @Inject constructor(
 
     private fun validateInputSignIn(email: String, password: String, flatNum: String): Boolean {
         var result = true
-        if (email.isEmpty()) {
+        if (email.isBlank()) {
             _errorEmail.value = ERROR_EMPTY
             result = false
         }
@@ -120,11 +114,11 @@ class AuthViewModel @Inject constructor(
             _errorPassword.value = ERROR_SHORT_PASSWORD
             result = false
         }
-        if (password.isEmpty()) {
+        if (password.isBlank()) {
             _errorPassword.value = ERROR_EMPTY
             result = false
         }
-        if (flatNum.isEmpty()) {
+        if (flatNum.isBlank()) {
             _errorFlatNum.value = ERROR_EMPTY
             result = false
         } else if (flatNum.toInt() !in 1..60) {
@@ -136,7 +130,7 @@ class AuthViewModel @Inject constructor(
 
     private fun validateInputLogIn(email: String, password: String): Boolean {
         var result = true
-        if (email.isEmpty()) {
+        if (email.isBlank()) {
             _errorEmail.value = ERROR_EMPTY
             result = false
         }
@@ -144,7 +138,7 @@ class AuthViewModel @Inject constructor(
             _errorPassword.value = ERROR_SHORT_PASSWORD
             result = false
         }
-        if (password.isEmpty()) {
+        if (password.isBlank()) {
             _errorPassword.value = ERROR_EMPTY
             result = false
         }

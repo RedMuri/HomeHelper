@@ -9,6 +9,8 @@ import com.example.homehelper.domain.entities.Event
 
 class AdapterServices : ListAdapter<Service, ServiceViewHolder>(ServiceItemDiffCallback()) {
 
+    var onServiceClickListener: ((Service)->Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder {
         val binding = ItemServiceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ServiceViewHolder(binding)
@@ -18,5 +20,8 @@ class AdapterServices : ListAdapter<Service, ServiceViewHolder>(ServiceItemDiffC
         val item = getItem(position)
         holder.icon.setImageResource(item.icon)
         holder.name.text = item.name
+        holder.binding.root.setOnClickListener {
+            onServiceClickListener?.invoke(item)
+        }
     }
 }

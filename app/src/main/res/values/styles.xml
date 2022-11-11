@@ -95,6 +95,41 @@
         <item name="layout_constraintDimensionRatio">1:1</item>
     </style>
 
+    <style name="MetersDataAddImageButton">
+        <item name="android:layout_width">@dimen/payments_round_icon_size</item>
+        <item name="android:layout_height">@dimen/payments_round_icon_size</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+        <item name="android:background">@drawable/circle_background_main_color_ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:padding">@dimen/padding_default</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+    </style>
+
+    <style name="MetersDataMeterName">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/meters_data_fr_meter_name_ts</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MetersDataLightDarkText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/main_light_dark</item>
+    </style>
+
+    <style name="MetersDataLastDataText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_default</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textSize">@dimen/meters_data_fr_last_data_ts</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="MainSquareImageButton">
         <item name="android:layout_width">@dimen/square_icon_size</item>
         <item name="android:layout_height">@dimen/square_icon_size</item>
@@ -171,6 +206,12 @@
         <item name="android:background">@drawable/circle_background_ripple</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
+        <item name="layout_constraintDimensionRatio">1:1</item>
+    </style>
+
+    <style name="ServicesItemIcon">
+        <item name="android:layout_width">@dimen/round_icon_size</item>
+        <item name="android:layout_height">@dimen/round_icon_size</item>
         <item name="layout_constraintDimensionRatio">1:1</item>
     </style>
 

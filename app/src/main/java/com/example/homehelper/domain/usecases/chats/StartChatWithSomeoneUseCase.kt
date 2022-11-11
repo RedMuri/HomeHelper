@@ -1,10 +1,10 @@
 package com.example.homehelper.domain.usecases.chats
 
-import com.example.homehelper.domain.FirebaseRepository
+import com.example.homehelper.domain.repositories.FirebaseChatsRepository
 import javax.inject.Inject
 
 class StartChatWithSomeoneUseCase @Inject constructor(
-    private val repository: FirebaseRepository
+    private val repository: FirebaseChatsRepository
 ) {
 
     operator fun invoke(userEmail: String, someoneEmail: String) = repository.startChatWithSomeone(userEmail, someoneEmail)

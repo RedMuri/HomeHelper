@@ -13,11 +13,11 @@ class ChatViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-    fun sendMessage(text: String, author: String, chatName: String) {
-        sendMessageUseCase.invoke(text, author, chatName)
+    fun sendMessage(text: String, author: String, chatId: String) {
+        sendMessageUseCase.invoke(text, author, chatId)
     }
 
-    fun getMessages(chatName: String): LiveData<List<Message>>{
-        return getMessagesUseCase.invoke(chatName)
+    fun getMessages(chatId: String): LiveData<List<Message>>{
+        return getMessagesUseCase.invoke(chatId)
     }
 }

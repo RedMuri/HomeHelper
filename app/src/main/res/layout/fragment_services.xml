@@ -67,6 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_default"
+                android:cursorVisible="false"
                 android:layout_weight="1"
                 android:background="@drawable/search_view_rounded"
                 android:hint="@string/search_view_hint"
@@ -97,12 +98,12 @@
             style="@style/MainRoundImageButton"
             android:layout_margin="@dimen/margin_default"
             android:src="@drawable/refresh_servicessvg"
-            app:layout_constraintBottom_toBottomOf="@+id/textView5"
+            app:layout_constraintBottom_toBottomOf="@+id/light_input_data"
             app:layout_constraintEnd_toEndOf="@id/gl_v2"
             app:layout_constraintTop_toTopOf="@+id/textView" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/light_input_data"
             style="@style/MainSmallText"
             android:text="Актуально на 30.10.2022"
             app:layout_constraintStart_toStartOf="@+id/textView"
@@ -115,7 +116,7 @@
             app:layout_constraintBottom_toBottomOf="@id/barrier_peek_height"
             app:layout_constraintEnd_toStartOf="@id/main_ll_2"
             app:layout_constraintStart_toStartOf="@id/gl_v1"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
+            app:layout_constraintTop_toBottomOf="@+id/light_input_data">
 
             <TextView
                 style="@style/EventsFragmentServiceDescription"
@@ -170,7 +171,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/main_bottom_sheet"
-        app:behavior_peekHeight="300dp"
+        app:behavior_peekHeight="1dp"
+        tools:behavior_peekHeight="300dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <androidx.constraintlayout.widget.Guideline
@@ -188,7 +190,7 @@
             app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/light_last_data_desc"
             style="@style/MainTitleBottom"
             android:text="@string/events_fr_services_title"
             app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
@@ -199,16 +201,16 @@
             android:contentDescription="@string/settings_button_content_desc"
             android:src="@drawable/services_cubes"
             android:layout_margin="@dimen/margin_default"
-            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+            app:layout_constraintBottom_toBottomOf="@+id/light_last_data_desc"
             app:layout_constraintEnd_toEndOf="@id/gl_v2_bottom"
-            app:layout_constraintTop_toTopOf="@+id/textView6" />
+            app:layout_constraintTop_toTopOf="@+id/light_last_data_desc" />
 
         <TextView
             android:id="@+id/tv_location"
             style="@style/ServicesFragmentLocationText"
             android:text="Ярославль"
-            app:layout_constraintTop_toBottomOf="@id/textView6"
-            app:layout_constraintStart_toStartOf="@id/textView6"
+            app:layout_constraintTop_toBottomOf="@id/light_last_data_desc"
+            app:layout_constraintStart_toStartOf="@id/light_last_data_desc"
             />
 
         <androidx.recyclerview.widget.RecyclerView

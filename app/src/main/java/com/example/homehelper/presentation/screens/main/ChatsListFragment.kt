@@ -92,12 +92,10 @@ class ChatsListFragment : Fragment() {
     }
 
     private fun setOnClickListeners() {
-//        binding.fabNewChat.setOnClickListener {
-//            val email =
-//                (requireActivity().application as HomeHelperApp).sharedPreferences.getString(
-//                    HomeHelperApp.USER_EMAIL, "none") ?: "none"
-//            chatsListViewModel.startChatWithSomeone(email, HomeHelperApp.ADMIN_USER_NAME)
-//        }
+        binding.btAddChat.setOnClickListener {
+            val userEmail = (requireActivity().application as HomeHelperApp).getUserEmail()
+            chatsListViewModel.startChatWithSomeone(userEmail, "admin@mail.ru")
+        }
     }
 
     private fun observeViewModel() {
@@ -112,14 +110,12 @@ class ChatsListFragment : Fragment() {
 
 
     private fun setupRecyclerView() {
-        val flatNum = (requireActivity().application as HomeHelperApp).sharedPreferences.getInt(
-            HomeHelperApp.USER_FLAT_NUM,
-            0)
         binding.rvChats.adapter = adapter
+        binding.rvChats.itemAnimator = null
         adapter.onChatClickListener = {
-            Log.i("muri", "chat : $it")
+            Log.i("muri", "chatId : $it")
             startActivity(ChatActivity.newInstance(requireActivity().application,
-                it.name.toString()))
+                it.id))
         }
     }
 

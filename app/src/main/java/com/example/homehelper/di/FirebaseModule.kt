@@ -1,7 +1,7 @@
 package com.example.homehelper.di
 
-import com.example.homehelper.data.firebase.FirebaseRepositoryImpl
-import com.example.homehelper.domain.FirebaseRepository
+import com.example.homehelper.data.firebase.repositories_impl.*
+import com.example.homehelper.domain.repositories.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,9 +14,21 @@ import dagger.Provides
 interface FirebaseModule {
 
     @Binds
-    fun bindRepository(impl: FirebaseRepositoryImpl): FirebaseRepository
+    fun bindFirebaseChatsRepository(impl: FirebaseChatsRepositoryImpl): FirebaseChatsRepository
 
-    companion object{
+    @Binds
+    fun bindFirebaseMessagesRepository(impl: FirebaseMessagesRepositoryImpl): FirebaseMessagesRepository
+
+    @Binds
+    fun bindFirebaseEventsRepository(impl: FirebaseEventsRepositoryImpl): FirebaseEventsRepository
+
+    @Binds
+    fun bindFirebaseAuthRepository(impl: FirebaseAuthRepositoryImpl): FirebaseAuthRepository
+
+    @Binds
+    fun bindFirebaseMetersDataRepository(impl: FirebaseMetersDataRepositoryImpl): FirebaseMetersDataRepository
+
+    companion object {
 
         @Provides
         fun provideFirebaseAuth(): FirebaseAuth {

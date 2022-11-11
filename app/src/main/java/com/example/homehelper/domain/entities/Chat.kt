@@ -1,5 +1,6 @@
 package com.example.homehelper.domain.entities
 
 data class Chat(
-    var name: String? = null,
+    val id: String,
+    var name: String,
 )

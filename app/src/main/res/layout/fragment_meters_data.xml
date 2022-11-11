@@ -1,14 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main"
     tools:context=".presentation.screens.services.MetersDataFragment">
 
-    <!-- TODO: Make layout for meters data -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/main_vertical_gl_left" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
+
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_max_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_peek_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top" />
+
+    <ImageView
+        android:id="@+id/imageButtonBack"
+        style="@style/MainRoundImageButton"
+        android:layout_marginStart="@dimen/margin_default"
+        android:contentDescription="@string/bell_button_content_desc"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintStart_toStartOf="@id/gl_v1"
+        app:layout_constraintTop_toTopOf="@id/searchView" />
+
+    <TextView
+        android:id="@+id/searchView"
+        style="@style/MainTitle"
+        android:text="@string/meters_data_fr_title"
+        app:layout_constraintBottom_toBottomOf="@id/barrier_max_height"
+        app:layout_constraintStart_toEndOf="@id/imageButtonBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageButton"
+        style="@style/PaymentsRoundImageButtonWhite"
+        android:layout_marginStart="@dimen/margin_default"
+        android:contentDescription="@string/bell_button_content_desc"
+        android:src="@drawable/question"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintTop_toTopOf="@id/searchView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/light_meter_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_default"
+        android:background="@drawable/square_background"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_default"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintStart_toStartOf="@id/gl_v1"
+        app:layout_constraintTop_toBottomOf="@+id/barrier_max_height">
+
+
+        <TextView
+            android:id="@+id/light_name"
+            style="@style/MetersDataMeterName"
+            android:text="Юпитер-98"
+            app:layout_constraintEnd_toStartOf="@id/light_iv_add_image_meter_data"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/light_iv_add_image_meter_data"
+            style="@style/MetersDataAddImageButton"
+            android:src="@drawable/add_image_meter_data"
+            app:layout_constraintBottom_toBottomOf="@+id/light_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/light_name" />
+
+        <TextView
+            android:id="@+id/light_desc"
+            style="@style/MetersDataLightDarkText"
+            android:text="Счёт за электричество"
+            app:layout_constraintStart_toStartOf="@+id/light_name"
+            app:layout_constraintTop_toBottomOf="@+id/light_name" />
+
+        <TextView
+            android:id="@+id/light_input_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_default"
+            android:text="Введите показания кВт*ч"
+            android:textColor="@color/main_dark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/light_name"
+            app:layout_constraintTop_toBottomOf="@+id/light_desc" />
+
+        <EditText
+            android:id="@+id/light_et_meter_data"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_margin="@dimen/margin_default"
+            android:cursorVisible="false"
+            android:inputType="number"
+            android:background="@drawable/meter_data_et_background"
+            android:hint="350"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/light_input_data" />
+
+        <TextView
+            android:id="@+id/light_last_data"
+            style="@style/MetersDataLastDataText"
+            android:text="38201"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/light_et_meter_data" />
+
+        <TextView
+            android:id="@+id/light_last_data_desc"
+            style="@style/MetersDataLightDarkText"
+            android:text="Показания на 26.10.2022 кВт*ч"
+            app:layout_constraintStart_toStartOf="@+id/light_last_data"
+            app:layout_constraintTop_toBottomOf="@+id/light_last_data" />
+
+        <TextView
+            android:id="@+id/light_current_tariff"
+            style="@style/MetersDataLastDataText"
+            android:text="2,8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/light_last_data_desc" />
+
+        <TextView
+            android:id="@+id/light_current_tariff_desc"
+            style="@style/MetersDataLightDarkText"
+            android:layout_marginBottom="@dimen/margin_default"
+            android:text="Актуальный тариф на 28.10.2022"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/light_current_tariff"
+            app:layout_constraintTop_toBottomOf="@+id/light_current_tariff" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/bt_pay"
+        style="@style/PaymentsFragmentButtonPay"
+        android:text="@string/meters_data_fr_button_send"
+        app:layout_constraintBottom_toBottomOf="@id/barrier_peek_height"
+        app:layout_constraintEnd_toEndOf="@id/light_meter_data"
+        app:layout_constraintStart_toStartOf="@id/light_meter_data"
+        app:layout_constraintTop_toBottomOf="@id/light_meter_data" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

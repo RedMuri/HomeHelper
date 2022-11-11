@@ -19,7 +19,7 @@ class ServiceActivity : AppCompatActivity() {
             SERVICE_BILLS -> {
                 BillsFragment.newInstance()
             }
-            else -> BillsFragment.newInstance()
+            else -> MetersDataFragment.newInstance()
         }
         supportFragmentManager.beginTransaction().replace(R.id.service_container, fragment).commit()
     }

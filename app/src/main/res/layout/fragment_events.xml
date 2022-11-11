@@ -67,6 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_default"
+                android:cursorVisible="false"
                 android:layout_weight="1"
                 android:background="@drawable/search_view_rounded"
                 android:hint="@string/search_view_hint"
@@ -118,7 +119,7 @@
 
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/light_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_default"
@@ -130,7 +131,7 @@
                 android:textSize="@dimen/events_fr_sum_ts" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/light_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_default"
@@ -205,7 +206,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/main_bottom_sheet"
-        app:behavior_peekHeight="300dp"
+        app:behavior_peekHeight="1dp"
+        tools:behavior_peekHeight="300dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <androidx.constraintlayout.widget.Guideline
@@ -223,7 +225,7 @@
             app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/light_last_data_desc"
             style="@style/MainTitleBottom"
             android:text="@string/events_fr_bottom_title"
             app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
@@ -232,9 +234,9 @@
         <ImageView
             style="@style/MainSquareImageButton"
             android:src="@drawable/main_bottom_sheet_settings"
-            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+            app:layout_constraintBottom_toBottomOf="@+id/light_last_data_desc"
             app:layout_constraintEnd_toEndOf="@id/gl_v2_bottom"
-            app:layout_constraintTop_toTopOf="@+id/textView6"
+            app:layout_constraintTop_toTopOf="@+id/light_last_data_desc"
             android:contentDescription="@string/settings_button_content_desc" />
 
         <TextView
@@ -244,7 +246,7 @@
             android:text="@string/events_fr_filter_1"
             app:layout_constraintEnd_toStartOf="@id/tv_filter_2"
             app:layout_constraintStart_toStartOf="@id/gl_v1_bottom"
-            app:layout_constraintTop_toBottomOf="@id/textView6" />
+            app:layout_constraintTop_toBottomOf="@id/light_last_data_desc" />
 
         <TextView
             android:id="@+id/tv_filter_2"
@@ -277,25 +279,21 @@
             app:layout_constraintTop_toBottomOf="@id/tv_filter_1"
             tools:listitem="@layout/item_event" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/main"
+            android:clickable="true"
+            android:contentDescription="@string/fab_add_event_content_desc"
+            android:focusable="true"
+            android:src="@android:drawable/ic_input_add"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-    <!--                android:id="@+id/fab_add_event"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_margin="16dp"-->
-    <!--                android:clickable="true"-->
-    <!--                android:contentDescription="@string/fab_add_event_content_desc"-->
-    <!--                android:focusable="true"-->
-    <!--                android:src="@android:drawable/ic_input_add"-->
-    <!--                android:visibility="gone"-->
-    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--                app:layout_constraintEnd_toEndOf="parent" />-->
-
-
-    <!--            &lt;!&ndash;The content's body goes here&ndash;&gt;-->
-    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

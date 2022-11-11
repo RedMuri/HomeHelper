@@ -15,9 +15,6 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    val sharedPreferences by lazy {
-        (application as HomeHelperApp).sharedPreferences
-    }
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -31,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)
         super.onCreate(savedInstanceState)
+        Log.i("muri","AuthActivity" + (application as HomeHelperApp).getUserEmail())
         setContentView(binding.root)
         bottomNavigate()
     }
@@ -58,6 +56,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.bottomNav.selectedItemId = R.id.action_main
+
+        binding.bottomNav.setOnItemReselectedListener {
+            // do nothing to prevent fragment from recreating
+        }
     }
 
     private fun launchFragment(fragment: Fragment) = supportFragmentManager.beginTransaction()

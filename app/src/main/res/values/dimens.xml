@@ -11,6 +11,8 @@
     <dimen name="padding_bt">30dp</dimen>
     <dimen name="search_icon_margin">18dp</dimen>
     <dimen name="main_title_ts">24sp</dimen>
+    <dimen name="meters_data_fr_meter_name_ts">26sp</dimen>
+    <dimen name="meters_data_fr_last_data_ts">22sp</dimen>
     <dimen name="main_button_ts">18sp</dimen>
     <dimen name="bills_fr_bt_pay_ts">14sp</dimen>
     <dimen name="service_tariff_value_ts">14sp</dimen>
@@ -26,4 +28,5 @@
     <dimen name="payment_sum_ts">18sp</dimen>
     <dimen name="services_fr_service_name_ts">18sp</dimen>
     <dimen name="bills_fr_bill_date_ts">18sp</dimen>
+    <dimen name="event_item_corner_radius">24dp</dimen>
 </resources>

@@ -9,6 +9,7 @@ import com.example.homehelper.presentation.screens.main.MainActivity
 import com.example.homehelper.presentation.screens.auth.SignInFragment
 import com.example.homehelper.presentation.screens.main.ChatsListFragment
 import com.example.homehelper.presentation.screens.main.ProfileFragment
+import com.example.homehelper.presentation.screens.services.MetersDataFragment
 import dagger.BindsInstance
 import dagger.Component
 
@@ -23,6 +24,7 @@ interface ApplicationComponent {
     fun inject(profileFragment: ProfileFragment)
     fun inject(chatsListFragment: ChatsListFragment)
     fun inject(chatFragment: ChatFragment)
+    fun inject(metersDataFragment: MetersDataFragment)
 
     @Component.Factory
     interface ApplicationComponentFactory {

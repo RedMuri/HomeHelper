@@ -74,23 +74,13 @@ class SignInFragment : Fragment() {
                 else -> "Error"
             }
         }
-        viewModel.errorFlatNum.observe(viewLifecycleOwner) {
-            binding.tilFlatNum.error = when (it) {
-                AuthViewModel.ERROR_EMPTY -> "Input flat number"
-                AuthViewModel.ERROR -> "Error"
-                AuthViewModel.ERROR_NUM_FLAT -> "Flat number should be in range 1..60"
-                AuthViewModel.NO_ERRORS -> null
-                else -> "Error"
-            }
-        }
         viewModel.errorNetwork.observe(viewLifecycleOwner) {
             Toast.makeText(requireActivity().application,
                 "Please check your internet connection",
                 Toast.LENGTH_SHORT).show()
         }
         viewModel.userName.observe(viewLifecycleOwner) {
-            (requireActivity() as AuthActivity).settings.edit()
-                .putString(HomeHelperApp.USER_EMAIL, it).apply()
+            (requireActivity().application as HomeHelperApp).putUserEmail(it)
             startActivity(MainActivity.newInstance(requireActivity().application))
         }
     }
@@ -118,17 +108,6 @@ class SignInFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {
             }
         })
-        binding.etFlatNum.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                viewModel.resetErrorInputFlatNum()
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-            }
-        })
     }
 
     private fun setOnClickListeners() {
@@ -149,8 +128,7 @@ class SignInFragment : Fragment() {
     private fun signIn() {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
-        val flatNum = binding.etFlatNum.text.toString()
-        viewModel.signIn(email, password, flatNum)
+        viewModel.signIn(email, password)
     }
 
     companion object {

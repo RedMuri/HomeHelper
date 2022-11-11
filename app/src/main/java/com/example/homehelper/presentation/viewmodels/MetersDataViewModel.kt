@@ -12,14 +12,14 @@ class MetersDataViewModel @Inject constructor(
 
     private var _errorEmptyField = MutableLiveData<Unit>()
     val errorEmptyFiled: LiveData<Unit> = _errorEmptyField
-    private var _shouldCloseScreen = MutableLiveData<Unit>()
-    val shouldCloseScreen: LiveData<Unit> = _shouldCloseScreen
+    private var _successSend = MutableLiveData<Unit>()
+    val successSend: LiveData<Unit> = _successSend
 
 
-    fun sendMeterData(meterDataValue: Int?, meterDataImage: String) {
-        if (meterDataValue !=null) {
-            sendMeterDataUseCase.invoke(meterDataValue, meterDataImage)
-            _shouldCloseScreen.value = Unit
+    fun sendMeterData(meterDataValue: String, meterDataImage: String) {
+        if (meterDataValue.isNotBlank()) {
+            sendMeterDataUseCase.invoke(meterDataValue.toInt(), meterDataImage)
+            _successSend.value = Unit
         }
         else
             _errorEmptyField.value = Unit

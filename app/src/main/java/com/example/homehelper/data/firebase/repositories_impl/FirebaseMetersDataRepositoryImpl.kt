@@ -11,14 +11,15 @@ import javax.inject.Inject
 
 class FirebaseMetersDataRepositoryImpl @Inject constructor(
     private val db: FirebaseFirestore,
-    private val application: Application
-): FirebaseMetersDataRepository {
+    private val application: Application,
+) : FirebaseMetersDataRepository {
 
     override fun sendMeterData(meterDataValue: Int, meterDataImage: String) {
-        val id = db.collection(METERS_DATA).document(LIGHT).collection(LIGHT_METERS_DATA).document().id
+        val id = db.collection(METERS_DATA).document(LIGHT)
+            .collection(LIGHT_METERS_DATA).document().id
         val date = System.currentTimeMillis()
         val userEmail = (application as HomeHelperApp).getUserEmail()
-        val meterDataDto = MeterDataDto(userEmail,id,date,meterDataValue, meterDataImage)
+        val meterDataDto = MeterDataDto(userEmail, id, date, meterDataValue, meterDataImage)
 
         db.collection(METERS_DATA).document(LIGHT).collection(LIGHT_METERS_DATA)
             .document(id)

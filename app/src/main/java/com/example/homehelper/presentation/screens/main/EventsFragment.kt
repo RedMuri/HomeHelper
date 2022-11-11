@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.homehelper.databinding.FragmentEventsBinding
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.events.AdapterEvents
+import com.example.homehelper.presentation.screens.addevent.AddEventActivity
 import com.example.homehelper.presentation.screens.services.ServiceActivity
 import com.example.homehelper.presentation.viewmodels.EventsViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
@@ -111,15 +112,14 @@ class EventsFragment : Fragment() {
 
     private fun checkIfAdmin() {
         val userName =
-            (requireActivity() as MainActivity).sharedPreferences.getString(HomeHelperApp.USER_EMAIL,
-                "none")
-//        if (userName == HomeHelperApp.ADMIN_USER_NAME){
-//            binding.fabAddEvent.visibility = View.VISIBLE
-//            setupSwipeListener(binding.rvEvents)
-//            binding.fabAddEvent.setOnClickListener {
-//                startActivity(AddEventActivity.newInstance(requireActivity().application))
-//            }
-//        }
+            (requireActivity().application as HomeHelperApp).getUserEmail()
+        if (userName == HomeHelperApp.ADMIN_USER_NAME){
+            binding.fabAddEvent.visibility = View.VISIBLE
+            setupSwipeListener(binding.rvEvents)
+            binding.fabAddEvent.setOnClickListener {
+                startActivity(AddEventActivity.newInstance(requireActivity().application))
+            }
+        }
     }
 
     private fun observeViewModel() {
@@ -145,7 +145,7 @@ class EventsFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val item = adapterEvents.currentList[viewHolder.adapterPosition]
-                item.id?.let { viewModel.deleteEvent(it) }
+                viewModel.deleteEvent(item.id)
             }
         })
         itemTouchHelper.attachToRecyclerView(recyclerView)

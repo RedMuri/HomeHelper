@@ -279,25 +279,21 @@
             app:layout_constraintTop_toBottomOf="@id/tv_filter_1"
             tools:listitem="@layout/item_event" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/main"
+            android:clickable="true"
+            android:contentDescription="@string/fab_add_event_content_desc"
+            android:focusable="true"
+            android:src="@android:drawable/ic_input_add"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-    <!--                android:id="@+id/fab_add_event"-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:layout_margin="16dp"-->
-    <!--                android:clickable="true"-->
-    <!--                android:contentDescription="@string/fab_add_event_content_desc"-->
-    <!--                android:focusable="true"-->
-    <!--                android:src="@android:drawable/ic_input_add"-->
-    <!--                android:visibility="gone"-->
-    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--                app:layout_constraintEnd_toEndOf="parent" />-->
-
-
-    <!--            &lt;!&ndash;The content's body goes here&ndash;&gt;-->
-    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

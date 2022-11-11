@@ -50,6 +50,7 @@ class AddEventFragment : Fragment() {
         binding.btSaveEvent.setOnClickListener {
             val title = binding.etEventTitle.text.toString().trim()
             val desc = binding.etEventDesc.text.toString().trim()
+
             viewModel.addEvent(title, desc)
         }
     }

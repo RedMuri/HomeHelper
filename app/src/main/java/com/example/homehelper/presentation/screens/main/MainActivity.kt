@@ -15,9 +15,6 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    val sharedPreferences by lazy {
-        (application as HomeHelperApp).sharedPreferences
-    }
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }

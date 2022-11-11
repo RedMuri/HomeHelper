@@ -37,7 +37,7 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
                     }
                     val userChats = value?.map { it.toObject<ChatDto>() }
                     if (userChats != null) {
-                        loadChatsById(userChats.map { it.id })
+                        loadChatsById(userChats)
                     }
                 } catch (e: Exception) {
                     Log.i("muri", "getChats: exception: $e")
@@ -45,39 +45,42 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
             }
     }
 
-    private fun loadChatsById(userChats: List<String>) {
+    private fun loadChatsById(userChats: List<ChatDto>) {
+
         for (userChat in userChats) {
-            db.collection(CHATS)
-                .document(userChat)
-                .get().addOnSuccessListener {
-                    try {
-                        insertChatToDb(it)
-                    } catch (e: Exception) {
-                        Log.i("muri", "loadUserChatsFromFb: exception: $e")
-                    }
-                }.addOnFailureListener {
-                    Log.i("muri", "getChats error: $it")
-                }
+            insertChatToDb(userChat)
+//            db.collection(CHATS)
+//                .document(userChat)
+//                .get().addOnSuccessListener {
+//                    try {
+//
+//                    } catch (e: Exception) {
+//                        Log.i("muri", "loadUserChatsFromFb: exception: $e")
+//                    }
+//                }.addOnFailureListener {
+//                    Log.i("muri", "getChats error: $it")
+//                }
+//        }
         }
     }
 
-    private fun insertChatToDb(it: DocumentSnapshot) {
-        val chatDto = it.toObject<ChatDto>()
-        if (chatDto != null) {
-            val chatDbModel = chatMapper.mapChatDtoToChatDbModel(chatDto)
-            scope.launch {
-                chatsDao.addChat(chatDbModel)
-            }
+    private fun insertChatToDb(chatDto: ChatDto) {
+//        val chatDto = it.toObject<ChatDto>()
+        val chatDbModel = chatMapper.mapChatDtoToChatDbModel(chatDto)
+        scope.launch {
+            chatsDao.addChat(chatDbModel)
         }
     }
 
 
     override fun startChatWithSomeone(userEmail: String, someoneEmail: String) {
+        if (userEmail == someoneEmail)
+            return
         val chatAcceptors = listOf(userEmail, someoneEmail)
         //val id = db.collection(CHATS).document().id
         val chatDto =
             ChatDto(chatAcceptors.sorted().joinToString("_"),
-                someoneEmail.substringBefore("@"))
+                chatAcceptors.joinToString("||"))
 
         db.collection(CHATS).document(chatDto.id).set(chatDto).addOnCompleteListener {
             if (it.isSuccessful) {
@@ -93,9 +96,19 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
         chatAcceptors: List<String>,
         chatDto: ChatDto,
     ) {
+        val chatNames = chatDto.name.split("||")
         for (chatAcceptor in chatAcceptors) {
-            db.collection(USERS).document(chatAcceptor).collection(CHATS).document()
-                .set(chatDto)
+            val chatNameForCurrentUser = chatNames.filterNot { it == chatAcceptor }.joinToString()
+            val chatForUser = ChatDto(chatDto.id, chatNameForCurrentUser)
+            db.collection(USERS).document(chatAcceptor).collection(CHATS).document(chatDto.id)
+                .set(chatForUser)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Log.i("muri", "addChatToChatAcceptors success: $it")
+                    } else {
+                        Log.i("muri", "addChatToChatAcceptors failure: $it")
+                    }
+                }
         }
     }
 

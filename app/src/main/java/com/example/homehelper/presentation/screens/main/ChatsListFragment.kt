@@ -119,6 +119,7 @@ class ChatsListFragment : Fragment() {
 
     private fun setupRecyclerView() {
         binding.rvChats.adapter = adapter
+        binding.rvChats.itemAnimator = null
         adapter.onChatClickListener = {
             Log.i("muri", "chatId : $it")
             startActivity(ChatActivity.newInstance(requireActivity().application,

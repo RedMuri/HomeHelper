@@ -14,7 +14,6 @@ class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
-        Log.i("muri","AuthActivity" + (application as HomeHelperApp).getUserEmail())
     }
 
     companion object{

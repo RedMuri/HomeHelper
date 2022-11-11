@@ -32,7 +32,6 @@ class FirebaseEventsRepositoryImpl @Inject constructor(
 
     override fun loadEventsFromFb() {
         db.collection(EVENTS_COLLECTION)
-            .orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { value, e ->
                 if (e != null) {
                     Log.i("muri", "getEventsList: listen failed: $e")
@@ -48,10 +47,10 @@ class FirebaseEventsRepositoryImpl @Inject constructor(
 
     private fun insertDataToDb(value: QuerySnapshot?) {
         val eventsDto = value?.map { it.toObject<EventDto>() }
-        val eventsDbModel =
-            eventsDto?.map { eventMapper.mapEventDtoToEventDbModel(it) }
+        val eventsDbModel = eventsDto?.map { eventMapper.mapEventDtoToEventDbModel(it) }
         eventsDbModel?.let {
             scope.launch {
+                eventsDao.deleteAllEvents()
                 eventsDao.addEvents(it)
             }
         }
@@ -60,7 +59,7 @@ class FirebaseEventsRepositoryImpl @Inject constructor(
 
     override fun addEvent(title: String, desc: String, date: Long) {
         val id = db.collection(EVENTS_COLLECTION).document().id
-        val eventDto = EventDto(title, desc, eventMapper.convertMlsToDate(date), id)
+        val eventDto = EventDto(title, desc, date, id)
         db.collection(EVENTS_COLLECTION)
             .document(id)
             .set(eventDto)

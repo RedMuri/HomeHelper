@@ -37,20 +37,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="23.10.2022" />
 
-        <TextView
-            android:id="@+id/tv_event_author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="6dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/event_tv_backshape"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="4dp"
-            android:textColor="@color/main_dark"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/events_fr_filter_2" />
 
         <TextView
             android:id="@+id/tv_event_title"

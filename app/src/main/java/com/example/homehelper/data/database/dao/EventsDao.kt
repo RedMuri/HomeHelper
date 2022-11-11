@@ -10,7 +10,7 @@ import com.example.homehelper.data.database.model.EventDbModel
 @Dao
 interface EventsDao {
 
-    @Query("select * from events")
+    @Query("select * from events order by date desc")
     fun getEvents(): LiveData<List<EventDbModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -18,4 +18,7 @@ interface EventsDao {
 
     @Query("delete from events where id=:eventId")
     suspend fun deleteEvent(eventId: String)
+
+    @Query("delete from events")
+    suspend fun deleteAllEvents()
 }

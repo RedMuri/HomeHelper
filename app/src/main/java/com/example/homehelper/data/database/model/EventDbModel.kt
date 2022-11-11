@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class EventDbModel(
     val title: String,
     val description: String,
-    val date: String,
+    val date: Long,
     @PrimaryKey
     val id: String,
 )

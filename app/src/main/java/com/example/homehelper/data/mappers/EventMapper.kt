@@ -24,7 +24,7 @@ class EventMapper @Inject constructor() {
     private fun mapEventDbModelToEvent(eventDbModel: EventDbModel) = Event(
         title = eventDbModel.title,
         description = eventDbModel.description,
-        date = eventDbModel.date,
+        date = convertMlsToDate(eventDbModel.date),
         id = eventDbModel.id,
     )
 
@@ -35,7 +35,7 @@ class EventMapper @Inject constructor() {
             }
         }
 
-    fun convertMlsToDate(mls: Long?): String {
+    private fun convertMlsToDate(mls: Long?): String {
         if (mls == null) return ""
         val timestamp = Timestamp(mls)
         val date = Date(timestamp.time)

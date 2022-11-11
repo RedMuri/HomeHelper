@@ -7,6 +7,6 @@ class SignInUseCase @Inject constructor(
     private val repository: FirebaseAuthRepository
 ) {
 
-    operator fun invoke(email: String, password: String, flatNum: Int) =
-        repository.signIn(email,password,flatNum)
+    operator fun invoke(email: String, password: String) =
+        repository.signIn(email,password)
 }

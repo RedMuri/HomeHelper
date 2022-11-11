@@ -17,8 +17,8 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
 
     override fun getFirebaseAuth(): FirebaseAuth = auth
 
-    override fun signIn(email: String, password: String, flatNum: Int): Task<AuthResult> {
-        createUserInDb(email, flatNum)
+    override fun signIn(email: String, password: String): Task<AuthResult> {
+        createUserInDb(email)
         return auth.createUserWithEmailAndPassword(email, password)
     }
 
@@ -26,15 +26,9 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
         return auth.signInWithEmailAndPassword(email, password)
     }
 
-    private fun createUserInDb(email: String, flatNum: Int) {
-        val hallwayChat = when (flatNum) {
-            in 1..20 -> "hallway1"
-            in 21..40 -> "hallway2"
-            in 41..60 -> "hallway3"
-            else -> "none"
-        }
-        val userChats = listOf("main_chat", hallwayChat)
-        val user = User(email, flatNum, userChats)
+    private fun createUserInDb(email: String) {
+        val userChats = listOf("main_chat")
+        val user = User(email, userChats)
         for (chat in userChats) {
             db.collection(FirebaseChatsRepositoryImpl.USERS).document(email).collection("chats")
                 .document(chat)

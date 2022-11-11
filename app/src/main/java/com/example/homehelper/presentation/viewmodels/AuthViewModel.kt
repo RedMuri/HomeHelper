@@ -25,17 +25,15 @@ class AuthViewModel @Inject constructor(
     val errorEmail: LiveData<String> = _errorEmail
     private var _errorPassword = MutableLiveData<String>()
     val errorPassword: LiveData<String> = _errorPassword
-    private var _errorFlatNum = MutableLiveData<String>()
-    val errorFlatNum: LiveData<String> = _errorFlatNum
     private var _errorNetwork = MutableLiveData<Unit>()
     val errorNetwork: LiveData<Unit> = _errorNetwork
     private var _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
 
-    fun signIn(inputEmail: String, inputPassword: String, flatNum: String) {
-        val fieldsValid = validateInputSignIn(inputEmail, inputPassword, flatNum)
+    fun signIn(inputEmail: String, inputPassword: String) {
+        val fieldsValid = validateInputSignIn(inputEmail, inputPassword)
         if (fieldsValid) {
-            signInUseCase(inputEmail, inputPassword, flatNum.toInt()).addOnCompleteListener {
+            signInUseCase(inputEmail, inputPassword).addOnCompleteListener {
                 if (it.isSuccessful) {
                     _userName.value = inputEmail
                 } else {
@@ -104,7 +102,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun validateInputSignIn(email: String, password: String, flatNum: String): Boolean {
+    private fun validateInputSignIn(email: String, password: String): Boolean {
         var result = true
         if (email.isBlank()) {
             _errorEmail.value = ERROR_EMPTY
@@ -116,13 +114,6 @@ class AuthViewModel @Inject constructor(
         }
         if (password.isBlank()) {
             _errorPassword.value = ERROR_EMPTY
-            result = false
-        }
-        if (flatNum.isBlank()) {
-            _errorFlatNum.value = ERROR_EMPTY
-            result = false
-        } else if (flatNum.toInt() !in 1..60) {
-            _errorFlatNum.value = ERROR_NUM_FLAT
             result = false
         }
         return result
@@ -153,9 +144,6 @@ class AuthViewModel @Inject constructor(
         _errorPassword.value = NO_ERRORS
     }
 
-    fun resetErrorInputFlatNum() {
-        _errorFlatNum.value = NO_ERRORS
-    }
 
 
     companion object {
@@ -167,6 +155,5 @@ class AuthViewModel @Inject constructor(
         const val ERROR_WRONG_EMAIL = "wrong_email"
         const val ERROR_NOT_EXISTING_EMAIL = "not_existing_email"
         const val ERROR_WRONG_PASSWORD = "wrong_password"
-        const val ERROR_NUM_FLAT = "num_flat"
     }
 }

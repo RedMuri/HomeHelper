@@ -54,11 +54,7 @@ class ProfileFragment : Fragment() {
         val email = (requireActivity().application as HomeHelperApp).sharedPreferences.getString(
             HomeHelperApp.USER_EMAIL,
             "none")
-        val flatNum = (requireActivity().application as HomeHelperApp).sharedPreferences.getInt(
-            HomeHelperApp.USER_FLAT_NUM,
-            0)
         binding.tvEmail.text = email
-        binding.tvFlatNum.text = flatNum.toString()
     }
 
     private fun setOnClickListeners() {

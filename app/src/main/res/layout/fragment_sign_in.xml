@@ -6,66 +6,144 @@
     android:layout_height="match_parent"
     tools:context=".presentation.screens.auth.SignInFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_email"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="4dp"
-        android:layout_marginHorizontal="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/til_password"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <TextView
+        android:id="@+id/tv_our_logo"
+        style="@style/AuthLogo"
+        android:text="HS"
+        app:layout_constraintStart_toStartOf="@+id/gl_v1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_our_company_name"
+        style="@style/AuthCompanyName"
+        android:text="@string/auth_tv_out_company_name"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_our_logo"
+        app:layout_constraintStart_toEndOf="@+id/tv_our_logo"
+        app:layout_constraintTop_toTopOf="@+id/tv_our_logo" />
+
+    <TextView
+        android:id="@+id/tv_amid_logos"
+        style="@style/AuthCompanyName"
+        android:text="X"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_our_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed">
+        app:layout_constraintTop_toTopOf="@id/tv_our_logo" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_email"
-            android:inputType="textEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/et_name_hint" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/tv_uk_logo"
+        style="@style/AuthLogo"
+        android:text="UK"
+        app:layout_constraintEnd_toEndOf="@+id/gl_v2"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_password"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_uk_company_name"
+        style="@style/AuthCompanyName"
+        android:gravity="end"
+        android:text="@string/auth_tv_uk_company_name"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_our_logo"
+        app:layout_constraintEnd_toStartOf="@id/tv_uk_logo"
+        app:layout_constraintTop_toTopOf="@+id/tv_our_logo" />
+
+    <TextView
+        android:id="@+id/tv_greetings"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="4dp"
-        android:layout_marginHorizontal="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_email">
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="Добро\nпожаловать!"
+        android:textColor="@color/main"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/et_unique"
+        app:layout_constraintEnd_toStartOf="@+id/gl_v2"
+        app:layout_constraintStart_toStartOf="@+id/gl_v1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_amid_logos" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_password"
-            android:inputType="textPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/et_password_hint" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_unique"
+        style="@style/AuthEt"
+        android:layout_marginBottom="12dp"
+        android:hint="@string/et_sign_in_unique_hint"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@id/et_email"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintStart_toStartOf="@id/gl_v1" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_email"
+        style="@style/AuthEt"
+        android:layout_marginBottom="12dp"
+        android:hint="@string/et_sign_in_email_hint"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@id/et_password"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintStart_toStartOf="@id/gl_v1" />
+
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_password"
+        style="@style/AuthEt"
+        android:layout_marginBottom="12dp"
+        android:hint="@string/et_sign_in_password_hint"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@id/et_repeat_password"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintStart_toStartOf="@id/gl_v1" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_repeat_password"
+        style="@style/AuthEt"
+        android:layout_marginBottom="40dp"
+        android:hint="@string/et_sign_in_repeat_password_hint"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/bt_sign_in"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintStart_toStartOf="@id/gl_v1" />
 
 
     <Button
         android:id="@+id/bt_sign_in"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/AuthButtonMain"
+        android:layout_marginBottom="20dp"
         android:text="@string/bt_sing_in"
-        app:layout_constraintBottom_toTopOf="@+id/tv_have_account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_password" />
+        app:layout_constraintBottom_toTopOf="@+id/line_between_buttons"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintStart_toStartOf="@id/gl_v1" />
 
-    <TextView
-        android:id="@+id/tv_have_account"
-        android:textSize="15sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <View
+        android:id="@+id/line_between_buttons"
+        android:layout_width="120dp"
+        android:layout_height="2dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/main_transparent"
+        app:layout_constraintStart_toStartOf="@id/gl_v1"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintBottom_toTopOf="@id/bt_alt_log_in"/>
+
+    <Button
+        android:id="@+id/bt_alt_log_in"
         android:text="@string/tv_have_account"
+        style="@style/AuthButtonAlt"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bt_sign_in" />
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintStart_toStartOf="@id/gl_v1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

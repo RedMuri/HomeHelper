@@ -40,7 +40,7 @@ class EventsFragment : Fragment() {
     private val binding: FragmentEventsBinding
         get() = _binding ?: throw RuntimeException("FragmentEventsBinding = null!")
 
-    //-----------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)

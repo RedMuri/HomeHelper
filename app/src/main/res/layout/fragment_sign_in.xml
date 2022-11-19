@@ -37,7 +37,7 @@
 
     <TextView
         android:id="@+id/tv_amid_logos"
-        style="@style/AuthCompanyName"
+        style="@style/AuthBetweenCompanyNames"
         android:text="X"
         app:layout_constraintBottom_toBottomOf="@+id/tv_our_logo"
         app:layout_constraintEnd_toEndOf="parent"

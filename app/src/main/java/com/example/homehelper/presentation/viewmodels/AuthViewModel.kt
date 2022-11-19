@@ -25,13 +25,15 @@ class AuthViewModel @Inject constructor(
     val errorEmail: LiveData<String> = _errorEmail
     private var _errorPassword = MutableLiveData<String>()
     val errorPassword: LiveData<String> = _errorPassword
+    private var _errorRepeatPassword = MutableLiveData<String>()
+    val errorRepeatPassword: LiveData<String> = _errorRepeatPassword
     private var _errorNetwork = MutableLiveData<Unit>()
     val errorNetwork: LiveData<Unit> = _errorNetwork
     private var _userName = MutableLiveData<String>()
     val userName: LiveData<String> = _userName
 
-    fun signIn(inputEmail: String, inputPassword: String) {
-        val fieldsValid = validateInputSignIn(inputEmail, inputPassword)
+    fun signIn(inputEmail: String, inputPassword: String, repeatPassword: String) {
+        val fieldsValid = validateInputSignIn(inputEmail, inputPassword, repeatPassword)
         if (fieldsValid) {
             signInUseCase(inputEmail, inputPassword).addOnCompleteListener {
                 if (it.isSuccessful) {
@@ -102,7 +104,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private fun validateInputSignIn(email: String, password: String): Boolean {
+    private fun validateInputSignIn(email: String, password: String, repeatPassword: String): Boolean {
         var result = true
         if (email.isBlank()) {
             _errorEmail.value = ERROR_EMPTY
@@ -114,6 +116,10 @@ class AuthViewModel @Inject constructor(
         }
         if (password.isBlank()) {
             _errorPassword.value = ERROR_EMPTY
+            result = false
+        }
+        if (repeatPassword.trim()!=password) {
+            _errorRepeatPassword.value = ERROR_PASSWORDS_DO_NOT_MATCH
             result = false
         }
         return result
@@ -144,6 +150,10 @@ class AuthViewModel @Inject constructor(
         _errorPassword.value = NO_ERRORS
     }
 
+    fun resetErrorInputRepeatPassword() {
+        _errorRepeatPassword.value = NO_ERRORS
+    }
+
 
 
     companion object {
@@ -155,5 +165,6 @@ class AuthViewModel @Inject constructor(
         const val ERROR_WRONG_EMAIL = "wrong_email"
         const val ERROR_NOT_EXISTING_EMAIL = "not_existing_email"
         const val ERROR_WRONG_PASSWORD = "wrong_password"
+        const val ERROR_PASSWORDS_DO_NOT_MATCH = "password_do_not_match"
     }
 }

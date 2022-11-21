@@ -30,7 +30,7 @@
         app:barrierDirection="bottom" />
 
     <ImageView
-        android:id="@+id/imageButtonBack"
+        android:id="@+id/bt_back"
         style="@style/MainRoundImageButton"
         android:layout_marginStart="@dimen/margin_default"
         android:contentDescription="@string/bell_button_content_desc"
@@ -44,7 +44,7 @@
         style="@style/MainTitle"
         android:text="@string/new_message_fr_title"
         app:layout_constraintBottom_toBottomOf="@id/barrier_max_height"
-        app:layout_constraintStart_toEndOf="@id/imageButtonBack"
+        app:layout_constraintStart_toEndOf="@id/bt_back"
         app:layout_constraintTop_toTopOf="parent" />
 
 

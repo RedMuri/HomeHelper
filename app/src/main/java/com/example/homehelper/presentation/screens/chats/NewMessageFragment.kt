@@ -55,6 +55,13 @@ class NewMessageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         setupRecyclerView()
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
+        binding.btBack.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
     }
 
     private fun observeViewModel() {

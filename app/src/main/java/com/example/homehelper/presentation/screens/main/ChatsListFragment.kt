@@ -97,6 +97,7 @@ class ChatsListFragment : Fragment() {
         binding.btAddChat.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.main_container, NewMessageFragment.newInstance())
+                .addToBackStack(null)
                 .commit()
 //            val userEmail = (requireActivity().application as HomeHelperApp).getUserEmail()
 //            chatsListViewModel.startChatWithSomeone(userEmail, "admin@mail.ru")

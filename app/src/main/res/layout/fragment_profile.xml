@@ -66,13 +66,116 @@
         app:layout_constraintStart_toEndOf="@id/searchView"
         app:layout_constraintTop_toTopOf="@id/searchView" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_user_image"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:elevation="12dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="2"
+        app:cardCornerRadius="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView">
+
+        <ImageView
+            android:id="@+id/iv_user_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/neighbor1" />
+    </androidx.cardview.widget.CardView>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/searchView"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/rounded_profile_background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="@id/cv_user_image">
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="Анна Иванова"
+            android:textColor="@color/main_dark"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_info_members"
+            style="@style/ProfileFragmentInfo"
+            android:background="@drawable/profile_rectangle_background"
+            app:layout_constraintStart_toStartOf="@id/bt_edit"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintEnd_toStartOf="@id/ll_info_flat_num"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+            <ImageView
+                style="@style/ProfileFragmentInfoIcon"
+                android:contentDescription="@string/events_fr_service_1"
+                android:src="@drawable/main_service1" />
+            <TextView
+                style="@style/ProfileFragmentInfoIconDescription"
+                android:text="2 чел." />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_info_flat_num"
+            style="@style/ProfileFragmentInfo"
+            android:background="@drawable/profile_rectangle_background"
+            app:layout_constraintStart_toEndOf="@id/ll_info_members"
+            app:layout_constraintEnd_toStartOf="@id/ll_info_duration"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+            <ImageView
+                style="@style/ProfileFragmentInfoIcon"
+                android:contentDescription="@string/events_fr_service_1"
+                android:src="@drawable/main_service1" />
+            <TextView
+                style="@style/ProfileFragmentInfoIconDescription"
+                android:text="Кв. 49" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_info_duration"
+            style="@style/ProfileFragmentInfo"
+            android:background="@drawable/profile_rectangle_background"
+            app:layout_constraintStart_toEndOf="@id/ll_info_flat_num"
+            app:layout_constraintEnd_toEndOf="@id/bt_edit"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+            <ImageView
+                style="@style/ProfileFragmentInfoIcon"
+                android:contentDescription="@string/events_fr_service_1"
+                android:src="@drawable/main_service1" />
+            <TextView
+                style="@style/ProfileFragmentInfoIconDescription"
+                android:text="3 мес." />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/profile_bt_edit_background"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="Редактировать"
+            android:layout_margin="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_info_members" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

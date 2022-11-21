@@ -331,4 +331,31 @@
         <item name="android:theme">@style/ThemeButtonWhiteColor</item>
     </style>
 
+    <style name="ProfileFragmentInfoIcon">
+        <item name="android:layout_width">27dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="ProfileFragmentInfoIconDescription">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textColor">@color/main</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="ProfileFragmentInfo">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
 </resources>

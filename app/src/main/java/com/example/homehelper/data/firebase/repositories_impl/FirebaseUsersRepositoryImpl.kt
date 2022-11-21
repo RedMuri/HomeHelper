@@ -22,6 +22,7 @@ class FirebaseUsersRepositoryImpl @Inject constructor(
 
     override fun getAllUsers(): LiveData<List<User>> {
         db.collection(USERS)
+            .orderBy("email")
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {

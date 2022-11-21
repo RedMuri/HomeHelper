@@ -12,10 +12,6 @@ import com.example.homehelper.presentation.adapters.chats.AdapterUsersMes
 import com.example.homehelper.presentation.viewmodels.ChatsListViewModel
 import com.example.homehelper.presentation.viewmodels.UsersListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class NewMessageFragment : Fragment() {

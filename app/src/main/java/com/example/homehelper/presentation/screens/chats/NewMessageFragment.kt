@@ -13,6 +13,7 @@ import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.chats.AdapterUsersMes
 import com.example.homehelper.presentation.adapters.messages.AdapterMessages
 import com.example.homehelper.presentation.viewmodels.ChatViewModel
+import com.example.homehelper.presentation.viewmodels.UsersListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
 import javax.inject.Inject
 
@@ -24,8 +25,8 @@ class NewMessageFragment : Fragment() {
     @Inject
     lateinit var adapterUsersMes: AdapterUsersMes
 
-    private val chatViewModel: ChatViewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[ChatViewModel::class.java]
+    private val usersListViewModel: UsersListViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory)[UsersListViewModel::class.java]
     }
 
     private val component by lazy {
@@ -51,7 +52,13 @@ class NewMessageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeViewModel()
+    }
 
+    private fun observeViewModel() {
+        usersListViewModel.getAllUsers().observe(viewLifecycleOwner){
+            adapterUsersMes.submitList(it)
+        }
     }
 
 

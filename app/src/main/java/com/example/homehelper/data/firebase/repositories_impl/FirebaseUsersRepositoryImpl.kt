@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.homehelper.data.firebase.model.UserDto
 import com.example.homehelper.data.mappers.UsersMapper
+import com.example.homehelper.di.UserNameQualifier
 import com.example.homehelper.domain.entities.User
 import com.example.homehelper.domain.repositories.FirebaseUsersRepository
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,6 +15,7 @@ import javax.inject.Inject
 class FirebaseUsersRepositoryImpl @Inject constructor(
     private val db: FirebaseFirestore,
     private val usersMapper: UsersMapper,
+    @UserNameQualifier private val userName: String,
 ) : FirebaseUsersRepository {
 
     private val users = MutableLiveData<List<User>>()
@@ -24,7 +26,9 @@ class FirebaseUsersRepositoryImpl @Inject constructor(
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     try {
-                        val usersDto = task.result.documents.map { it.toObject<UserDto>()!! }
+                        val usersDto = task.result.documents
+                            .map { it.toObject<UserDto>()!! }
+                            .filter { it.email != userName }
                         users.value = usersDto.map { usersMapper.userDtoToEntity(it) }
                     } catch (e: Exception) {
                         Log.i("muri", "getAllUsers: exception: $e")

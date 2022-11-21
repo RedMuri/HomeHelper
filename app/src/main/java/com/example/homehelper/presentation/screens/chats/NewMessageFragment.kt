@@ -6,16 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.homehelper.R
-import com.example.homehelper.databinding.FragmentChatBinding
 import com.example.homehelper.databinding.FragmentNewMessageBinding
-import com.example.homehelper.domain.entities.User
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.chats.AdapterUsersMes
-import com.example.homehelper.presentation.adapters.messages.AdapterMessages
-import com.example.homehelper.presentation.viewmodels.ChatViewModel
+import com.example.homehelper.presentation.viewmodels.ChatsListViewModel
 import com.example.homehelper.presentation.viewmodels.UsersListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class NewMessageFragment : Fragment() {
@@ -28,6 +28,10 @@ class NewMessageFragment : Fragment() {
 
     private val usersListViewModel: UsersListViewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[UsersListViewModel::class.java]
+    }
+
+    private val chatsListViewModel: ChatsListViewModel by lazy {
+        ViewModelProvider(this, viewModelFactory)[ChatsListViewModel::class.java]
     }
 
     private val component by lazy {
@@ -65,13 +69,21 @@ class NewMessageFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        usersListViewModel.getAllUsers().observe(viewLifecycleOwner){
+        usersListViewModel.getAllUsers().observe(viewLifecycleOwner) {
             adapterUsersMes.submitList(it)
         }
     }
 
-    private fun setupRecyclerView(){
+    private fun setupRecyclerView() {
         binding.rvUsers.adapter = adapterUsersMes
+        adapterUsersMes.onUserClickListener = { it ->
+            val userEmail = (requireActivity().application as HomeHelperApp).getUserEmail()
+            chatsListViewModel.startChatWithSomeone(userEmail, it.email){ chatId ->
+                startActivity(ChatActivity.newInstance(requireActivity().application,
+                    chatId))
+//                requireActivity().supportFragmentManager.popBackStack()
+            }
+        }
     }
 
 

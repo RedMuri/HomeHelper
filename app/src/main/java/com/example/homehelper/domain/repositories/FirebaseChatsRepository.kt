@@ -6,6 +6,6 @@ import com.example.homehelper.domain.entities.Chat
 interface FirebaseChatsRepository {
 
     fun getChats(userEmail: String): LiveData<List<Chat>>
-    fun startChatWithSomeone(userEmail: String, someoneEmail: String)
+    fun startChatWithSomeone(userEmail: String, someoneEmail: String, callback: (String) -> Unit)
     fun loadUserChatsFromFb(userEmail: String)
 }

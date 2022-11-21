@@ -5,12 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentManager.BackStackEntry
 import androidx.lifecycle.ViewModelProvider
+import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentChatBinding
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.messages.AdapterMessages
+import com.example.homehelper.presentation.screens.main.ChatsListFragment
 import com.example.homehelper.presentation.viewmodels.ChatViewModel
+import com.example.homehelper.presentation.viewmodels.ChatsListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
 import javax.inject.Inject
 
@@ -84,7 +90,7 @@ class ChatFragment : Fragment() {
         val author = (requireActivity().application as HomeHelperApp).sharedPreferences
             .getString(HomeHelperApp.USER_EMAIL, "none") ?: "null"
         if (text.isNotBlank()) {
-            chatViewModel.sendMessage(text, author,chatId)
+            chatViewModel.sendMessage(text, author, chatId)
             binding.etMessage.setText("")
         }
     }

@@ -99,8 +99,6 @@ class ChatsListFragment : Fragment() {
                 .replace(R.id.main_container, NewMessageFragment.newInstance())
                 .addToBackStack(null)
                 .commit()
-//            val userEmail = (requireActivity().application as HomeHelperApp).getUserEmail()
-//            chatsListViewModel.startChatWithSomeone(userEmail, "admin@mail.ru")
         }
     }
 

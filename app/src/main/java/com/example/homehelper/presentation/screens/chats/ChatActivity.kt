@@ -1,11 +1,14 @@
 package com.example.homehelper.presentation.screens.chats
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import com.example.homehelper.R
+import com.example.homehelper.presentation.screens.main.ChatsListFragment
 
 class ChatActivity : AppCompatActivity() {
 
@@ -15,6 +18,7 @@ class ChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chat)
         val chatId = intent.getStringExtra(CHAT_ID).toString()
         Log.i("muri", "chatActivity: ${intent.getStringExtra(CHAT_ID)}")
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.chat_fragment_container, ChatFragment.newInstance(chatId))
             .commit()

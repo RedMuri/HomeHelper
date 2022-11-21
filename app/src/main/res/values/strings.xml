@@ -36,6 +36,7 @@
     <string name="payments_fr_button_pay">Оплатить</string>
     <string name="meters_data_fr_button_send">Отправить</string>
     <string name="bills_fr_title">Квитанции</string>
+    <string name="new_message_fr_title">Новое сообщение</string>
     <string name="payments_fr_title">Оплата счетов</string>
     <string name="meters_data_fr_title">Счётчики</string>
     <string name="auth_tv_uk_company_name">УК\n"Огонь"</string>

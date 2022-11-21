@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.widget.Toast
 import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentServicesBinding
 import com.example.homehelper.presentation.adapters.services.AdapterServices
@@ -88,7 +89,9 @@ class ServicesFragment : Fragment() {
             Service(R.drawable.main_service2, "Квитанции"),
             Service(R.drawable.main_service3, "Показания счётчиков"),
         )
+        adapterServices.submitList(services)
         adapterServices.onServiceClickListener = {
+            Toast.makeText(requireContext(), "Clicked!!!!!!!!!!!", Toast.LENGTH_SHORT).show()
             when (it.name) {
                 "Оплата счетов" -> {
                     startActivity(ServiceActivity.newInstance(requireActivity().application,
@@ -104,7 +107,6 @@ class ServicesFragment : Fragment() {
                 }
             }
         }
-        adapterServices.submitList(services)
     }
 
 

@@ -59,7 +59,7 @@ class MetersDataFragment : Fragment() {
             viewModel.sendMeterData(value, "image")
         }
         binding.btBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
+            requireActivity().finish()
         }
     }
 

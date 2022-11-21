@@ -38,7 +38,7 @@ class BillsFragment : Fragment() {
 
     private fun setOnClickListeners() {
         binding.btBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
+            requireActivity().finish()
         }
     }
 

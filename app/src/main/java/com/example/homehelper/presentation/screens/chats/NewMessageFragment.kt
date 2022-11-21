@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentChatBinding
 import com.example.homehelper.databinding.FragmentNewMessageBinding
+import com.example.homehelper.domain.entities.User
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.chats.AdapterUsersMes
 import com.example.homehelper.presentation.adapters.messages.AdapterMessages
@@ -53,12 +54,17 @@ class NewMessageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
+        setupRecyclerView()
     }
 
     private fun observeViewModel() {
         usersListViewModel.getAllUsers().observe(viewLifecycleOwner){
             adapterUsersMes.submitList(it)
         }
+    }
+
+    private fun setupRecyclerView(){
+        binding.rvUsers.adapter = adapterUsersMes
     }
 
 

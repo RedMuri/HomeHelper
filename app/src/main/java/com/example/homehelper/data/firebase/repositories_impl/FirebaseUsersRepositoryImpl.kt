@@ -3,7 +3,6 @@ package com.example.homehelper.data.firebase.repositories_impl
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.homehelper.data.firebase.model.MessageDto
 import com.example.homehelper.data.firebase.model.UserDto
 import com.example.homehelper.data.mappers.UsersMapper
 import com.example.homehelper.domain.entities.User
@@ -21,18 +20,18 @@ class FirebaseUsersRepositoryImpl @Inject constructor(
 
     override fun getAllUsers(): LiveData<List<User>> {
         db.collection(USERS)
-            .orderBy("email")
             .get()
-            .addOnSuccessListener { snapshot ->
-                try {
-                    val usersDto = snapshot?.map { it.toObject<UserDto>() }
-                    users.value = usersDto?.map { usersMapper.userDtoToEntity(it) }
-                } catch (e: Exception) {
-                    Log.i("muri", "getMessages: exception: $e")
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    try {
+                        val usersDto = task.result.documents.map { it.toObject<UserDto>()!! }
+                        users.value = usersDto.map { usersMapper.userDtoToEntity(it) }
+                    } catch (e: Exception) {
+                        Log.i("muri", "getAllUsers: exception: $e")
+                    }
+                } else {
+                    Log.d("muri", "getAllUsers: failure: ", task.exception)
                 }
-            }
-            .addOnFailureListener {
-                Log.i("muri", "getAllUsers: exception: $it")
             }
         return users
     }

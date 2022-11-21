@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.homehelper.di.DaggerApplicationComponent
-import com.example.homehelper.presentation.screens.auth.AuthActivity
 
 class HomeHelperApp : Application() {
 

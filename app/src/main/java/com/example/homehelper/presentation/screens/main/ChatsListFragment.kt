@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentChatsListBinding
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.chats.AdapterChats
 import com.example.homehelper.presentation.screens.chats.ChatActivity
+import com.example.homehelper.presentation.screens.chats.NewMessageFragment
 import com.example.homehelper.presentation.viewmodels.ChatsListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -93,8 +95,11 @@ class ChatsListFragment : Fragment() {
 
     private fun setOnClickListeners() {
         binding.btAddChat.setOnClickListener {
-            val userEmail = (requireActivity().application as HomeHelperApp).getUserEmail()
-            chatsListViewModel.startChatWithSomeone(userEmail, "admin@mail.ru")
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.main_container, NewMessageFragment.newInstance())
+                .commit()
+//            val userEmail = (requireActivity().application as HomeHelperApp).getUserEmail()
+//            chatsListViewModel.startChatWithSomeone(userEmail, "admin@mail.ru")
         }
     }
 

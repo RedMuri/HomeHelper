@@ -7,7 +7,7 @@
     <string name="et_sign_in_repeat_password_hint">Повторите пароль</string>
     <string name="et_login_password_hint">Введите ваш пароль…</string>
     <string name="et_flat_num_hint">Введите номер квартиры…</string>
-    <string name="bt_sing_in">Зарегистрироваться</string>
+    <string name="bt_sign_in">Зарегистрироваться</string>
     <string name="bt_log_in">Войти</string>
     <string name="tv_no_account">У меня нет аккаунта</string>
     <string name="fab_add_event_content_desc">add_event</string>

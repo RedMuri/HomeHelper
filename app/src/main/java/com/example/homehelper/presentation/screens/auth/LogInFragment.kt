@@ -57,7 +57,7 @@ class LogInFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.errorEmail.observe(viewLifecycleOwner) {
-            binding.tilEmail.error = when (it) {
+            binding.etEmail.error = when (it) {
                 AuthViewModel.ERROR_EMPTY -> "Input email"
                 AuthViewModel.ERROR -> "Error"
                 AuthViewModel.ERROR_WRONG_EMAIL -> "Wrong email format"
@@ -67,7 +67,7 @@ class LogInFragment : Fragment() {
             }
         }
         viewModel.errorPassword.observe(viewLifecycleOwner) {
-            binding.tilPassword.error = when (it) {
+            binding.etPassword.error = when (it) {
                 AuthViewModel.ERROR_EMPTY -> "Input password"
                 AuthViewModel.ERROR -> "Error"
                 AuthViewModel.ERROR_WRONG_PASSWORD -> "Wrong password"
@@ -116,7 +116,7 @@ class LogInFragment : Fragment() {
         binding.btLogIn.setOnClickListener {
             logIn()
         }
-        binding.tvNoAccount.setOnClickListener {
+        binding.btAltSignIn.setOnClickListener {
             launchSignInFragment()
         }
     }

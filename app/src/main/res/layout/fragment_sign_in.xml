@@ -121,7 +121,7 @@
         android:id="@+id/bt_sign_in"
         style="@style/AuthButtonMain"
         android:layout_marginBottom="@dimen/auth_bt_main_margin_bottom"
-        android:text="@string/bt_sing_in"
+        android:text="@string/bt_sign_in"
         app:layout_constraintBottom_toTopOf="@+id/line_between_buttons"
         app:layout_constraintEnd_toEndOf="@id/gl_v2"
         app:layout_constraintStart_toStartOf="@id/gl_v1" />

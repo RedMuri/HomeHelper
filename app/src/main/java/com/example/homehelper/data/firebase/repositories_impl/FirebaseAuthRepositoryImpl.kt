@@ -27,7 +27,7 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
     }
 
     private fun createUserInDb(email: String) {
-        val user = User(email)
+        val user = User(email = email)
 
         db.collection(FirebaseChatsRepositoryImpl.USERS)
             .document(email)

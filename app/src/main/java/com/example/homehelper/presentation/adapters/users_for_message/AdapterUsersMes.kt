@@ -9,7 +9,7 @@ import com.example.homehelper.domain.entities.User
 import com.example.homehelper.presentation.adapters.users_for_message.UserMesItemDiffCallback
 import com.example.homehelper.presentation.adapters.users_for_message.UserMesViewHolder
 
-class AdapterUserMes : ListAdapter<User, UserMesViewHolder>(UserMesItemDiffCallback()) {
+class AdapterUsersMes : ListAdapter<User, UserMesViewHolder>(UserMesItemDiffCallback()) {
 
     var onUserClickListener: ((User)->Unit)? = null
 

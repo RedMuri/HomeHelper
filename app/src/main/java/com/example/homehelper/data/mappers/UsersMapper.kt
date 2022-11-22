@@ -8,5 +8,7 @@ class UsersMapper @Inject constructor() {
 
     fun userDtoToEntity(userDto: UserDto) = User(
         email = userDto.email,
+        age = userDto.age,
+        gender = userDto.gender
     )
 }

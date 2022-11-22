@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.homehelper.presentation.screens.chats.ChatFragment
 import com.example.homehelper.presentation.screens.addevent.AddEventFragment
 import com.example.homehelper.presentation.screens.analytics.AgeAnalyticsFragment
+import com.example.homehelper.presentation.screens.analytics.GenderAnalyticsFragment
 import com.example.homehelper.presentation.screens.main.EventsFragment
 import com.example.homehelper.presentation.screens.auth.LogInFragment
 import com.example.homehelper.presentation.screens.main.MainActivity
@@ -29,6 +30,7 @@ interface ApplicationComponent {
     fun inject(metersDataFragment: MetersDataFragment)
     fun inject(newMessageFragment: NewMessageFragment)
     fun inject(ageAnalyticsFragment: AgeAnalyticsFragment)
+    fun inject(genderAnalyticsFragment: GenderAnalyticsFragment)
 
     @Component.Factory
     interface ApplicationComponentFactory {

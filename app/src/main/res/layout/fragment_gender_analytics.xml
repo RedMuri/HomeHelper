@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main"
-    tools:context=".presentation.screens.analytics.AgeAnalyticsFragment">
+    tools:context=".presentation.screens.analytics.GenderAnalyticsFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_v1"
@@ -33,7 +33,7 @@
     <TextView
         android:id="@+id/searchView"
         style="@style/MainTitle"
-        android:text="Возраст"
+        android:text="Пол"
         app:layout_constraintStart_toEndOf="@id/bt_back"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,7 +80,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginVertical="8dp"
-                        android:text="Средний возраст"
+                        android:text="Пол"
                         android:textColor="@color/main_dark"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -100,33 +100,79 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/tv_average_age"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/analytics_average_age_background"
-                        android:paddingHorizontal="20dp"
-                        android:text="0"
-                        android:textColor="@color/white"
-                        android:textSize="30sp"
-
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tag_average_age" />
-
-                    <org.eazegraph.lib.charts.PieChart
-                        android:id="@+id/pie_chart"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/just"
                         android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginHorizontal="40dp"
+                        android:layout_height="300dp"
+                        android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="20dp"
-                        app:egUseInnerPadding="false"
-                        app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_average_age" />
+                        app:layout_constraintTop_toBottomOf="@id/tag_average_age">
+
+                        <TextView
+                            android:id="@+id/tv_men_count"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintVertical_bias="1"
+                            app:layout_constraintVertical_chainStyle="packed"
+                            android:layout_marginBottom="12dp"
+                            android:textAlignment="center"
+                            android:background="@drawable/gender_analytics_men_count_background"
+                            android:paddingHorizontal="20dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="30sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@id/view_men_count"
+                            app:layout_constraintEnd_toEndOf="@id/view_men_count"
+                            app:layout_constraintStart_toStartOf="@id/view_men_count"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/view_men_count"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:background="@drawable/gender_analytics_men_view_background"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/view_women_count"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_men_count" />
+
+                        <TextView
+                            android:id="@+id/tv_women_count"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintVertical_bias="1"
+                            android:layout_marginBottom="12dp"
+                            app:layout_constraintVertical_chainStyle="packed"
+                            android:background="@drawable/gender_analytics_women_count_background"
+                            android:paddingHorizontal="20dp"
+                            android:textAlignment="center"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="30sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@id/view_women_count"
+                            app:layout_constraintEnd_toEndOf="@id/view_women_count"
+                            app:layout_constraintStart_toStartOf="@id/view_women_count"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <View
+                            android:id="@+id/view_women_count"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:background="@drawable/gender_analytics_women_view_background"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_women_count"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/view_men_count"/>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
                         android:id="@+id/tag_age"
@@ -134,11 +180,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="30dp"
-                        android:text="Возраст"
+                        android:text="Пол"
                         android:textColor="@color/main_dark"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/pie_chart" />
+                        app:layout_constraintTop_toBottomOf="@id/just" />
 
                     <TextView
                         android:id="@+id/tag_count"
@@ -150,7 +196,7 @@
                         android:textColor="@color/main_dark"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/pie_chart" />
+                        app:layout_constraintTop_toBottomOf="@id/just" />
 
                     <View
                         android:id="@+id/line_1"
@@ -163,20 +209,20 @@
                     <View
                         android:id="@+id/color_square_1"
                         style="@style/AgeAnalyticsFragmentColorSquare"
-                        android:background="@drawable/age_analytics_color_square_1"
+                        android:background="@drawable/gender_analytics_men_color_square"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/line_1" />
 
                     <TextView
                         android:id="@+id/tag_age_first"
                         style="@style/AgeAnalyticsFragmentTextAge"
-                        android:text="18 - 24"
+                        android:text="Мужской"
                         app:layout_constraintBottom_toBottomOf="@id/color_square_1"
                         app:layout_constraintStart_toEndOf="@id/color_square_1"
                         app:layout_constraintTop_toTopOf="@id/color_square_1" />
 
                     <TextView
-                        android:id="@+id/tv_age_first_count"
+                        android:id="@+id/tv_men_count_bottom"
                         style="@style/AgeAnalyticsFragmentTextAge"
                         android:text="0"
                         app:layout_constraintBottom_toBottomOf="@id/color_square_1"
@@ -193,60 +239,27 @@
 
                     <View
                         android:id="@+id/color_square_2"
-                        android:background="@drawable/age_analytics_color_square_2"
                         style="@style/AgeAnalyticsFragmentColorSquare"
+                        android:background="@drawable/gender_analytics_women_color_square"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/line_2" />
 
                     <TextView
                         android:id="@+id/tag_age_second"
                         style="@style/AgeAnalyticsFragmentTextAge"
-                        android:text="24 - 35"
+                        android:text="Женский"
                         app:layout_constraintBottom_toBottomOf="@id/color_square_2"
                         app:layout_constraintStart_toEndOf="@id/color_square_2"
                         app:layout_constraintTop_toTopOf="@id/color_square_2" />
 
                     <TextView
-                        android:id="@+id/tv_age_second_count"
+                        android:id="@+id/tv_women_count_bottom"
                         style="@style/AgeAnalyticsFragmentTextAge"
                         android:text="0"
                         app:layout_constraintBottom_toBottomOf="@id/color_square_2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/color_square_2" />
-
-
-                    <View
-                        android:id="@+id/line_3"
-                        style="@style/AgeAnalyticsFragmentLine"
-                        android:layout_marginTop="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/color_square_2" />
-
-                    <View
-                        android:id="@+id/color_square_3"
-                        android:background="@drawable/age_analytics_color_square_3"
-                        style="@style/AgeAnalyticsFragmentColorSquare"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/line_3" />
-
-                    <TextView
-                        android:id="@+id/tag_age_third"
-                        style="@style/AgeAnalyticsFragmentTextAge"
-                        android:text="35 - 55"
-                        app:layout_constraintBottom_toBottomOf="@id/color_square_3"
-                        app:layout_constraintStart_toEndOf="@id/color_square_3"
-                        app:layout_constraintTop_toTopOf="@id/color_square_3" />
-
-                    <TextView
-                        android:id="@+id/tv_age_third_count"
-                        style="@style/AgeAnalyticsFragmentTextAge"
-                        android:text="0"
-                        app:layout_constraintBottom_toBottomOf="@id/color_square_3"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/color_square_3" />
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -255,8 +268,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

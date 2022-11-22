@@ -1,23 +1,18 @@
 package com.example.homehelper.presentation.screens.analytics
 
-import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.R
-import com.example.homehelper.databinding.FragmentAddEventBinding
 import com.example.homehelper.databinding.FragmentAgeAnalyticsBinding
 import com.example.homehelper.domain.entities.User
 import com.example.homehelper.presentation.HomeHelperApp
-import com.example.homehelper.presentation.adapters.chats.AdapterUsersMes
-import com.example.homehelper.presentation.viewmodels.ChatsListViewModel
 import com.example.homehelper.presentation.viewmodels.UsersListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
-import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import javax.inject.Inject
 
@@ -54,7 +49,7 @@ class AgeAnalyticsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        usersListViewModel.getAllUsers().observe(viewLifecycleOwner){ users ->
+        usersListViewModel.getAllUsers().observe(viewLifecycleOwner) { users ->
             countAge(users)
         }
     }
@@ -66,6 +61,9 @@ class AgeAnalyticsFragment : Fragment() {
         val thirdGroupCount = validUsers.filter { it.age in 35..54 }.size.toFloat()
         val averageAge = validUsers.map { it.age }.average()
         binding.tvAverageAge.text = averageAge.toInt().toString()
+        binding.tvAgeFirstCount.text = firstGroupCount.toInt().toString()
+        binding.tvAgeSecondCount.text = secondGroupCount.toInt().toString()
+        binding.tvAgeThirdCount.text = thirdGroupCount.toInt().toString()
         setupPieChart(firstGroupCount, secondGroupCount, thirdGroupCount)
     }
 

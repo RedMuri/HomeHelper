@@ -144,7 +144,9 @@
                 android:id="@+id/line_1"
                 style="@style/AgeAnalyticsFragmentLine"
                 android:layout_marginTop="12dp"
-                app:layout_constraintTop_toBottomOf="@id/tag_age"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tag_age" />
 
             <View
                 android:id="@+id/color_square_1"
@@ -167,6 +169,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="@id/color_square_1"
                 app:layout_constraintTop_toTopOf="@id/color_square_1" />
+
+            <View
+                android:id="@+id/line_2"
+                style="@style/AgeAnalyticsFragmentLine"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/color_square_1" />
+
+            <View
+                android:id="@+id/color_square_2"
+                style="@style/AgeAnalyticsFragmentColorSquare"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_2" />
+
+            <TextView
+                android:id="@+id/tag_age_second"
+                style="@style/AgeAnalyticsFragmentTextAge"
+                android:text="24 - 35"
+                app:layout_constraintStart_toEndOf="@id/color_square_2"
+                app:layout_constraintBottom_toBottomOf="@id/color_square_2"
+                app:layout_constraintTop_toTopOf="@id/color_square_2" />
+
+            <TextView
+                android:id="@+id/tv_age_second_count"
+                android:text="45"
+                style="@style/AgeAnalyticsFragmentTextAge"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/color_square_2"
+                app:layout_constraintTop_toTopOf="@id/color_square_2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

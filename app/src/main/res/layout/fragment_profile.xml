@@ -91,6 +91,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/first_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
@@ -116,14 +117,16 @@
             android:id="@+id/ll_info_members"
             style="@style/ProfileFragmentInfo"
             android:background="@drawable/profile_rectangle_background"
-            app:layout_constraintStart_toStartOf="@id/bt_edit"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintEnd_toStartOf="@id/ll_info_flat_num"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@id/bt_edit"
             app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+
             <ImageView
                 style="@style/ProfileFragmentInfoIcon"
                 android:contentDescription="@string/events_fr_service_1"
                 android:src="@drawable/main_service1" />
+
             <TextView
                 style="@style/ProfileFragmentInfoIconDescription"
                 android:text="2 чел." />
@@ -133,13 +136,15 @@
             android:id="@+id/ll_info_flat_num"
             style="@style/ProfileFragmentInfo"
             android:background="@drawable/profile_rectangle_background"
-            app:layout_constraintStart_toEndOf="@id/ll_info_members"
             app:layout_constraintEnd_toStartOf="@id/ll_info_duration"
+            app:layout_constraintStart_toEndOf="@id/ll_info_members"
             app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+
             <ImageView
                 style="@style/ProfileFragmentInfoIcon"
                 android:contentDescription="@string/events_fr_service_1"
                 android:src="@drawable/main_service1" />
+
             <TextView
                 style="@style/ProfileFragmentInfoIconDescription"
                 android:text="Кв. 49" />
@@ -149,13 +154,15 @@
             android:id="@+id/ll_info_duration"
             style="@style/ProfileFragmentInfo"
             android:background="@drawable/profile_rectangle_background"
-            app:layout_constraintStart_toEndOf="@id/ll_info_flat_num"
             app:layout_constraintEnd_toEndOf="@id/bt_edit"
+            app:layout_constraintStart_toEndOf="@id/ll_info_flat_num"
             app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+
             <ImageView
                 style="@style/ProfileFragmentInfoIcon"
                 android:contentDescription="@string/events_fr_service_1"
                 android:src="@drawable/main_service1" />
+
             <TextView
                 style="@style/ProfileFragmentInfoIconDescription"
                 android:text="3 мес." />
@@ -165,12 +172,12 @@
             android:id="@+id/bt_edit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="24dp"
             android:background="@drawable/profile_bt_edit_background"
+            android:text="Редактировать"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:text="Редактировать"
-            android:layout_margin="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -179,5 +186,117 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/rounded_profile_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first_container">
+
+        <TextView
+            android:id="@+id/tv_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:text="Меню"
+            android:textColor="@color/main_dark"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/scroll_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/item_ads"
+                    style="@style/ProfileFragmentItem"
+                    app:layout_constraintBottom_toTopOf="@id/item_settings"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        style="@style/ProfileFragmentItemIcon"
+                        android:src="@drawable/main_service3" />
+
+                    <TextView
+                        style="@style/ProfileFragmentItemDescription"
+                        android:text="Мои объявления" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/item_settings"
+                    style="@style/ProfileFragmentItem"
+                    app:layout_constraintBottom_toTopOf="@id/item_help"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_ads">
+
+                    <ImageView
+                        style="@style/ProfileFragmentItemIcon"
+                        android:src="@drawable/main_service3" />
+
+                    <TextView
+                        style="@style/ProfileFragmentItemDescription"
+                        android:text="Мои объявления" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/item_help"
+                    style="@style/ProfileFragmentItem"
+                    app:layout_constraintBottom_toTopOf="@id/bt_exit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_settings">
+
+                    <ImageView
+                        style="@style/ProfileFragmentItemIcon"
+                        android:src="@drawable/main_service3" />
+
+                    <TextView
+                        style="@style/ProfileFragmentItemDescription"
+                        android:text="Мои объявления" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/bt_exit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/profile_bt_edit_background"
+                    android:text="Редактировать"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintTop_toBottomOf="@id/item_help"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

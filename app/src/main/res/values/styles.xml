@@ -358,4 +358,31 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <style name="ProfileFragmentItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:background">@drawable/profile_item_background</item>
+    </style>
+
+    <style name="ProfileFragmentItemIcon">
+        <item name="android:layout_width">28dp</item>
+        <item name="android:layout_height">28dp</item>
+        <item name="android:layout_margin">14dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="ProfileFragmentItemDescription">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">14dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/main_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

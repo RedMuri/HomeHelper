@@ -73,7 +73,11 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
     }
 
 
-    override fun startChatWithSomeone(userEmail: String, someoneEmail: String) {
+    override fun startChatWithSomeone(
+        userEmail: String,
+        someoneEmail: String,
+        callback: (String) -> Unit,
+    ) {
         if (userEmail == someoneEmail)
             return
         val chatAcceptors = listOf(userEmail, someoneEmail)
@@ -84,6 +88,7 @@ class FirebaseChatsRepositoryImpl @Inject constructor(
 
         db.collection(CHATS).document(chatDto.id).set(chatDto).addOnCompleteListener {
             if (it.isSuccessful) {
+                callback.invoke(chatDto.id)
                 addChatToChatAcceptors(chatAcceptors, chatDto)
                 Log.i("muri", "startChatWithSomeone success: $it")
             } else {

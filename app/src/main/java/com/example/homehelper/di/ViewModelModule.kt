@@ -33,4 +33,9 @@ interface ViewModelModule {
     @ViewModelKey(MetersDataViewModel::class)
     @Binds
     fun bindMetersDataViewModel(viewModel: MetersDataViewModel): ViewModel
+
+    @IntoMap
+    @ViewModelKey(UsersListViewModel::class)
+    @Binds
+    fun bindUsersListViewModel(viewModel: UsersListViewModel): ViewModel
 }

@@ -2,43 +2,303 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/front_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.screens.main.ProfileFragment">
+    android:background="@color/main">
 
-    <Button
-        android:id="@+id/bt_sign_out"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign out"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/main_vertical_gl_left" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
+
+
+    <LinearLayout
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_default"
+        android:background="@drawable/search_view_rounded"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="@id/gl_v1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/search_icon_margin"
+            android:contentDescription="@string/search_icon_content_desc"
+            android:src="@drawable/search_icon" />
+
+        <EditText
+            android:id="@+id/searchViewEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_default"
+            android:layout_weight="1"
+            android:background="@drawable/search_view_rounded"
+            android:cursorVisible="false"
+            android:hint="@string/search_view_hint"
+            android:orientation="horizontal"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageButton"
+        style="@style/MainRoundImageButtonWhite"
+        android:layout_marginStart="@dimen/margin_default"
+        android:contentDescription="@string/bell_button_content_desc"
+        android:src="@drawable/main_bell"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintStart_toEndOf="@id/searchView"
+        app:layout_constraintTop_toTopOf="@id/searchView" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_user_image"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:elevation="12dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="2"
+        app:cardCornerRadius="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView">
+
+        <ImageView
+            android:id="@+id/iv_user_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/bottom_nav_user" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/first_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/rounded_profile_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cv_user_image">
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="Анна Иванова"
+            android:textColor="@color/main_dark"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_info_members"
+            style="@style/ProfileFragmentInfo"
+            android:background="@drawable/profile_rectangle_background"
+            app:layout_constraintEnd_toStartOf="@id/ll_info_flat_num"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@id/bt_edit"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+
+            <ImageView
+                style="@style/ProfileFragmentInfoIcon"
+                android:contentDescription="@string/events_fr_service_1"
+                android:src="@drawable/profile_info_members" />
+
+            <TextView
+                style="@style/ProfileFragmentInfoIconDescription"
+                android:text="2 чел." />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_info_flat_num"
+            style="@style/ProfileFragmentInfo"
+            android:background="@drawable/profile_rectangle_background"
+            app:layout_constraintEnd_toStartOf="@id/ll_info_duration"
+            app:layout_constraintStart_toEndOf="@id/ll_info_members"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+
+            <ImageView
+                style="@style/ProfileFragmentInfoIcon"
+                android:contentDescription="@string/events_fr_service_1"
+                android:src="@drawable/profile_info_flat_num" />
+
+            <TextView
+                style="@style/ProfileFragmentInfoIconDescription"
+                android:text="Кв. 49" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_info_duration"
+            style="@style/ProfileFragmentInfo"
+            android:background="@drawable/profile_rectangle_background"
+            app:layout_constraintEnd_toEndOf="@id/bt_edit"
+            app:layout_constraintStart_toEndOf="@id/ll_info_flat_num"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_name">
+
+            <ImageView
+                style="@style/ProfileFragmentInfoIcon"
+                android:contentDescription="@string/events_fr_service_1"
+                android:src="@drawable/profile_info_duration" />
+
+            <TextView
+                style="@style/ProfileFragmentInfoIconDescription"
+                android:text="3 мес." />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:background="@drawable/profile_bt_edit_background"
+            android:text="Редактировать"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_info_members" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/profile_second_rounded_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/first_container">
 
-    <TextView
-        android:id="@+id/tv_tag_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email: "
-        app:layout_constraintHorizontal_chainStyle="packed"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/bt_sign_out"
-        app:layout_constraintEnd_toStartOf="@id/tv_email"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/tv_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="8dp"
+            android:text="Меню"
+            android:textColor="@color/main_dark"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/scroll_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/item_ads"
+                    style="@style/ProfileFragmentItem"
+                    app:layout_constraintBottom_toTopOf="@id/item_settings"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        style="@style/ProfileFragmentItemIcon"
+                        android:src="@drawable/main_service1" />
+
+                    <TextView
+                        style="@style/ProfileFragmentItemDescription"
+                        android:text="Мои объявления" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/item_settings"
+                    style="@style/ProfileFragmentItem"
+                    app:layout_constraintBottom_toTopOf="@id/item_help"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_ads">
+
+                    <ImageView
+                        style="@style/ProfileFragmentItemIcon"
+                        android:src="@drawable/main_service2" />
+
+                    <TextView
+                        style="@style/ProfileFragmentItemDescription"
+                        android:text="Настройки" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/item_help"
+                    style="@style/ProfileFragmentItem"
+                    app:layout_constraintBottom_toTopOf="@id/bt_exit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_settings">
+
+                    <ImageView
+                        style="@style/ProfileFragmentItemIcon"
+                        android:src="@drawable/main_service3" />
+
+                    <TextView
+                        style="@style/ProfileFragmentItemDescription"
+                        android:text="Справка" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/bt_exit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginVertical="8dp"
+                    android:background="@drawable/profile_bt_edit_background"
+                    android:text="Выйти из аккаунта"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintTop_toBottomOf="@id/item_help"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
 
 
-    <TextView
-        android:id="@+id/tv_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_tag_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_tag_email"
-        app:layout_constraintTop_toTopOf="@id/tv_tag_email"
-        tools:layout_editor_absoluteY="150dp" />
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

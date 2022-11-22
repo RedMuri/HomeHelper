@@ -172,7 +172,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/main_bottom_sheet"
         app:behavior_peekHeight="1dp"
-        tools:behavior_peekHeight="300dp"
+        tools:behavior_peekHeight="500dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <androidx.constraintlayout.widget.Guideline

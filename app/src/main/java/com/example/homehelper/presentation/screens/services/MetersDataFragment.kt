@@ -58,6 +58,9 @@ class MetersDataFragment : Fragment() {
             val value = binding.lightEtMeterData.text.toString().trim()
             viewModel.sendMeterData(value, "image")
         }
+        binding.btBack.setOnClickListener {
+            requireActivity().finish()
+        }
     }
 
     private fun observeViewModel() {

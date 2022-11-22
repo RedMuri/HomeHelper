@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.homehelper.R
+import com.example.homehelper.presentation.screens.analytics.AgeAnalyticsFragment
 
 class ServiceActivity : AppCompatActivity() {
 
@@ -12,14 +13,11 @@ class ServiceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_service)
-        val fragment = when (intent.getStringExtra(SERVICE_NAME)){
-            SERVICE_PAYMENTS -> {
-                PaymentsFragment.newInstance()
-            }
-            SERVICE_BILLS -> {
-                BillsFragment.newInstance()
-            }
-            else -> MetersDataFragment.newInstance()
+        val fragment = when (intent.getStringExtra(SERVICE_NAME)) {
+            SERVICE_PAYMENTS -> PaymentsFragment.newInstance()
+            SERVICE_BILLS -> BillsFragment.newInstance()
+            SERVICE_METERS -> MetersDataFragment.newInstance()
+            else -> AgeAnalyticsFragment.newInstance()
         }
         supportFragmentManager.beginTransaction().replace(R.id.service_container, fragment).commit()
     }
@@ -30,9 +28,11 @@ class ServiceActivity : AppCompatActivity() {
         const val SERVICE_PAYMENTS = "1"
         const val SERVICE_BILLS = "2"
         const val SERVICE_METERS = "3"
+        const val SERVICE_ANALYTICS = "4"
 
-        fun newInstance(context: Context, serviceName: String) = Intent(context, ServiceActivity::class.java).apply {
-            putExtra(SERVICE_NAME, serviceName)
-        }
+        fun newInstance(context: Context, serviceName: String) =
+            Intent(context, ServiceActivity::class.java).apply {
+                putExtra(SERVICE_NAME, serviceName)
+            }
     }
 }

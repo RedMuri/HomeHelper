@@ -3,10 +3,12 @@ package com.example.homehelper.di
 import android.app.Application
 import com.example.homehelper.presentation.screens.chats.ChatFragment
 import com.example.homehelper.presentation.screens.addevent.AddEventFragment
+import com.example.homehelper.presentation.screens.analytics.AgeAnalyticsFragment
 import com.example.homehelper.presentation.screens.main.EventsFragment
 import com.example.homehelper.presentation.screens.auth.LogInFragment
 import com.example.homehelper.presentation.screens.main.MainActivity
 import com.example.homehelper.presentation.screens.auth.SignInFragment
+import com.example.homehelper.presentation.screens.chats.NewMessageFragment
 import com.example.homehelper.presentation.screens.main.ChatsListFragment
 import com.example.homehelper.presentation.screens.main.ProfileFragment
 import com.example.homehelper.presentation.screens.services.MetersDataFragment
@@ -25,6 +27,8 @@ interface ApplicationComponent {
     fun inject(chatsListFragment: ChatsListFragment)
     fun inject(chatFragment: ChatFragment)
     fun inject(metersDataFragment: MetersDataFragment)
+    fun inject(newMessageFragment: NewMessageFragment)
+    fun inject(ageAnalyticsFragment: AgeAnalyticsFragment)
 
     @Component.Factory
     interface ApplicationComponentFactory {

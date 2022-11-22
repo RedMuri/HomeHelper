@@ -26,7 +26,7 @@ class ChatsListViewModel @Inject constructor(
 
     fun getChats(userEmail: String) = getChatsUseCase.invoke(userEmail)
 
-    fun startChatWithSomeone(userEmail: String, someoneEmail: String) {
-        startChatWithSomeoneUseCase.invoke(userEmail, someoneEmail)
+    fun startChatWithSomeone(userEmail: String, someoneEmail: String, callback: (String) -> Unit) {
+        startChatWithSomeoneUseCase.invoke(userEmail, someoneEmail, callback)
     }
 }

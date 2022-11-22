@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">Home Helper</string>
 
-    <string name="et_name_hint">Введите ваш e-mail…</string>
-    <string name="et_password_hint">Придумайте пароль…</string>
+    <string name="et_sign_in_unique_hint">Уникальный код</string>
+    <string name="et_sign_in_email_hint">E-mail</string>
+    <string name="et_sign_in_password_hint">Пароль</string>
+    <string name="et_sign_in_repeat_password_hint">Повторите пароль</string>
     <string name="et_login_password_hint">Введите ваш пароль…</string>
     <string name="et_flat_num_hint">Введите номер квартиры…</string>
-    <string name="bt_sing_in">Создать аккаунт</string>
-    <string name="tv_have_account">У меня уже есть аккаунт</string>
-    <string name="bt_log_in">Войти в аккаунт</string>
+    <string name="bt_sign_in">Зарегистрироваться</string>
+    <string name="bt_log_in">Войти</string>
     <string name="tv_no_account">У меня нет аккаунта</string>
     <string name="fab_add_event_content_desc">add_event</string>
     <string name="edit_text_message">Введите сообщение…</string>
@@ -35,8 +36,11 @@
     <string name="payments_fr_button_pay">Оплатить</string>
     <string name="meters_data_fr_button_send">Отправить</string>
     <string name="bills_fr_title">Квитанции</string>
+    <string name="new_message_fr_title">Новое сообщение</string>
     <string name="payments_fr_title">Оплата счетов</string>
+    <string name="meters_data_fr_title">Счётчики</string>
+    <string name="auth_tv_uk_company_name">УК\n"Огонь"</string>
+    <string name="auth_tv_out_company_name">Home\nSolutions</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="meters_data_fr_title">Счётчики</string>
 </resources>

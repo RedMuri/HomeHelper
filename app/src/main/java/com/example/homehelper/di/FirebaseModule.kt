@@ -28,6 +28,9 @@ interface FirebaseModule {
     @Binds
     fun bindFirebaseMetersDataRepository(impl: FirebaseMetersDataRepositoryImpl): FirebaseMetersDataRepository
 
+    @Binds
+    fun bindFirebaseUsersRepository(impl: FirebaseUsersRepositoryImpl): FirebaseUsersRepository
+
     companion object {
 
         @Provides

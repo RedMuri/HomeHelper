@@ -56,7 +56,7 @@ class SignInFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.errorEmail.observe(viewLifecycleOwner) {
-            binding.tilEmail.error = when (it) {
+            binding.etEmail.error = when (it) {
                 AuthViewModel.ERROR_SUCH_USER_EXIST -> "User with such email already exist"
                 AuthViewModel.ERROR_EMPTY -> "Input email"
                 AuthViewModel.ERROR -> "Error"
@@ -66,11 +66,17 @@ class SignInFragment : Fragment() {
             }
         }
         viewModel.errorPassword.observe(viewLifecycleOwner) {
-            binding.tilPassword.error = when (it) {
+            binding.etPassword.error = when (it) {
                 AuthViewModel.ERROR_EMPTY -> "Input password"
                 AuthViewModel.ERROR -> "Error"
                 AuthViewModel.ERROR_SHORT_PASSWORD -> "Password is too short (minimum is 6 characters)"
                 AuthViewModel.NO_ERRORS -> null
+                else -> "Error"
+            }
+        }
+        viewModel.errorRepeatPassword.observe(viewLifecycleOwner){
+            binding.etRepeatPassword.error = when (it){
+                AuthViewModel.ERROR_PASSWORDS_DO_NOT_MATCH -> "Passwords don't match"
                 else -> "Error"
             }
         }
@@ -114,7 +120,7 @@ class SignInFragment : Fragment() {
         binding.btSignIn.setOnClickListener {
             signIn()
         }
-        binding.tvHaveAccount.setOnClickListener {
+        binding.btAltLogIn.setOnClickListener {
             launchLogInFragment()
         }
     }
@@ -128,7 +134,8 @@ class SignInFragment : Fragment() {
     private fun signIn() {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
-        viewModel.signIn(email, password)
+        val repeatPassword = binding.etRepeatPassword.text.toString()
+        viewModel.signIn(email, password, repeatPassword)
     }
 
     companion object {

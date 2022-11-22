@@ -34,6 +34,13 @@ class PaymentsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupBottomSheet()
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
+        binding.btBack.setOnClickListener {
+            requireActivity().finish()
+        }
     }
 
     private fun setupBottomSheet() {

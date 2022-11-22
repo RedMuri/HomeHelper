@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main"
+    tools:context=".presentation.screens.analytics.GenderAnalyticsFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/main_vertical_gl_left" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
+
+    <ImageView
+        android:id="@+id/bt_back"
+        style="@style/MainRoundImageButton"
+        android:contentDescription="@string/bell_button_content_desc"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintStart_toStartOf="@id/gl_v1"
+        app:layout_constraintTop_toTopOf="@id/searchView" />
+
+    <TextView
+        android:id="@+id/searchView"
+        style="@style/MainTitle"
+        android:text="Пол"
+        app:layout_constraintStart_toEndOf="@id/bt_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageButton"
+        style="@style/PaymentsRoundImageButtonWhite"
+        android:layout_marginStart="@dimen/margin_default"
+        android:contentDescription="@string/bell_button_content_desc"
+        android:src="@drawable/question"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintTop_toTopOf="@id/searchView" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintStart_toStartOf="@id/gl_v1"
+        app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="24dp"
+                app:cardCornerRadius="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tag_average_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginVertical="8dp"
+                        android:text="Пол"
+                        android:textColor="@color/main_dark"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginVertical="8dp"
+                        android:text="..."
+                        android:textColor="@color/main_dark"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBaseline_toBaselineOf="@id/tag_average_age"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/just"
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tag_average_age" />
+
+                    <TextView
+                        android:id="@+id/tag_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Пол"
+                        android:textColor="@color/main_dark"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/just" />
+
+                    <TextView
+                        android:id="@+id/tag_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="30dp"
+                        android:text="Количество"
+                        android:textColor="@color/main_dark"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/just" />
+
+                    <View
+                        android:id="@+id/line_1"
+                        style="@style/AgeAnalyticsFragmentLine"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tag_age" />
+
+                    <View
+                        android:id="@+id/color_square_1"
+                        style="@style/AgeAnalyticsFragmentColorSquare"
+                        android:background="@drawable/age_analytics_color_square_1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/line_1" />
+
+                    <TextView
+                        android:id="@+id/tag_age_first"
+                        style="@style/AgeAnalyticsFragmentTextAge"
+                        android:text="18 - 24"
+                        app:layout_constraintBottom_toBottomOf="@id/color_square_1"
+                        app:layout_constraintStart_toEndOf="@id/color_square_1"
+                        app:layout_constraintTop_toTopOf="@id/color_square_1" />
+
+                    <TextView
+                        android:id="@+id/tv_age_first_count"
+                        style="@style/AgeAnalyticsFragmentTextAge"
+                        android:text="0"
+                        app:layout_constraintBottom_toBottomOf="@id/color_square_1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/color_square_1" />
+
+                    <View
+                        android:id="@+id/line_2"
+                        style="@style/AgeAnalyticsFragmentLine"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/color_square_1" />
+
+                    <View
+                        android:id="@+id/color_square_2"
+                        android:background="@drawable/age_analytics_color_square_2"
+                        style="@style/AgeAnalyticsFragmentColorSquare"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/line_2" />
+
+                    <TextView
+                        android:id="@+id/tag_age_second"
+                        style="@style/AgeAnalyticsFragmentTextAge"
+                        android:text="24 - 35"
+                        app:layout_constraintBottom_toBottomOf="@id/color_square_2"
+                        app:layout_constraintStart_toEndOf="@id/color_square_2"
+                        app:layout_constraintTop_toTopOf="@id/color_square_2" />
+
+                    <TextView
+                        android:id="@+id/tv_age_second_count"
+                        style="@style/AgeAnalyticsFragmentTextAge"
+                        android:text="0"
+                        app:layout_constraintBottom_toBottomOf="@id/color_square_2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/color_square_2" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

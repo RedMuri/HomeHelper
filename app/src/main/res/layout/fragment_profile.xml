@@ -125,7 +125,7 @@
             <ImageView
                 style="@style/ProfileFragmentInfoIcon"
                 android:contentDescription="@string/events_fr_service_1"
-                android:src="@drawable/main_service1" />
+                android:src="@drawable/profile_info_members" />
 
             <TextView
                 style="@style/ProfileFragmentInfoIconDescription"
@@ -143,7 +143,7 @@
             <ImageView
                 style="@style/ProfileFragmentInfoIcon"
                 android:contentDescription="@string/events_fr_service_1"
-                android:src="@drawable/main_service1" />
+                android:src="@drawable/profile_info_flat_num" />
 
             <TextView
                 style="@style/ProfileFragmentInfoIconDescription"
@@ -161,7 +161,7 @@
             <ImageView
                 style="@style/ProfileFragmentInfoIcon"
                 android:contentDescription="@string/events_fr_service_1"
-                android:src="@drawable/main_service1" />
+                android:src="@drawable/profile_info_duration" />
 
             <TextView
                 style="@style/ProfileFragmentInfoIconDescription"
@@ -190,7 +190,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="14dp"
-        android:background="@drawable/rounded_profile_background"
+        android:background="@drawable/profile_second_rounded_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -232,7 +232,7 @@
 
                     <ImageView
                         style="@style/ProfileFragmentItemIcon"
-                        android:src="@drawable/main_service3" />
+                        android:src="@drawable/main_service1" />
 
                     <TextView
                         style="@style/ProfileFragmentItemDescription"
@@ -250,11 +250,11 @@
 
                     <ImageView
                         style="@style/ProfileFragmentItemIcon"
-                        android:src="@drawable/main_service3" />
+                        android:src="@drawable/main_service2" />
 
                     <TextView
                         style="@style/ProfileFragmentItemDescription"
-                        android:text="Мои объявления" />
+                        android:text="Настройки" />
 
                 </LinearLayout>
 
@@ -272,7 +272,7 @@
 
                     <TextView
                         style="@style/ProfileFragmentItemDescription"
-                        android:text="Мои объявления" />
+                        android:text="Справка" />
 
                 </LinearLayout>
 
@@ -283,7 +283,7 @@
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginVertical="8dp"
                     android:background="@drawable/profile_bt_edit_background"
-                    android:text="Редактировать"
+                    android:text="Выйти из аккаунта"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="18sp"

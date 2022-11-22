@@ -55,6 +55,7 @@ class AgeAnalyticsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         usersListViewModel.getAllUsers().observe(viewLifecycleOwner){ users ->
+
             countAge(users)
         }
     }

@@ -141,13 +141,45 @@
                 app:layout_constraintTop_toBottomOf="@id/pie_chart" />
 
             <View
+                android:id="@+id/line_1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="12dp"
                 android:background="@color/main_grey_click"
                 app:layout_constraintTop_toBottomOf="@id/tag_age"/>
 
+            <View
+                android:id="@+id/color_square_1"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/age_analytics_color_square"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_1" />
 
+            <TextView
+                android:id="@+id/tag_age_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="18 - 24"
+                android:textColor="@color/main_dark"
+                android:textSize="22sp"
+                app:layout_constraintStart_toEndOf="@id/color_square_1"
+                app:layout_constraintBottom_toBottomOf="@id/color_square_1"
+                app:layout_constraintTop_toTopOf="@id/color_square_1" />
+
+            <TextView
+                android:id="@+id/tv_age_first_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="12"
+                android:textColor="@color/main_dark"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/color_square_1"
+                app:layout_constraintTop_toTopOf="@id/color_square_1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

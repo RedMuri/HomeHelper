@@ -91,7 +91,6 @@ class ServicesFragment : Fragment() {
         )
         adapterServices.submitList(services)
         adapterServices.onServiceClickListener = {
-            Toast.makeText(requireContext(), "Clicked!!!!!!!!!!!", Toast.LENGTH_SHORT).show()
             when (it.name) {
                 "Оплата счетов" -> {
                     startActivity(ServiceActivity.newInstance(requireActivity().application,

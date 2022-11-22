@@ -41,4 +41,6 @@
     <string name="meters_data_fr_title">Счётчики</string>
     <string name="auth_tv_uk_company_name">УК\n"Огонь"</string>
     <string name="auth_tv_out_company_name">Home\nSolutions</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

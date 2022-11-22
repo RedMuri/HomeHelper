@@ -48,19 +48,23 @@
         app:layout_constraintEnd_toEndOf="@id/gl_v2"
         app:layout_constraintTop_toTopOf="@id/searchView" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/gl_v1"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginVertical="24dp"
         app:cardCornerRadius="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/gl_v2"
         app:layout_constraintStart_toStartOf="@+id/gl_v1"
         app:layout_constraintTop_toBottomOf="@+id/searchView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tag_average_age"
@@ -199,6 +203,42 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="@id/color_square_2"
                 app:layout_constraintTop_toTopOf="@id/color_square_2" />
+
+
+
+
+
+
+            <View
+                android:id="@+id/line_3"
+                style="@style/AgeAnalyticsFragmentLine"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/color_square_2" />
+
+            <View
+                android:id="@+id/color_square_3"
+                style="@style/AgeAnalyticsFragmentColorSquare"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line_3" />
+
+            <TextView
+                android:id="@+id/tag_age_third"
+                style="@style/AgeAnalyticsFragmentTextAge"
+                android:text="35 - 55"
+                app:layout_constraintStart_toEndOf="@id/color_square_3"
+                app:layout_constraintBottom_toBottomOf="@id/color_square_3"
+                app:layout_constraintTop_toTopOf="@id/color_square_3" />
+
+            <TextView
+                android:id="@+id/tv_age_third_count"
+                android:text="18"
+                style="@style/AgeAnalyticsFragmentTextAge"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/color_square_3"
+                app:layout_constraintTop_toTopOf="@id/color_square_3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

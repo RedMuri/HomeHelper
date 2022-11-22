@@ -62,25 +62,64 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/tag_average_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="8dp"
+                android:text="Средний возраст"
+                android:textColor="@color/main_dark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="8dp"
+                android:text="..."
+                android:textColor="@color/main_dark"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@id/tag_average_age"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_average_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/analytics_average_age_background"
+                android:paddingHorizontal="20dp"
+                android:text="33"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tag_average_age" />
+
+            <org.eazegraph.lib.charts.PieChart
+                android:id="@+id/pie_chart"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:egUseInnerPadding="false"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_average_age"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintDimensionRatio="1:1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <!--
-    <org.eazegraph.lib.charts.PieChart
-        android:id="@+id/piechart"
-        android:layout_width="0dp"
-        app:egUseInnerPadding="false"
-        android:layout_height="match_parent"
-        android:padding="6dp"
-        android:layout_weight="1"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="15dp"
-
-        />-->

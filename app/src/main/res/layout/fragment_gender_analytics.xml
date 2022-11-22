@@ -114,7 +114,10 @@
                             android:id="@+id/tv_men_count"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            app:layout_constraintVertical_bias="1"
+                            app:layout_constraintVertical_chainStyle="packed"
                             android:layout_marginBottom="12dp"
+                            android:textAlignment="center"
                             android:background="@drawable/gender_analytics_men_count_background"
                             android:paddingHorizontal="20dp"
                             android:text="0"
@@ -143,8 +146,10 @@
                             android:layout_height="wrap_content"
                             app:layout_constraintVertical_bias="1"
                             android:layout_marginBottom="12dp"
+                            app:layout_constraintVertical_chainStyle="packed"
                             android:background="@drawable/gender_analytics_women_count_background"
                             android:paddingHorizontal="20dp"
+                            android:textAlignment="center"
                             android:text="0"
                             android:textColor="@color/white"
                             android:textSize="30sp"
@@ -158,8 +163,7 @@
                         <View
                             android:id="@+id/view_women_count"
                             android:layout_width="0dp"
-                            android:layout_height="100dp"
-
+                            android:layout_height="0dp"
                             android:layout_marginHorizontal="16dp"
                             android:background="@drawable/gender_analytics_women_view_background"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -205,14 +209,14 @@
                     <View
                         android:id="@+id/color_square_1"
                         style="@style/AgeAnalyticsFragmentColorSquare"
-                        android:background="@drawable/age_analytics_color_square_1"
+                        android:background="@drawable/gender_analytics_men_color_square"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/line_1" />
 
                     <TextView
                         android:id="@+id/tag_age_first"
                         style="@style/AgeAnalyticsFragmentTextAge"
-                        android:text="18 - 24"
+                        android:text="Мужской"
                         app:layout_constraintBottom_toBottomOf="@id/color_square_1"
                         app:layout_constraintStart_toEndOf="@id/color_square_1"
                         app:layout_constraintTop_toTopOf="@id/color_square_1" />
@@ -236,7 +240,7 @@
                     <View
                         android:id="@+id/color_square_2"
                         style="@style/AgeAnalyticsFragmentColorSquare"
-                        android:background="@drawable/age_analytics_color_square_2"
+                        android:background="@drawable/gender_analytics_women_color_square"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/line_2" />
@@ -244,7 +248,7 @@
                     <TextView
                         android:id="@+id/tag_age_second"
                         style="@style/AgeAnalyticsFragmentTextAge"
-                        android:text="24 - 35"
+                        android:text="Женский"
                         app:layout_constraintBottom_toBottomOf="@id/color_square_2"
                         app:layout_constraintStart_toEndOf="@id/color_square_2"
                         app:layout_constraintTop_toTopOf="@id/color_square_2" />

@@ -1,23 +1,18 @@
 package com.example.homehelper.presentation.screens.analytics
 
-import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.R
-import com.example.homehelper.databinding.FragmentAddEventBinding
 import com.example.homehelper.databinding.FragmentAgeAnalyticsBinding
 import com.example.homehelper.domain.entities.User
 import com.example.homehelper.presentation.HomeHelperApp
-import com.example.homehelper.presentation.adapters.chats.AdapterUsersMes
-import com.example.homehelper.presentation.viewmodels.ChatsListViewModel
 import com.example.homehelper.presentation.viewmodels.UsersListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
-import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import javax.inject.Inject
 

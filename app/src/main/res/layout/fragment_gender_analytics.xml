@@ -222,7 +222,7 @@
                         app:layout_constraintTop_toTopOf="@id/color_square_1" />
 
                     <TextView
-                        android:id="@+id/tv_age_first_count"
+                        android:id="@+id/tv_men_count_bottom"
                         style="@style/AgeAnalyticsFragmentTextAge"
                         android:text="0"
                         app:layout_constraintBottom_toBottomOf="@id/color_square_1"
@@ -254,7 +254,7 @@
                         app:layout_constraintTop_toTopOf="@id/color_square_2" />
 
                     <TextView
-                        android:id="@+id/tv_age_second_count"
+                        android:id="@+id/tv_women_count_bottom"
                         style="@style/AgeAnalyticsFragmentTextAge"
                         android:text="0"
                         app:layout_constraintBottom_toBottomOf="@id/color_square_2"

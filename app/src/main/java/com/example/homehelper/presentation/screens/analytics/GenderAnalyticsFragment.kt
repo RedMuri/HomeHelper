@@ -56,29 +56,25 @@ class GenderAnalyticsFragment : Fragment() {
     }
 
     private fun countAge(users: List<User>) {
-        val validUsers = users.filter { it.age != 0 }
-        val firstGroupCount = validUsers.filter { it.age in 18..23 }.size.toFloat()
-        val secondGroupCount = validUsers.filter { it.age in 24..34 }.size.toFloat()
-        val thirdGroupCount = validUsers.filter { it.age in 35..54 }.size.toFloat()
-        val averageAge = validUsers.map { it.age }.average()
-        binding.tvAverageAge.text = averageAge.toInt().toString()
-        binding.tvAgeFirstCount.text = firstGroupCount.toInt().toString()
-        binding.tvAgeSecondCount.text = secondGroupCount.toInt().toString()
-        binding.tvAgeThirdCount.text = thirdGroupCount.toInt().toString()
-        setupPieChart(firstGroupCount, secondGroupCount, thirdGroupCount)
+        val validUsers = users.filter { it.gender != "none" }
+        val menCount = validUsers.filter { it.gender == "m" }.size
+        val womenCount = validUsers.filter { it.gender == "w" }.size
+        binding.tvMenCount.text = menCount.toString()
+        binding.tvWomenCount.text = womenCount.toString()
+        binding.tvMenCountBottom.text = menCount.toString()
+        binding.tvWomenCountBottom.text = womenCount.toString()
+        setupCountViews(menCount,womenCount)
     }
 
-    private fun setupPieChart(first: Float, second: Float, third: Float) {
-        binding.pieChart.addPieSlice(PieModel("first",
-            first,
-            ContextCompat.getColor(requireContext(), R.color.analytics_age_first)))
-        binding.pieChart.addPieSlice(PieModel("second",
-            second,
-            ContextCompat.getColor(requireContext(), R.color.analytics_age_second)))
-        binding.pieChart.addPieSlice(PieModel("third",
-            third,
-            ContextCompat.getColor(requireContext(), R.color.analytics_age_third)))
-        binding.pieChart.startAnimation()
+    private fun setupCountViews(menCount: Int, womenCount: Int) {
+        if (menCount>womenCount) {
+            val percent = womenCount.toDouble()/menCount
+            binding.viewWomenCount.minimumHeight = (binding.viewMenCount.height*percent).toInt()
+        }
+        else if (menCount<womenCount){
+            val percent = menCount.toDouble()/womenCount
+            binding.viewMenCount.minimumHeight = (binding.viewWomenCount.height*percent).toInt()
+        }
     }
 
     companion object {

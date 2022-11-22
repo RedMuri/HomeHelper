@@ -16,4 +16,8 @@
     <color name="main_light_dark">#8D000000</color>
     <color name="main_dark">#030418</color>
     <color name="main_grey_click">#E6E5E5</color>
+
+    <color name="analytics_age_first">#917EFF</color>
+    <color name="analytics_age_second">#CC907DFF</color>
+    <color name="analytics_age_third">#99907DFF</color>
 </resources>

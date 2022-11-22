@@ -54,11 +54,11 @@ class ProfileFragment : Fragment() {
         val email = (requireActivity().application as HomeHelperApp).sharedPreferences.getString(
             HomeHelperApp.USER_EMAIL,
             "none")
-        binding.tvEmail.text = email
+        binding.tvUserName.text = email
     }
 
     private fun setOnClickListeners() {
-        binding.btSignOut.setOnClickListener {
+        binding.btExit.setOnClickListener {
             authViewModel.signOut()
             startActivity(AuthActivity.newIntent(requireActivity().application))
             (requireActivity().application as HomeHelperApp).sharedPreferences.edit()

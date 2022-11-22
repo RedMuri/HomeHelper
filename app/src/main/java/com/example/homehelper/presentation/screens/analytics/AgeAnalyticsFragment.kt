@@ -54,8 +54,7 @@ class AgeAnalyticsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        usersListViewModel.getAllUsers().observe(viewLifecycleOwner){ users ->
-
+        usersListViewModel.getAllUsers().observe(viewLifecycleOwner) { users ->
             countAge(users)
         }
     }
@@ -67,6 +66,9 @@ class AgeAnalyticsFragment : Fragment() {
         val thirdGroupCount = validUsers.filter { it.age in 35..54 }.size.toFloat()
         val averageAge = validUsers.map { it.age }.average()
         binding.tvAverageAge.text = averageAge.toInt().toString()
+        binding.tvAgeFirstCount.text = firstGroupCount.toInt().toString()
+        binding.tvAgeSecondCount.text = secondGroupCount.toInt().toString()
+        binding.tvAgeThirdCount.text = thirdGroupCount.toInt().toString()
         setupPieChart(firstGroupCount, secondGroupCount, thirdGroupCount)
     }
 

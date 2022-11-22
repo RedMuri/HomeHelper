@@ -107,7 +107,7 @@
                         android:layout_marginTop="20dp"
                         android:background="@drawable/analytics_average_age_background"
                         android:paddingHorizontal="20dp"
-                        android:text="33"
+                        android:text="0"
                         android:textColor="@color/white"
                         android:textSize="30sp"
 
@@ -178,7 +178,7 @@
                     <TextView
                         android:id="@+id/tv_age_first_count"
                         style="@style/AgeAnalyticsFragmentTextAge"
-                        android:text="12"
+                        android:text="0"
                         app:layout_constraintBottom_toBottomOf="@id/color_square_1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/color_square_1" />
@@ -209,7 +209,7 @@
                     <TextView
                         android:id="@+id/tv_age_second_count"
                         style="@style/AgeAnalyticsFragmentTextAge"
-                        android:text="45"
+                        android:text="0"
                         app:layout_constraintBottom_toBottomOf="@id/color_square_2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/color_square_2" />
@@ -242,7 +242,7 @@
                     <TextView
                         android:id="@+id/tv_age_third_count"
                         style="@style/AgeAnalyticsFragmentTextAge"
-                        android:text="18"
+                        android:text="0"
                         app:layout_constraintBottom_toBottomOf="@id/color_square_3"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/color_square_3" />

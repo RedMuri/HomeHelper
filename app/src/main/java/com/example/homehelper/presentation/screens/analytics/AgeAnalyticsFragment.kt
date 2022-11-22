@@ -31,10 +31,10 @@ class AgeAnalyticsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.pieChart.addPieSlice(PieModel(12F,R.color.analytics_age_first))
-        binding.pieChart.addPieSlice(PieModel(45F,R.color.analytics_age_second))
-        binding.pieChart.addPieSlice(PieModel(18F,R.color.analytics_age_third))
-        binding.pieChart.startAnimation()
+        val pieChart = binding.pieChart
+        pieChart.addPieSlice(PieModel(45F,R.color.analytics_age_second))
+        pieChart.addPieSlice(PieModel(35F,R.color.analytics_age_third))
+        pieChart.addPieSlice(PieModel(20F,R.color.analytics_age_first))
     }
 
     companion object {

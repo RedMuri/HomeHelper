@@ -397,7 +397,6 @@
         <item name="android:layout_width">28dp</item>
         <item name="android:layout_height">28dp</item>
         <item name="android:layout_margin">20dp</item>
-        <item name="android:background">@drawable/age_analytics_color_square</item>
     </style>
 
     <style name="AgeAnalyticsFragmentTextAge">

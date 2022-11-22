@@ -163,6 +163,7 @@
                     <View
                         android:id="@+id/color_square_1"
                         style="@style/AgeAnalyticsFragmentColorSquare"
+                        android:background="@drawable/age_analytics_color_square_1"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/line_1" />
 
@@ -192,6 +193,7 @@
 
                     <View
                         android:id="@+id/color_square_2"
+                        android:background="@drawable/age_analytics_color_square_2"
                         style="@style/AgeAnalyticsFragmentColorSquare"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/line_2" />
@@ -223,6 +225,7 @@
 
                     <View
                         android:id="@+id/color_square_3"
+                        android:background="@drawable/age_analytics_color_square_3"
                         style="@style/AgeAnalyticsFragmentColorSquare"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

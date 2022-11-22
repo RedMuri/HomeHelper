@@ -34,6 +34,7 @@ class AgeAnalyticsFragment : Fragment() {
         binding.pieChart.addPieSlice(PieModel(12F,R.color.analytics_age_first))
         binding.pieChart.addPieSlice(PieModel(45F,R.color.analytics_age_second))
         binding.pieChart.addPieSlice(PieModel(18F,R.color.analytics_age_third))
+        binding.pieChart.startAnimation()
     }
 
     companion object {

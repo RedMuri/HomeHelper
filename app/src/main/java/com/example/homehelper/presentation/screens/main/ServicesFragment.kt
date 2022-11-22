@@ -88,7 +88,8 @@ class ServicesFragment : Fragment() {
             Service(R.drawable.main_service1, "Оплата счетов"),
             Service(R.drawable.main_service2, "Квитанции"),
             Service(R.drawable.main_service3, "Показания счётчиков"),
-            Service(R.drawable.profile_info_members, "Аналитика"),
+            Service(R.drawable.profile_info_members, "Аналитика возраста"),
+            Service(R.drawable.profile_info_members, "Аналитика пола"),
         )
         adapterServices.submitList(services)
         adapterServices.onServiceClickListener = {
@@ -105,9 +106,13 @@ class ServicesFragment : Fragment() {
                     startActivity(ServiceActivity.newInstance(requireActivity().application,
                         ServiceActivity.SERVICE_METERS))
                 }
-                "Аналитика" -> {
+                "Аналитика возраста" -> {
                     startActivity(ServiceActivity.newInstance(requireActivity().application,
-                        ServiceActivity.SERVICE_ANALYTICS))
+                        ServiceActivity.SERVICE_ANALYTICS_AGE))
+                }
+                "Аналитика пола" -> {
+                    startActivity(ServiceActivity.newInstance(requireActivity().application,
+                        ServiceActivity.SERVICE_ANALYTICS_GENDER))
                 }
             }
         }

@@ -18,4 +18,7 @@
     <color name="analytics_age_first">#917EFF</color>
     <color name="analytics_age_second">#CC907DFF</color>
     <color name="analytics_age_third">#99907DFF</color>
+
+    <color name="analytics_gender_men">#82D8F3</color>
+    <color name="analytics_gender_women">#DD81FF</color>
 </resources>

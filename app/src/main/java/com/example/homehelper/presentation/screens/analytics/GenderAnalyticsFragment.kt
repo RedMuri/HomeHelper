@@ -69,11 +69,13 @@ class GenderAnalyticsFragment : Fragment() {
     private fun setupCountViews(menCount: Int, womenCount: Int) {
         if (menCount>womenCount) {
             val percent = womenCount.toDouble()/menCount
-            binding.viewWomenCount.minimumHeight = (binding.viewMenCount.height*percent).toInt()
+            binding.viewWomenCount.layoutParams.height = (binding.viewMenCount.height*percent).toInt()
+            binding.viewWomenCount.requestLayout()
         }
         else if (menCount<womenCount){
             val percent = menCount.toDouble()/womenCount
-            binding.viewMenCount.minimumHeight = (binding.viewWomenCount.height*percent).toInt()
+            binding.viewMenCount.layoutParams.height = (binding.viewWomenCount.height*percent).toInt()
+            binding.viewMenCount.requestLayout()
         }
     }
 

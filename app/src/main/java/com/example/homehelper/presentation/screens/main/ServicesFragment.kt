@@ -89,7 +89,7 @@ class ServicesFragment : Fragment() {
             Service(R.drawable.main_service2, "Квитанции"),
             Service(R.drawable.main_service3, "Показания счётчиков"),
             Service(R.drawable.profile_info_members, "Аналитика возраста"),
-            Service(R.drawable.profile_info_members, "Аналитика пола"),
+            Service(R.drawable.profile_info_duration, "Аналитика пола"),
         )
         adapterServices.submitList(services)
         adapterServices.onServiceClickListener = {

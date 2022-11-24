@@ -105,7 +105,7 @@
         <TextView
             android:id="@+id/light_input_data"
             style="@style/MainSmallText"
-            android:text="Актуально на 30.10.2022"
+            android:text="Актуально на 26.11.2022"
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 

@@ -73,13 +73,31 @@
                 android:textStyle="bold"/>
 
             <Spinner
+                android:id="@+id/spinner_groups"
+                android:layout_marginTop="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:background="@drawable/calculator_spinner_background"
                 tools:listitem="@layout/calculator_spinner_item"
                 android:entries="@array/calculator_residents_groups"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tag_input_data" />
+
+            <TextView
+                android:id="@+id/et_amount"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/calculator_spinner_background"
+                android:hint="Расход, кВт/ч"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColorHint="@color/calculator_spinner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinner_groups" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

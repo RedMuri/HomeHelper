@@ -24,8 +24,8 @@
     <View
         android:id="@+id/top_line"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/main_light_dark"
+        android:layout_height="2dp"
+        android:background="@color/main_grey_click"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/rv_messages"
@@ -91,8 +91,8 @@
     <View
         android:id="@+id/bottom_line"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/main_light_dark"
+        android:layout_height="2dp"
+        android:background="@color/main_grey_click"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/et_message"

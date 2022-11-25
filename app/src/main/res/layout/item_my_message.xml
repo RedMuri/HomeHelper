@@ -30,7 +30,7 @@
             android:id="@+id/cv_my_message_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#A6C5FB"
+            android:background="@color/main_grey_click"
             android:orientation="vertical"
             android:paddingHorizontal="2dp">
 

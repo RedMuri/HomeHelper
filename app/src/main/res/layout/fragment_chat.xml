@@ -101,7 +101,8 @@
         android:id="@+id/bt_attach_image_to_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_dialog_dialer"
+        android:src="@drawable/fragment_chat_add_media"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_messages" />
@@ -110,7 +111,8 @@
         android:id="@+id/bt_send_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_send"
+        android:background="@color/white"
+        android:src="@drawable/fragment_chat_send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_messages" />

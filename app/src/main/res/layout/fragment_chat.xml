@@ -21,11 +21,15 @@
         app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
 
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier_max_height"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom" />
+    <View
+        android:id="@+id/top_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/main_light_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/rv_messages"
+        app:layout_constraintTop_toBottomOf="@id/tv_chat_name" />
 
 
     <ImageView
@@ -53,7 +57,7 @@
         android:textColor="@color/main_dark"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/barrier_max_height"
+        app:layout_constraintBottom_toTopOf="@id/top_line"
         app:layout_constraintStart_toEndOf="@id/bt_back"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,15 +85,25 @@
         app:layout_constraintBottom_toTopOf="@+id/et_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_chat_name"
+        app:layout_constraintTop_toBottomOf="@id/top_line"
         tools:listitem="@layout/item_my_message" />
+
+    <View
+        android:id="@+id/bottom_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/main_light_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/et_message"
+        app:layout_constraintTop_toBottomOf="@id/rv_messages" />
+
 
     <EditText
         android:id="@+id/et_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-
         android:gravity="start|top"
         android:hint="@string/edit_text_message"
         android:inputType="textMultiLine"
@@ -97,7 +111,7 @@
         app:layout_constraintEnd_toStartOf="@+id/bt_send_message"
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/bt_attach_image_to_message"
-        app:layout_constraintTop_toBottomOf="@id/rv_messages" />
+        app:layout_constraintTop_toBottomOf="@id/bottom_line" />
 
     <ImageView
         android:id="@+id/bt_attach_image_to_message"

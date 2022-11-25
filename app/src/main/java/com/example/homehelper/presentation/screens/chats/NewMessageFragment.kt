@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.homehelper.databinding.FragmentNewMessageBinding
 import com.example.homehelper.presentation.HomeHelperApp
-import com.example.homehelper.presentation.adapters.chats.AdapterUsersMes
+import com.example.homehelper.presentation.adapters.users_for_message.AdapterUsersMes
 import com.example.homehelper.presentation.viewmodels.ChatsListViewModel
 import com.example.homehelper.presentation.viewmodels.UsersListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory

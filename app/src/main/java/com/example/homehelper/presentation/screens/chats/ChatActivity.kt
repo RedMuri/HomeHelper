@@ -1,14 +1,11 @@
 package com.example.homehelper.presentation.screens.chats
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
 import com.example.homehelper.R
-import com.example.homehelper.presentation.screens.main.ChatsListFragment
 
 class ChatActivity : AppCompatActivity() {
 

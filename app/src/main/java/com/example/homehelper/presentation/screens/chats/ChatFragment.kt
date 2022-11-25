@@ -56,9 +56,15 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setChatName()
         setupRecyclerView()
         setOnClickListeners()
         observeViewModel()
+    }
+
+    private fun setChatName() {
+        val chatId = arguments?.getString(ChatActivity.CHAT_ID).toString()
+        binding.tvChatName.text = chatId
     }
 
     private fun observeViewModel() {
@@ -76,6 +82,9 @@ class ChatFragment : Fragment() {
     }
 
     private fun setOnClickListeners() {
+        binding.btBack.setOnClickListener {
+            requireActivity().finish()
+        }
         binding.btAttachImageToMessage.setOnClickListener {
             Toast.makeText(requireActivity().application, "Image", Toast.LENGTH_SHORT).show()
         }

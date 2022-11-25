@@ -50,6 +50,17 @@ class GenderAnalyticsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeViewModel()
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
+        binding.btBack.setOnClickListener {
+            requireActivity().finish()
+        }
+    }
+
+    private fun observeViewModel() {
         usersListViewModel.getAllUsers().observe(viewLifecycleOwner) { users ->
             countAge(users)
         }

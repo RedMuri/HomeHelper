@@ -49,8 +49,19 @@ class AgeAnalyticsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeViewModel()
+        setOnClickListeners()
+    }
+
+    private fun observeViewModel() {
         usersListViewModel.getAllUsers().observe(viewLifecycleOwner) { users ->
             countAge(users)
+        }
+    }
+
+    private fun setOnClickListeners() {
+        binding.btBack.setOnClickListener {
+            requireActivity().finish()
         }
     }
 

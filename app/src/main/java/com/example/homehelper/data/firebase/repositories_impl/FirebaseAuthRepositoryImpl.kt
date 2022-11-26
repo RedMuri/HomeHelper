@@ -34,7 +34,7 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     addMainChatToUserChats(email)
-                } else Log.i("muri", "createUserInDb failure: $it")
+                } else Log.i("muri", "createUserInDb failure: ${it.exception}")
             }
     }
 

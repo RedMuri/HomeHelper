@@ -43,8 +43,8 @@ class EventDetailFragment : Fragment() {
 
     companion object {
 
-        private const val EVENT_TITLE = "event"
-        private const val EVENT_DESC = "event"
+        private const val EVENT_TITLE = "event_title"
+        private const val EVENT_DESC = "event_desc"
 
         fun newInstance(eventTitle: String, eventDesc: String) =
             EventDetailFragment().apply {

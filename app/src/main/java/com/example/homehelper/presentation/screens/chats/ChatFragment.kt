@@ -64,7 +64,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun setChatName() {
-        val chatName = arguments?.getString(ChatActivity.CHAT_NAME).toString()
+        val chatName = arguments?.getString(ChatActivity.CHAT_NAME).toString().substringBefore("@")
         binding.tvChatName.text = chatName.replaceFirstChar {
             if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
         }

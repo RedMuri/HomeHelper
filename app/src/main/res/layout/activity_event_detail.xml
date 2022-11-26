@@ -2,9 +2,8 @@
 <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/add_event_container"
-    android:name="com.example.homehelper.presentation.screens.events.AddEventFragment"
+    android:id="@+id/event_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout="@layout/fragment_add_event"
-    tools:context=".presentation.screens.events.AddEventActivity" />
+    tools:layout="@layout/fragment_event_detail"
+    tools:context=".presentation.screens.events.EventDetailActivity" />

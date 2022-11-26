@@ -135,7 +135,7 @@
                     android:layout_marginBottom="6dp"
                     android:gravity="center_vertical"
                     android:textStyle="bold"
-                    android:text="Екатерина"
+                    android:text="Ольга"
                     android:textColor="@color/main_dark"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -205,7 +205,7 @@
                     android:layout_marginBottom="6dp"
                     android:gravity="center_vertical"
                     android:textStyle="bold"
-                    android:text="Дмитрий"
+                    android:text="Иван"
                     android:textColor="@color/main_dark"
                     android:textSize="16sp" />
             </LinearLayout>

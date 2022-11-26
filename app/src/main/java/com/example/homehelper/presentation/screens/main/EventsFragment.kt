@@ -41,7 +41,7 @@ class EventsFragment : Fragment() {
     private val binding: FragmentEventsBinding
         get() = _binding ?: throw RuntimeException("FragmentEventsBinding = null!")
 
-//-----------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)
@@ -114,7 +114,7 @@ class EventsFragment : Fragment() {
     private fun checkIfAdmin() {
         val userName =
             (requireActivity().application as HomeHelperApp).getUserEmail()
-        if (userName == HomeHelperApp.ADMIN_USER_NAME){
+        if (userName == HomeHelperApp.ADMIN_USER_NAME) {
             binding.fabAddEvent.visibility = View.VISIBLE
             setupSwipeListener(binding.rvEvents)
             binding.fabAddEvent.setOnClickListener {
@@ -132,7 +132,9 @@ class EventsFragment : Fragment() {
     private fun setupRecyclerView() {
         binding.rvEvents.adapter = adapterEvents
         adapterEvents.onEventClickListener = {
-            startActivity(EventDetailActivity.newInstance(requireActivity().application))
+            startActivity(EventDetailActivity.newInstance(requireActivity().application,
+                it.title,
+                it.description))
         }
     }
 

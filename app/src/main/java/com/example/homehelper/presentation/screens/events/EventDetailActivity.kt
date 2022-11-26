@@ -7,14 +7,15 @@ import android.os.Bundle
 import com.example.homehelper.R
 
 class EventDetailActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_event)
+        setContentView(R.layout.activity_event_detail)
         val eventTitle = intent.getStringExtra(EVENT_TITLE).toString()
         val eventDesc = intent.getStringExtra(EVENT_DESC).toString()
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.chat_fragment_container,
+            .replace(R.id.event_detail_container,
                 EventDetailFragment.newInstance(eventTitle, eventDesc))
             .commit()
     }

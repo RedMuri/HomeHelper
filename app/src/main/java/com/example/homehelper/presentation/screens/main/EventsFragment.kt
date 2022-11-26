@@ -14,6 +14,7 @@ import com.example.homehelper.databinding.FragmentEventsBinding
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.events.AdapterEvents
 import com.example.homehelper.presentation.screens.addevent.AddEventActivity
+import com.example.homehelper.presentation.screens.addevent.EventDetailActivity
 import com.example.homehelper.presentation.screens.services.ServiceActivity
 import com.example.homehelper.presentation.viewmodels.EventsViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
@@ -132,7 +133,7 @@ class EventsFragment : Fragment() {
     private fun setupRecyclerView() {
         binding.rvEvents.adapter = adapterEvents
         adapterEvents.onEventClickListener = {
-
+            startActivity(EventDetailActivity.newInstance(requireActivity().application))
         }
     }
 

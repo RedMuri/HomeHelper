@@ -30,7 +30,7 @@
             android:id="@+id/cv_my_message_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#A6C5FB"
+            android:background="@color/main"
             android:orientation="vertical"
             android:paddingHorizontal="2dp">
 
@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_margin="8dp"
+                android:textColor="@color/white"
                 android:maxWidth="250dp"
                 android:text="This is message and i suppose it should work"
                 android:textSize="16sp" />

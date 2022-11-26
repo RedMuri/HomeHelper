@@ -18,6 +18,7 @@ import com.example.homehelper.presentation.screens.main.ChatsListFragment
 import com.example.homehelper.presentation.viewmodels.ChatViewModel
 import com.example.homehelper.presentation.viewmodels.ChatsListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
+import java.util.*
 import javax.inject.Inject
 
 
@@ -56,9 +57,17 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setChatName()
         setupRecyclerView()
         setOnClickListeners()
         observeViewModel()
+    }
+
+    private fun setChatName() {
+        val chatName = arguments?.getString(ChatActivity.CHAT_NAME).toString().substringBefore("@")
+        binding.tvChatName.text = chatName.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+        }
     }
 
     private fun observeViewModel() {
@@ -76,6 +85,9 @@ class ChatFragment : Fragment() {
     }
 
     private fun setOnClickListeners() {
+        binding.btBack.setOnClickListener {
+            requireActivity().finish()
+        }
         binding.btAttachImageToMessage.setOnClickListener {
             Toast.makeText(requireActivity().application, "Image", Toast.LENGTH_SHORT).show()
         }
@@ -97,10 +109,11 @@ class ChatFragment : Fragment() {
 
     companion object {
 
-        fun newInstance(chatId: String) =
+        fun newInstance(chatId: String, chatName: String) =
             ChatFragment().apply {
                 arguments = Bundle().apply {
                     putString(ChatActivity.CHAT_ID, chatId)
+                    putString(ChatActivity.CHAT_NAME, chatName)
                 }
             }
     }

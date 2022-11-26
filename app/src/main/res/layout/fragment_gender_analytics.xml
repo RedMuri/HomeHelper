@@ -103,7 +103,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/just"
                         android:layout_width="0dp"
-                        android:layout_height="300dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginTop="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +132,7 @@
                         <View
                             android:id="@+id/view_men_count"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_height="240dp"
                             android:layout_marginHorizontal="16dp"
                             android:background="@drawable/gender_analytics_men_view_background"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -163,7 +163,7 @@
                         <View
                             android:id="@+id/view_women_count"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_height="240dp"
                             android:layout_marginHorizontal="16dp"
                             android:background="@drawable/gender_analytics_women_view_background"
                             app:layout_constraintBottom_toBottomOf="parent"

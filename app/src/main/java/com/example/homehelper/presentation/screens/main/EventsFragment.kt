@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.homehelper.databinding.FragmentEventsBinding
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.events.AdapterEvents
-import com.example.homehelper.presentation.screens.addevent.AddEventActivity
+import com.example.homehelper.presentation.screens.events.AddEventActivity
+import com.example.homehelper.presentation.screens.events.EventDetailActivity
 import com.example.homehelper.presentation.screens.services.ServiceActivity
 import com.example.homehelper.presentation.viewmodels.EventsViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
@@ -40,7 +41,7 @@ class EventsFragment : Fragment() {
     private val binding: FragmentEventsBinding
         get() = _binding ?: throw RuntimeException("FragmentEventsBinding = null!")
 
-//-----------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)
@@ -113,7 +114,7 @@ class EventsFragment : Fragment() {
     private fun checkIfAdmin() {
         val userName =
             (requireActivity().application as HomeHelperApp).getUserEmail()
-        if (userName == HomeHelperApp.ADMIN_USER_NAME){
+        if (userName == HomeHelperApp.ADMIN_USER_NAME) {
             binding.fabAddEvent.visibility = View.VISIBLE
             setupSwipeListener(binding.rvEvents)
             binding.fabAddEvent.setOnClickListener {
@@ -130,6 +131,11 @@ class EventsFragment : Fragment() {
 
     private fun setupRecyclerView() {
         binding.rvEvents.adapter = adapterEvents
+        adapterEvents.onEventClickListener = {
+            startActivity(EventDetailActivity.newInstance(requireActivity().application,
+                it.title,
+                it.description))
+        }
     }
 
     private fun setupSwipeListener(recyclerView: RecyclerView) {

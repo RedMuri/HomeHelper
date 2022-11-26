@@ -29,7 +29,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".presentation.screens.addevent.AddEventActivity"
+            android:name=".presentation.screens.events.EventDetailActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".presentation.screens.events.AddEventActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

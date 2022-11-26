@@ -21,4 +21,6 @@
 
     <color name="analytics_gender_men">#82D8F3</color>
     <color name="analytics_gender_women">#DD81FF</color>
+
+    <color name="calculator_spinner">#80FFFFFF</color>
 </resources>

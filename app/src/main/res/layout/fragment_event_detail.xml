@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/event_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/main_vertical_gl_left" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
+
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_max_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom" />
+
+<!--    <item name="android:layout_width">@dimen/round_icon_size</item>-->
+<!--    <item name="android:layout_height">@dimen/round_icon_size</item>-->
+<!--    <item name="android:background">@drawable/circle_background_main_color_ripple</item>-->
+<!--    <item name="android:clickable">true</item>-->
+<!--    <item name="android:focusable">true</item>-->
+<!--    <item name="layout_constraintDimensionRatio">1:1</item>-->
+<!--    -->
+    <ImageView
+        android:id="@+id/bt_back"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:clickable="true"
+        android:background="@drawable/circle_background_ripple"
+        android:layout_marginStart="@dimen/margin_default"
+        android:contentDescription="@string/bell_button_content_desc"
+        android:src="@drawable/back_arrow_black"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintStart_toStartOf="@id/gl_v1"
+        app:layout_constraintTop_toTopOf="@id/searchView"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/searchView"
+        style="@style/MainTitle"
+        android:text="Назад"
+        app:layout_constraintBottom_toBottomOf="@id/barrier_max_height"
+        app:layout_constraintStart_toEndOf="@id/bt_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/main_bottom_sheet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_gl_v1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/main_vertical_gl_left" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_gl_v2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
+
+        <TextView
+            android:id="@+id/tv_event_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="20dp"
+            android:text="Event title"
+            android:textColor="@color/main"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/bottom_gl_v2"
+            app:layout_constraintStart_toStartOf="@id/bottom_gl_v1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_event_desc"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="12dp"
+            android:text="Event title"
+            android:textColor="@color/main_dark"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bottom_gl_v2"
+            app:layout_constraintStart_toStartOf="@id/bottom_gl_v1"
+            app:layout_constraintTop_toBottomOf="@id/tv_event_title" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

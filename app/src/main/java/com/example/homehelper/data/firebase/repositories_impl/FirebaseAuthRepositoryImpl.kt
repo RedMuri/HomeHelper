@@ -15,6 +15,7 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
     private val db: FirebaseFirestore,
 ) : FirebaseAuthRepository {
 
+
     override fun getFirebaseAuth(): FirebaseAuth = auth
 
     override fun signIn(email: String, password: String): Task<AuthResult> {
@@ -29,27 +30,22 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
     private fun createUserInDb(email: String) {
         val user = User(email = email)
 
-        db.collection(FirebaseChatsRepositoryImpl.USERS)
-            .document(email)
-            .set(user)
+        db.collection(FirebaseChatsRepositoryImpl.USERS).document(email).set(user)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     addMainChatToUserChats(email)
-                } else
-                    Log.i("muri", "createUserInDb failure: $it")
+                } else Log.i("muri", "createUserInDb failure: ${it.exception}")
             }
     }
 
     private fun addMainChatToUserChats(email: String) {
         val mainChat = "main_chat"
+        val mainChatName = "Общий чат"
         db.collection(FirebaseChatsRepositoryImpl.USERS).document(email).collection("chats")
-            .document(mainChat)
-            .set(Chat(mainChat, mainChat))
-            .addOnCompleteListener {
+            .document(mainChat).set(Chat(mainChat, mainChatName)).addOnCompleteListener {
                 if (it.isSuccessful) {
                     Log.i("muri", "addMainChatToUserChats success: $it")
-                } else
-                    Log.i("muri", "addMainChatToUserChats failure: $it")
+                } else Log.i("muri", "addMainChatToUserChats failure: $it")
             }
     }
 }

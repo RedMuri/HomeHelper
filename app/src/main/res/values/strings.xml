@@ -41,6 +41,12 @@
     <string name="meters_data_fr_title">Счётчики</string>
     <string name="auth_tv_uk_company_name">УК\n"Огонь"</string>
     <string name="auth_tv_out_company_name">Home\nSolutions</string>
+
+    <string-array name="calculator_residents_groups">
+        <item>18 – 24</item>
+        <item>24 – 35</item>
+        <item>35 – 55</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

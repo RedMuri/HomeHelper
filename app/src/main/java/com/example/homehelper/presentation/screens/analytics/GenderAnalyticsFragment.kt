@@ -50,6 +50,17 @@ class GenderAnalyticsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeViewModel()
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
+        binding.btBack.setOnClickListener {
+            requireActivity().finish()
+        }
+    }
+
+    private fun observeViewModel() {
         usersListViewModel.getAllUsers().observe(viewLifecycleOwner) { users ->
             countAge(users)
         }
@@ -69,11 +80,13 @@ class GenderAnalyticsFragment : Fragment() {
     private fun setupCountViews(menCount: Int, womenCount: Int) {
         if (menCount>womenCount) {
             val percent = womenCount.toDouble()/menCount
-            binding.viewWomenCount.minimumHeight = (binding.viewMenCount.height*percent).toInt()
+            binding.viewWomenCount.layoutParams.height = (binding.viewMenCount.height*percent).toInt()
+            binding.viewWomenCount.requestLayout()
         }
         else if (menCount<womenCount){
             val percent = menCount.toDouble()/womenCount
-            binding.viewMenCount.minimumHeight = (binding.viewWomenCount.height*percent).toInt()
+            binding.viewMenCount.layoutParams.height = (binding.viewWomenCount.height*percent).toInt()
+            binding.viewMenCount.requestLayout()
         }
     }
 

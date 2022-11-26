@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main"
+    tools:context=".presentation.screens.services.CalculatorFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/main_vertical_gl_left" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_v2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="@dimen/main_vertical_gl_right" />
+
+    <ImageView
+        android:id="@+id/bt_back"
+        style="@style/MainRoundImageButton"
+        android:contentDescription="@string/bell_button_content_desc"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintStart_toStartOf="@id/gl_v1"
+        app:layout_constraintTop_toTopOf="@id/searchView" />
+
+    <TextView
+        android:id="@+id/searchView"
+        style="@style/MainTitle"
+        android:text="Калькулятор"
+        app:layout_constraintStart_toEndOf="@id/bt_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageButton"
+        style="@style/PaymentsRoundImageButtonWhite"
+        android:layout_marginStart="@dimen/margin_default"
+        android:contentDescription="@string/bell_button_content_desc"
+        android:src="@drawable/question"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintTop_toTopOf="@id/searchView" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/gl_v2"
+        app:layout_constraintStart_toStartOf="@id/gl_v1"
+        app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tag_input_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="10dp"
+                android:text="Введите данные"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <Spinner
+                android:id="@+id/spinner_groups"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:background="@drawable/calculator_spinner_background"
+                tools:listitem="@layout/calculator_spinner_item"
+                android:entries="@array/calculator_residents_groups"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tag_input_data" />
+
+            <TextView
+                android:id="@+id/et_amount"
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/calculator_spinner_background"
+                android:hint="Расход, кВт/ч"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textColorHint="@color/calculator_spinner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinner_groups" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

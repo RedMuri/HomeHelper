@@ -1,4 +1,4 @@
-package com.example.homehelper.presentation.adapters.chats
+package com.example.homehelper.presentation.adapters.users_for_message
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

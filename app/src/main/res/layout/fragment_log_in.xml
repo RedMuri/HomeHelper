@@ -80,6 +80,7 @@
         style="@style/AuthEt"
         android:layout_marginBottom="@dimen/auth_field_margin_bottom"
         android:hint="@string/et_sign_in_email_hint"
+        android:autofillHints="emailAddress"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@id/et_password"
         app:layout_constraintEnd_toEndOf="@id/gl_v2"

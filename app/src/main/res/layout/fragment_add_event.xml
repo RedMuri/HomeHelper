@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="20dp"
-    tools:context=".presentation.screens.addevent.AddEventFragment">
+    tools:context=".presentation.screens.events.AddEventFragment">
 
     <TextView
         android:id="@+id/tv_enter_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
-        android:text="Enter event title:"
+        android:text="Введите заголовок:"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="14dp"
         android:ems="10"
-        android:hint="Title..."
+        android:hint="Заголовок..."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
-        android:text="Enter event description:"
+        android:text="Введите описание:"
         android:textColor="@color/black"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="88dp"
@@ -49,18 +49,20 @@
         android:layout_marginHorizontal="14dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Description..."
+        android:hint="Описание..."
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="232dp" />
 
     <Button
+        android:theme="@style/ThemeButtonMainColor"
+        android:background="@drawable/auth_button_main_background"
         android:id="@+id/bt_save_event"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
-        android:text="Add event"/>
+        android:text="Добавить объявление"/>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

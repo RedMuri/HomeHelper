@@ -119,7 +119,7 @@ class ChatsListFragment : Fragment() {
         adapter.onChatClickListener = {
             Log.i("muri", "chatId : $it")
             startActivity(ChatActivity.newInstance(requireActivity().application,
-                it.id))
+                it.id, it.name))
         }
     }
 

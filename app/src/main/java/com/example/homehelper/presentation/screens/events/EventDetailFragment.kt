@@ -1,14 +1,11 @@
-package com.example.homehelper.presentation.screens.addevent
+package com.example.homehelper.presentation.screens.events
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.homehelper.R
-import com.example.homehelper.databinding.FragmentAddEventBinding
 import com.example.homehelper.databinding.FragmentEventDetailBinding
-import com.example.homehelper.domain.entities.Event
 
 class EventDetailFragment : Fragment() {
 

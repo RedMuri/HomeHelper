@@ -9,12 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentEventsBinding
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.events.AdapterEvents
-import com.example.homehelper.presentation.screens.addevent.AddEventActivity
-import com.example.homehelper.presentation.screens.addevent.EventDetailActivity
+import com.example.homehelper.presentation.screens.events.AddEventActivity
+import com.example.homehelper.presentation.screens.events.EventDetailActivity
 import com.example.homehelper.presentation.screens.services.ServiceActivity
 import com.example.homehelper.presentation.viewmodels.EventsViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory

@@ -1,4 +1,4 @@
-package com.example.homehelper.presentation.screens.addevent
+package com.example.homehelper.presentation.screens.events
 
 import android.content.Context
 import android.content.Intent

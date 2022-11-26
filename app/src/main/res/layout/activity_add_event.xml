@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/event_detail_container"
-    android:name="com.example.homehelper.presentation.screens.addevent.EventDetailFragment"
+    android:name="com.example.homehelper.presentation.screens.events.EventDetailFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:layout="@layout/fragment_event_detail"
-    tools:context=".presentation.screens.addevent.EventDetailActivity" />
+    tools:context=".presentation.screens.events.EventDetailActivity" />

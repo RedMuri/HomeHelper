@@ -1,4 +1,4 @@
-package com.example.homehelper.presentation.screens.addevent
+package com.example.homehelper.presentation.screens.events
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -2,7 +2,7 @@ package com.example.homehelper.di
 
 import android.app.Application
 import com.example.homehelper.presentation.screens.chats.ChatFragment
-import com.example.homehelper.presentation.screens.addevent.AddEventFragment
+import com.example.homehelper.presentation.screens.events.AddEventFragment
 import com.example.homehelper.presentation.screens.analytics.AgeAnalyticsFragment
 import com.example.homehelper.presentation.screens.analytics.GenderAnalyticsFragment
 import com.example.homehelper.presentation.screens.main.EventsFragment

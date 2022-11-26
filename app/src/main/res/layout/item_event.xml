@@ -51,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_event_date"
-            tools:text="Windows cleaning" />
+            tools:text="Отключение света" />
 
         <Button
             android:id="@+id/bt_read_more"

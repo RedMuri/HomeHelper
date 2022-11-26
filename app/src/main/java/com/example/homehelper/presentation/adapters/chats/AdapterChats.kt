@@ -22,6 +22,5 @@ class AdapterChats : ListAdapter<Chat, ChatViewHolder>(ChatItemDiffCallback()) {
         holder.binding.root.setOnClickListener {
             onChatClickListener?.invoke(item)
         }
-        holder.binding.ivChatIcon.setImageResource(R.drawable.bottom_nav_chats)
     }
 }

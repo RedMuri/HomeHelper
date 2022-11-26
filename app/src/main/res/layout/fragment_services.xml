@@ -118,6 +118,13 @@
             app:layout_constraintStart_toStartOf="@id/gl_v1"
             app:layout_constraintTop_toBottomOf="@+id/light_input_data">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_marginStart="6dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/services_water"/>
+
             <TextView
                 style="@style/EventsFragmentServiceDescription"
                 android:text="Вода" />
@@ -137,6 +144,13 @@
             app:layout_constraintStart_toEndOf="@id/main_ll_1"
             app:layout_constraintTop_toTopOf="@id/main_ll_1">
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_marginStart="6dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/services_gaz"/>
+
             <TextView
                 style="@style/EventsFragmentServiceDescription"
                 android:text="Газ" />
@@ -154,6 +168,13 @@
             app:layout_constraintEnd_toEndOf="@+id/gl_v2"
             app:layout_constraintStart_toEndOf="@id/main_ll_2"
             app:layout_constraintTop_toTopOf="@id/main_ll_1">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_marginStart="6dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/services_light"/>
 
             <TextView
                 style="@style/EventsFragmentServiceDescription"

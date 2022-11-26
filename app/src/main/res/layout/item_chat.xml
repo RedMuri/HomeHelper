@@ -25,9 +25,10 @@
             android:id="@+id/iv_chat_icon"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:padding="8dp"
+            android:src="@drawable/bottom_nav_chats"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            tools:srcCompat="@drawable/round_shape_main_color" />
+            android:layout_centerHorizontal="true" />
     </androidx.cardview.widget.CardView>
 
     <TextView

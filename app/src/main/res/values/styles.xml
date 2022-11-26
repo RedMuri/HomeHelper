@@ -36,7 +36,8 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_margin">@dimen/margin_default</item>
+        <item name="android:layout_marginStart">@dimen/margin_default</item>
+        <item name="android:layout_marginEnd">@dimen/margin_default</item>
         <item name="android:gravity">bottom</item>
         <item name="android:textColor">@color/main_dark</item>
         <item name="android:textSize">@dimen/events_fr_service_description_ts</item>
@@ -232,7 +233,9 @@
     <style name="ServicesFragmentTariffValue">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">@dimen/margin_default</item>
+        <item name="android:layout_marginStart">@dimen/margin_default</item>
+        <item name="android:layout_marginEnd">@dimen/margin_default</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textColor">@color/main_dark</item>
         <item name="android:textSize">@dimen/service_tariff_value_ts</item>

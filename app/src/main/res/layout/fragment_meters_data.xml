@@ -64,6 +64,16 @@
         app:layout_constraintEnd_toEndOf="@id/gl_v2"
         app:layout_constraintTop_toTopOf="@id/searchView" />
 
+    <Button
+        android:id="@+id/bt_pay"
+        style="@style/PaymentsFragmentButtonPay"
+        android:text="@string/meters_data_fr_button_send"
+        app:layout_constraintBottom_toBottomOf="@id/barrier_peek_height"
+        app:layout_constraintEnd_toEndOf="@id/light_meter_data"
+        app:layout_constraintStart_toStartOf="@id/light_meter_data"
+        app:layout_constraintTop_toBottomOf="@id/light_meter_data" />
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/light_meter_data"
         android:layout_width="0dp"
@@ -117,10 +127,10 @@
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_margin="@dimen/margin_default"
-            android:cursorVisible="false"
-            android:inputType="number"
             android:background="@drawable/meter_data_et_background"
+            android:cursorVisible="false"
             android:hint="350"
+            android:inputType="number"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +146,7 @@
         <TextView
             android:id="@+id/light_last_data_desc"
             style="@style/MetersDataLightDarkText"
-            android:text="Показания на 26.10.2022 кВт*ч"
+            android:text="Показания на 26.11.2022 кВт*ч"
             app:layout_constraintStart_toStartOf="@+id/light_last_data"
             app:layout_constraintTop_toBottomOf="@+id/light_last_data" />
 
@@ -151,23 +161,13 @@
             android:id="@+id/light_current_tariff_desc"
             style="@style/MetersDataLightDarkText"
             android:layout_marginBottom="@dimen/margin_default"
-            android:text="Актуальный тариф на 28.10.2022"
+            android:text="Актуальный тариф на 26.11.2022"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/light_current_tariff"
             app:layout_constraintTop_toBottomOf="@+id/light_current_tariff" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/bt_pay"
-        style="@style/PaymentsFragmentButtonPay"
-        android:text="@string/meters_data_fr_button_send"
-        app:layout_constraintBottom_toBottomOf="@id/barrier_peek_height"
-        app:layout_constraintEnd_toEndOf="@id/light_meter_data"
-        app:layout_constraintStart_toStartOf="@id/light_meter_data"
-        app:layout_constraintTop_toBottomOf="@id/light_meter_data" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

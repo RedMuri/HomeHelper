@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.homehelper.R
 import com.example.homehelper.databinding.ItemChatBinding
 import com.example.homehelper.domain.entities.Chat
+import java.util.*
 
 class AdapterChats : ListAdapter<Chat, ChatViewHolder>(ChatItemDiffCallback()) {
 
-    var onChatClickListener: ((Chat)->Unit)? = null
+    var onChatClickListener: ((Chat) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatViewHolder {
         val binding = ItemChatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -19,6 +20,7 @@ class AdapterChats : ListAdapter<Chat, ChatViewHolder>(ChatItemDiffCallback()) {
     override fun onBindViewHolder(holder: ChatViewHolder, position: Int) {
         val item = getItem(position)
         holder.name.text = item.name.substringBefore("@")
+            .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
         holder.binding.root.setOnClickListener {
             onChatClickListener?.invoke(item)
         }

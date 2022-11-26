@@ -18,6 +18,7 @@ import com.example.homehelper.presentation.screens.main.ChatsListFragment
 import com.example.homehelper.presentation.viewmodels.ChatViewModel
 import com.example.homehelper.presentation.viewmodels.ChatsListViewModel
 import com.example.homehelper.presentation.viewmodels.ViewModelFactory
+import java.util.*
 import javax.inject.Inject
 
 
@@ -64,7 +65,9 @@ class ChatFragment : Fragment() {
 
     private fun setChatName() {
         val chatName = arguments?.getString(ChatActivity.CHAT_NAME).toString()
-        binding.tvChatName.text = chatName
+        binding.tvChatName.text = chatName.replaceFirstChar {
+            if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
+        }
     }
 
     private fun observeViewModel() {

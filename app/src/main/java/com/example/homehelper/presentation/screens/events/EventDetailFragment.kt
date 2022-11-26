@@ -24,7 +24,21 @@ class EventDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setEventDetails()
+        setOnClickListeners()
+    }
 
+    private fun setOnClickListeners() {
+        binding.btBack.setOnClickListener {
+            requireActivity().finish()
+        }
+    }
+
+    private fun setEventDetails() {
+        val eventTitle = arguments?.getString(EVENT_TITLE,"none")
+        val eventDesc = arguments?.getString(EVENT_DESC,"none")
+        binding.tvEventTitle.text = eventTitle
+        binding.tvEventDesc.text = eventDesc
     }
 
     companion object {

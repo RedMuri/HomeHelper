@@ -47,6 +47,10 @@ class AddEventFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
+        setOnClickListeners()
+    }
+
+    private fun setOnClickListeners() {
         binding.btSaveEvent.setOnClickListener {
             val title = binding.etEventTitle.text.toString().trim()
             val desc = binding.etEventDesc.text.toString().trim()

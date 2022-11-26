@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homehelper.R
 import com.example.homehelper.databinding.FragmentEventsBinding
 import com.example.homehelper.presentation.HomeHelperApp
 import com.example.homehelper.presentation.adapters.events.AdapterEvents
@@ -130,6 +131,9 @@ class EventsFragment : Fragment() {
 
     private fun setupRecyclerView() {
         binding.rvEvents.adapter = adapterEvents
+        adapterEvents.onEventClickListener = {
+
+        }
     }
 
     private fun setupSwipeListener(recyclerView: RecyclerView) {

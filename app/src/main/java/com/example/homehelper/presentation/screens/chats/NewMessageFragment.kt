@@ -74,9 +74,9 @@ class NewMessageFragment : Fragment() {
         binding.rvUsers.adapter = adapterUsersMes
         adapterUsersMes.onUserClickListener = { it ->
             val userEmail = (requireActivity().application as HomeHelperApp).getUserEmail()
-            chatsListViewModel.startChatWithSomeone(userEmail, it.email){ chatId ->
+            chatsListViewModel.startChatWithSomeone(userEmail, it.email){ chatDto ->
                 startActivity(ChatActivity.newInstance(requireActivity().application,
-                    chatId))
+                    chatDto.id,chatDto.name))
 //                requireActivity().supportFragmentManager.popBackStack()
             }
         }

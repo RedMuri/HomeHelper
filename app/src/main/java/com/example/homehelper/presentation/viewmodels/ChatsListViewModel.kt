@@ -2,6 +2,7 @@ package com.example.homehelper.presentation.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
+import com.example.homehelper.data.firebase.model.ChatDto
 import com.example.homehelper.domain.usecases.chats.GetChatsUseCase
 import com.example.homehelper.domain.usecases.chats.LoadChatsFromFbUseCase
 import com.example.homehelper.domain.usecases.chats.StartChatWithSomeoneUseCase
@@ -26,7 +27,7 @@ class ChatsListViewModel @Inject constructor(
 
     fun getChats(userEmail: String) = getChatsUseCase.invoke(userEmail)
 
-    fun startChatWithSomeone(userEmail: String, someoneEmail: String, callback: (String) -> Unit) {
+    fun startChatWithSomeone(userEmail: String, someoneEmail: String, callback: (ChatDto) -> Unit) {
         startChatWithSomeoneUseCase.invoke(userEmail, someoneEmail, callback)
     }
 }

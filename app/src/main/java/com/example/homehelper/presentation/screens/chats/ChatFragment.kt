@@ -63,8 +63,8 @@ class ChatFragment : Fragment() {
     }
 
     private fun setChatName() {
-        val chatId = arguments?.getString(ChatActivity.CHAT_ID).toString()
-        binding.tvChatName.text = chatId
+        val chatName = arguments?.getString(ChatActivity.CHAT_NAME).toString()
+        binding.tvChatName.text = chatName
     }
 
     private fun observeViewModel() {
@@ -106,10 +106,11 @@ class ChatFragment : Fragment() {
 
     companion object {
 
-        fun newInstance(chatId: String) =
+        fun newInstance(chatId: String, chatName: String) =
             ChatFragment().apply {
                 arguments = Bundle().apply {
                     putString(ChatActivity.CHAT_ID, chatId)
+                    putString(ChatActivity.CHAT_NAME, chatName)
                 }
             }
     }
